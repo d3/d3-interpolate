@@ -12,7 +12,7 @@ i(0.5); // 15
 i(1.0); // 20
 ```
 
-A more elaborate example, demonstrating type inference used by [interpolate](#interpolate) that detects colors on nested object:
+A more elaborate example, demonstrating type inference used by [interpolate](#interpolate) for colors on nested objects:
 
 ```js
 var i = interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
