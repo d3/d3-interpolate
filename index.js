@@ -4,6 +4,7 @@ import interpolateNumber from "./src/interpolateNumber";
 import interpolateObject from "./src/interpolateObject";
 import interpolateRound from "./src/interpolateRound";
 import interpolateString from "./src/interpolateString";
+import interpolateZoom from "./src/interpolateZoom";
 import interpolators from "./src/interpolators";
 
 export {
@@ -13,5 +14,6 @@ export {
   interpolateObject,
   interpolateRound,
   interpolateString,
+  interpolateZoom,
   interpolators
 };
