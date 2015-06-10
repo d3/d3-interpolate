@@ -16,7 +16,7 @@ An interpolator typically returns a value equivalent to *a* at *t* = 0, and a va
 
 <a name="interpolate" href="#interpolate">#</a> <b>interpolate</b>(<i>a</i>, <i>b</i>)
 
-Returns the default interpolator between the two values *a* and *b*. The type of interpolator is based on the type of the end value *b*, using the following algorithm:
+Returns an interpolator between the two values *a* and *b*. The type of interpolator is based on the type of the end value *b*, using the following algorithm:
 
 1. If *b* is a color, [interpolateRgb](https://github.com/d3/d3-color#interpolateRgb) is used.
 2. If *b* is a string, [interpolateString](#interpolateString) is used.
@@ -26,11 +26,11 @@ Returns the default interpolator between the two values *a* and *b*. The type of
 
 Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The color check applies to both instances of [color](https://github.com/d3/d3-color#color) and color strings of the form `/^(#|rgb\(|hsl\()/` or a [[CSS named colors](http://www.w3.org/TR/SVG/types.html#ColorKeywords). TODO This is slightly inconsistent with how [color](https://github.com/d3/d3-color#color) parses?
 
-The behavior of the default interpolator may be extended to support additional types by pushing custom interpolators onto the [interpolators](#interpolators) array.
+The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [interpolators](#interpolators) array.
 
 <a name="interpolateNumber" href="#interpolateNumber">#</a> <b>interpolateNumber</b>(<i>a</i>, <i>b</i>)
 
-Returns a numeric interpolator between the two numbers *a* and *b*. The returned interpolator is equivalent to:
+Returns an interpolator between the two numbers *a* and *b*. The returned interpolator is equivalent to:
 
 ```js
 function interpolate(t) {
@@ -42,11 +42,11 @@ Caution: avoid interpolating to or from the number zero when the interpolator is
 
 <a name="interpolateRound" href="#interpolateRound">#</a> <b>interpolateRound</b>(<i>a</i>, <i>b</i>)
 
-Returns a numeric interpolator between the two numbers *a* and *b*; the interpolator is similar to [interpolateNumber](#interpolateNumber), except it will round the resulting value to the nearest integer.
+Returns an interpolator between the two numbers *a* and *b*; the interpolator is similar to [interpolateNumber](#interpolateNumber), except it will round the resulting value to the nearest integer.
 
 <a name="interpolateString" href="#interpolateString">#</a> <b>interpolateString</b>(<i>a</i>, <i>b</i>)
 
-Returns a string interpolator between the two strings *a* and *b*. The string interpolator finds numbers embedded in *a* and *b*, where each number is of the form:
+Returns an interpolator between the two strings *a* and *b*. The string interpolator finds numbers embedded in *a* and *b*, where each number is of the form:
 
 ```js
 /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g
@@ -58,7 +58,7 @@ For example, if *a* is `"300 12px sans-serif"`, and *b* is `"500 36px Comic-Sans
 
 <a name="interpolateArray" href="#interpolateArray">#</a> <b>interpolateArray</b>(<i>a</i>, <i>b</i>)
 
-Returns an array interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length in *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
+Returns an interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length in *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
 
 For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, then the result of the interpolator for *t* = .5 is the array `[.5, 5.5, 100]`.
 
@@ -66,7 +66,7 @@ Note: no defensive copy of the template array is created; modifications of the r
 
 <a name="interpolateObject" href="#interpolateObject">#</a> <b>interpolateObject</b>(<i>a</i>, <i>b</i>)
 
-Returns an object interpolator between the two objects *a* and *b*. Internally, an object template is created that has the same properties as *b*. For each property in *b*, if there exists a corresponding property in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such property, the static value from *b* is used in the template. Then, for the given parameter *t*, the template's embedded interpolators are evaluated and the updated object template is then returned.
+Returns an interpolator between the two objects *a* and *b*. Internally, an object template is created that has the same properties as *b*. For each property in *b*, if there exists a corresponding property in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such property, the static value from *b* is used in the template. Then, for the given parameter *t*, the template's embedded interpolators are evaluated and the updated object template is then returned.
 
 For example, if *a* is the object `{x: 0, y: 1}` and *b* is the object `{x: 1, y: 10, z: 100}`, the result of the interpolator for *t* = .5 is the object `{x: .5, y: 5.5, z: 100}`.
 
@@ -80,7 +80,7 @@ Returns an interpolator between the two 2D affine [transforms](Math#transform) r
 
 <a name="interpolateZoom" href="#interpolateZoom">#</a> <b>interpolateZoom</b>(<i>a</i>, <i>b</i>)
 
-Returns a smooth interpolator between the two views *a* and *b* of a two-dimensional plane, based on [“Smooth and efficient zooming and panning”](https://www.google.com/search?q=Smooth+and+efficient+zooming+and+panning) by Jarke J. van Wijk and Wim A.A. Nuij.
+Returns an interpolator between the two views *a* and *b* of a two-dimensional plane, based on [“Smooth and efficient zooming and panning”](https://www.google.com/search?q=Smooth+and+efficient+zooming+and+panning) by Jarke J. van Wijk and Wim A.A. Nuij.
 
 Each view is defined as an array of three numbers: *cx*, *cy* and *width*. The first two coordinates *cx*, *cy* represent the center of the viewport; the last coordinate *width* represents the size of the viewport. The returned interpolator also has a *duration* property which encodes the recommended transition duration in milliseconds. This duration is based on the path length of the curved trajectory through *x,y* space. If you want to a slower or faster transition, multiply this by an arbitrary scale factor (<i>V</i> as described in the original paper).
 
