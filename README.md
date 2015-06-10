@@ -27,15 +27,13 @@ An interpolator (such as `i` above) typically returns a value equivalent to *a* 
 
 Returns an interpolator between the two values *a* and *b*. The type of interpolator is based on the type of the end value *b*, using the following algorithm:
 
-1. If *b* is a color, [interpolateRgb](https://github.com/d3/d3-color#interpolateRgb) is used.
+1. If *b* is a [color](https://github.com/d3/d3-color#color), [interpolateRgb](https://github.com/d3/d3-color#interpolateRgb) is used.
 2. If *b* is a string, [interpolateString](#interpolateString) is used.
 3. If *b* is an array, [interpolateArray](#interpolateArray) is used.
 4. If *b* is an object and not coercible to a number, [interpolateObject](#interpolateObject) is used.
 5. Otherwise, [interpolateNumber](#interpolateNumber) is used.
 
-Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The color check applies to both instances of [color](https://github.com/d3/d3-color#color) and color strings of the form `/^(#|rgb\(|hsl\()/` or a [[CSS named colors](http://www.w3.org/TR/SVG/types.html#ColorKeywords). TODO This is slightly inconsistent with how [color](https://github.com/d3/d3-color#color) parses?
-
-The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [interpolators](#interpolators) array.
+Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [interpolators](#interpolators) array.
 
 <a name="interpolateNumber" href="#interpolateNumber">#</a> <b>interpolateNumber</b>(<i>a</i>, <i>b</i>)
 
