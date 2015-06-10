@@ -12,7 +12,16 @@ i(0.5); // 15
 i(1.0); // 20
 ```
 
-An interpolator typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
+A more elaborate example, demonstrating type inference used by [interpolate](#interpolate) that detects colors on nested object:
+
+```js
+var i = interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
+i(0.0); // {colors: ["#ff0000", "#0000ff"]}
+i(0.5); // {colors: ["#ff8080", "#000080"]}
+i(1.0); // {colors: ["#ffffff", "#000000"]}
+```
+
+An interpolator (such as `i` above) typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
 
 <a name="interpolate" href="#interpolate">#</a> <b>interpolate</b>(<i>a</i>, <i>b</i>)
 
