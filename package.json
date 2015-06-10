@@ -1,0 +1,34 @@
+{
+  "name": "d3-interpolate",
+  "version": "0.0.1",
+  "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
+  "keywords": [
+    "d3",
+    "interpolate",
+    "interpolation"
+  ],
+  "homepage": "https://github.com/d3/d3-interpolate",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "http://bost.ocks.org/mike"
+  },
+  "main": "build/interpolate",
+  "jsnext:main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d3/d3-interpolate.git"
+  },
+  "scripts": {
+    "pretest": "mkdir -p build && d3-bundler --format=umd --name=interpolate -- index.js > build/interpolate.js",
+    "test": "faucet `find test -name '*-test.js'`",
+    "prepublish": "npm run test && uglifyjs build/interpolate.js -c -m -o build/interpolate.min.js"
+  },
+  "devDependencies": {
+    "d3-bundler": "~0.2.6",
+    "d3-color": "~0.1.0",
+    "faucet": "0.0",
+    "tape": "4",
+    "uglifyjs": "2"
+  }
+}
