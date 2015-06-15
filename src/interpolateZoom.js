@@ -1,5 +1,3 @@
-import "../math/trigonometry";
-
 var rho = Math.SQRT2,
     rho2 = 2,
     rho4 = 4;
