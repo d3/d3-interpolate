@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
@@ -22,7 +22,7 @@
   "scripts": {
     "pretest": "mkdir -p build && d3-bundler --format=umd --name=interpolate -- index.js > build/interpolate.js",
     "test": "faucet `find test -name '*-test.js'`",
-    "prepublish": "npm run test && uglifyjs build/interpolate.js -c -m -o build/interpolate.min.js"
+    "prepublish": "npm run test && uglifyjs build/interpolate.js -c -m -o build/interpolate.min.js && rm -f build/interpolate.zip && zip -j build/interpolate.zip -- LICENSE README.md build/interpolate.js build/interpolate.min.js"
   },
   "devDependencies": {
     "d3-bundler": "~0.2.6",
