@@ -1,8 +1,6 @@
 # d3-interpolate
 
-The d3-interpolate module provides a variety of interpolation methods for blending between two values. These values may be numbers, colors, strings, arrays, even deeply-nested objects.
-
-Given a starting value *a* and an ending value *b*, an *interpolator* is a function that takes a parameter *t* in the domain [0,1] and returns an interpolated value between *a* and *b*. For example:
+The d3-interpolate module provides a variety of interpolation methods for blending between two values. These values may be numbers, colors, strings, arrays, even deeply-nested objects. For example:
 
 ```js
 var i = interpolateNumber(10, 20);
@@ -12,7 +10,9 @@ i(0.5); // 15
 i(1.0); // 20
 ```
 
-A more elaborate example, demonstrating type inference used by [interpolate](#interpolate) for colors on nested objects:
+The returned function `i` is called an *interpolator*. Given the starting value *a* and the ending value *b*, it takes a parameter *t* in the domain [0,1] and returns an interpolated value between *a* and *b*. An interpolator typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
+
+Here’s a more elaborate example demonstrating type inference used by [interpolate](#interpolate):
 
 ```js
 var i = interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
@@ -21,7 +21,7 @@ i(0.5); // {colors: ["#ff8080", "#000080"]}
 i(1.0); // {colors: ["#ffffff", "#000000"]}
 ```
 
-An interpolator (such as `i` above) typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
+Note that the generic interpolate method detects not only nested objects and arrays, but also color strings and numbers embedded in strings!
 
 ## Installing
 
