@@ -1,6 +1,6 @@
 # d3-interpolate
 
-A variety of interpolation methods for blending between values. Values may be numbers, colors, strings, arrays, even deeply-nested objects.
+The d3-interpolate module provides a variety of interpolation methods for blending between two values. These values may be numbers, colors, strings, arrays, even deeply-nested objects.
 
 Given a starting value *a* and an ending value *b*, an *interpolator* is a function that takes a parameter *t* in the domain [0,1] and returns an interpolated value between *a* and *b*. For example:
 
@@ -22,6 +22,12 @@ i(1.0); // {colors: ["#ffffff", "#000000"]}
 ```
 
 An interpolator (such as `i` above) typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
+
+## Installing
+
+If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest).
+
+## API Reference
 
 <a name="interpolate" href="#interpolate">#</a> <b>interpolate</b>(<i>a</i>, <i>b</i>)
 
@@ -65,7 +71,7 @@ Returns an interpolator between the two arrays *a* and *b*. Internally, an array
 
 For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, then the result of the interpolator for *t* = .5 is the array `[.5, 5.5, 100]`.
 
-Note: no defensive copy of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
+Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
 
 <a name="interpolateObject" href="#interpolateObject">#</a> <b>interpolateObject</b>(<i>a</i>, <i>b</i>)
 
@@ -75,7 +81,7 @@ For example, if *a* is the object `{x: 0, y: 1}` and *b* is the object `{x: 1, y
 
 Object interpolation is particularly useful for *dataspace interpolation*, where data is interpolated rather than attribute values. For example, you can interpolate an object which describes an arc in a pie chart, and then use d3.svg.arc to compute the new SVG path data.
 
-Note: no defensive copy of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
+Note: **no defensive copy** of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
 
 <a name="interpolateTransform" href="#interpolateTransform">#</a> <b>interpolateTransform</b>(<i>a</i>, <i>b</i>)
 
