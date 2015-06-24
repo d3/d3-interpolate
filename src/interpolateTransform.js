@@ -4,21 +4,17 @@ var rad2deg = 180 / Math.PI,
     identity = {a: 1, b: 0, c: 0, d: 1, e: 0, f: 0},
     g;
 
-function transform(string) {
-  if (!g) g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  if (string != null) {
-    g.setAttribute("transform", string);
-    var t = g.transform.baseVal.consolidate();
-  }
-  return new Transform(t ? t.matrix : identity);
-}
-
 // Compute x-scale and normalize the first row.
 // Compute shear and make second row orthogonal to first.
 // Compute y-scale and normalize the second row.
 // Finally, compute the rotation.
-function Transform(m) {
-  var r0 = [m.a, m.b],
+function Transform(string) {
+  if (!g) g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  if (string) g.setAttribute("transform", string), t = g.transform.baseVal.consolidate();
+
+  var t,
+      m = t ? t.matrix : identity,
+      r0 = [m.a, m.b],
       r1 = [m.c, m.d],
       kx = normalize(r0),
       kz = dot(r0, r1),
@@ -35,7 +31,7 @@ function Transform(m) {
   this.translate = [m.e, m.f];
   this.scale = [kx, ky];
   this.skew = ky ? Math.atan2(kz, ky) * rad2deg : 0;
-};
+}
 
 function dot(a, b) {
   return a[0] * b[0] + a[1] * b[1];
@@ -57,8 +53,8 @@ export default function(a, b) {
   var s = [], // string constants and placeholders
       q = [], // number interpolators
       n,
-      A = transform(a),
-      B = transform(b),
+      A = new Transform(a),
+      B = new Transform(b),
       ta = A.translate,
       tb = B.translate,
       ra = A.rotate,
