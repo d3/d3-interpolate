@@ -85,7 +85,7 @@ Note: **no defensive copy** of the template object is created; modifications of 
 
 <a name="interpolateTransform" href="#interpolateTransform">#</a> <b>interpolateTransform</b>(<i>a</i>, <i>b</i>)
 
-Returns an interpolator between the two 2D affine [transforms](Math#transform) represented by *a* and *b*. Each transform is decomposed to a standard representation of translate, rotate, *x*-skew and scale; these component transformations are then interpolated. This behavior is standardized by CSS: see [matrix decomposition for animation](http://www.w3.org/TR/css3-2d-transforms/#matrix-decomposition).
+Returns an interpolator between the two 2D affine transforms represented by *a* and *b*. Each transform is decomposed to a standard representation of translate, rotate, *x*-skew and scale; these component transformations are then interpolated. This behavior is standardized by CSS: see [matrix decomposition for animation](http://www.w3.org/TR/css3-2d-transforms/#matrix-decomposition).
 
 <a name="interpolateZoom" href="#interpolateZoom">#</a> <b>interpolateZoom</b>(<i>a</i>, <i>b</i>)
 
