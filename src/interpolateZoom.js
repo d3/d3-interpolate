@@ -1,7 +1,7 @@
 var rho = Math.SQRT2,
     rho2 = 2,
     rho4 = 4,
-    epsilon2 = 1e-6;
+    epsilon2 = 1e-12;
 
 function cosh(x) {
   return ((x = Math.exp(x)) + 1 / x) / 2;
