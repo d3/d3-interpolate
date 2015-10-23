@@ -49,53 +49,56 @@ function combine(a, b, k) {
   return a;
 }
 
-export default function(a, b) {
-  var s = [], // string constants and placeholders
-      q = [], // number interpolators
-      n,
-      A = new Transform(a),
-      B = new Transform(b),
-      ta = A.translate,
-      tb = B.translate,
-      ra = A.rotate,
-      rb = B.rotate,
-      wa = A.skew,
-      wb = B.skew,
-      ka = A.scale,
-      kb = B.scale;
+function pop(s) {
+  return s.length ? s.pop() + "," : "";
+}
 
-  if (ta[0] != tb[0] || ta[1] != tb[1]) {
+function interpolateTranslate(ta, tb, s, q) {
+  if (ta[0] !== tb[0] || ta[1] !== tb[1]) {
     s.push("translate(", null, ",", null, ")");
     q.push({i: 1, x: interpolateNumber(ta[0], tb[0])}, {i: 3, x: interpolateNumber(ta[1], tb[1])});
   } else if (tb[0] || tb[1]) {
     s.push("translate(" + tb + ")");
-  } else {
-    s.push("");
   }
+}
 
-  if (ra != rb) {
+function interpolateRotate(ra, rb, s, q) {
+  if (ra !== rb) {
     if (ra - rb > 180) rb += 360; else if (rb - ra > 180) ra += 360; // shortest path
-    q.push({i: s.push(s.pop() + "rotate(", null, ")") - 2, x: interpolateNumber(ra, rb)});
+    q.push({i: s.push(pop(s) + "rotate(", null, ")") - 2, x: interpolateNumber(ra, rb)});
   } else if (rb) {
-    s.push(s.pop() + "rotate(" + rb + ")");
+    s.push(pop(s) + "rotate(" + rb + ")");
   }
+}
 
-  if (wa != wb) {
-    q.push({i: s.push(s.pop() + "skewX(", null, ")") - 2, x: interpolateNumber(wa, wb)});
+function interpolateSkew(wa, wb, s, q) {
+  if (wa !== wb) {
+    q.push({i: s.push(pop(s) + "skewX(", null, ")") - 2, x: interpolateNumber(wa, wb)});
   } else if (wb) {
-    s.push(s.pop() + "skewX(" + wb + ")");
+    s.push(pop(s) + "skewX(" + wb + ")");
   }
+}
 
-  if (ka[0] != kb[0] || ka[1] != kb[1]) {
-    n = s.push(s.pop() + "scale(", null, ",", null, ")");
-    q.push({i: n - 4, x: interpolateNumber(ka[0], kb[0])}, {i: n - 2, x: interpolateNumber(ka[1], kb[1])});
-  } else if (kb[0] != 1 || kb[1] != 1) {
-    s.push(s.pop() + "scale(" + kb + ")");
+function interpolateScale(ka, kb, s, q) {
+  if (ka[0] !== kb[0] || ka[1] !== kb[1]) {
+    var i = s.push(pop(s) + "scale(", null, ",", null, ")");
+    q.push({i: i - 4, x: interpolateNumber(ka[0], kb[0])}, {i: i - 2, x: interpolateNumber(ka[1], kb[1])});
+  } else if (kb[0] !== 1 || kb[1] !== 1) {
+    s.push(pop(s) + "scale(" + kb + ")");
   }
+}
 
-  n = q.length;
+export default function(a, b) {
+  var s = [], // string constants and placeholders
+      q = []; // number interpolators
+  a = new Transform(a), b = new Transform(b);
+  interpolateTranslate(a.translate, b.translate, s, q);
+  interpolateRotate(a.rotate, b.rotate, s, q);
+  interpolateSkew(a.skew, b.skew, s, q);
+  interpolateScale(a.scale, b.scale, s, q);
+  a = b = null; // gc
   return function(t) {
-    var i = -1, o;
+    var i = -1, n = q.length, o;
     while (++i < n) s[(o = q[i]).i] = o.x(t);
     return s.join("");
   };
