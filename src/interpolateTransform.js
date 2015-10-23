@@ -55,8 +55,8 @@ function pop(s) {
 
 function interpolateTranslate(ta, tb, s, q) {
   if (ta[0] !== tb[0] || ta[1] !== tb[1]) {
-    s.push("translate(", null, ",", null, ")");
-    q.push({i: 1, x: interpolateNumber(ta[0], tb[0])}, {i: 3, x: interpolateNumber(ta[1], tb[1])});
+    var i = s.push("translate(", null, ",", null, ")");
+    q.push({i: i - 4, x: interpolateNumber(ta[0], tb[0])}, {i: i - 2, x: interpolateNumber(ta[1], tb[1])});
   } else if (tb[0] || tb[1]) {
     s.push("translate(" + tb + ")");
   }
