@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
@@ -13,20 +13,22 @@
     "name": "Mike Bostock",
     "url": "http://bost.ocks.org/mike"
   },
-  "main": "build/interpolate",
+  "main": "build/interpolate.cjs",
   "jsnext:main": "index",
   "repository": {
     "type": "git",
     "url": "https://github.com/d3/d3-interpolate.git"
   },
   "scripts": {
-    "pretest": "mkdir -p build && d3-bundler --format=umd --name=interpolate -- index.js > build/interpolate.js",
+    "pretest": "mkdir -p build && d3-bundler -x -f cjs -o build/interpolate.cjs.js",
     "test": "faucet `find test -name '*-test.js'`",
-    "prepublish": "npm run test && uglifyjs build/interpolate.js -c -m -o build/interpolate.min.js && rm -f build/interpolate.zip && zip -j build/interpolate.zip -- LICENSE README.md build/interpolate.js build/interpolate.min.js"
+    "prepublish": "npm run test && d3-bundler -n interpolate -o build/interpolate.js && uglifyjs build/interpolate.js -c -m -o build/interpolate.min.js && rm -f build/interpolate.zip && zip -j build/interpolate.zip -- LICENSE README.md build/interpolate.js build/interpolate.min.js"
+  },
+  "dependencies": {
+    "d3-color": "~0.2.7"
   },
   "devDependencies": {
-    "d3-bundler": "~0.2.9",
-    "d3-color": "~0.2.6",
+    "d3-bundler": "~0.4.0",
     "faucet": "0.0",
     "tape": "4",
     "uglify-js": "2"
