@@ -12,7 +12,7 @@ i(1.0); // 20
 
 The returned function `i` is called an *interpolator*. Given the starting value *a* and the ending value *b*, it takes a parameter *t* in the domain [0,1] and returns an interpolated value between *a* and *b*. An interpolator typically returns a value equivalent to *a* at *t* = 0, and a value equivalent to *b* at *t* = 1.
 
-To find the perceptual halfway point between steelblue and brown:
+You can interpolate more than just numbers. To find the perceptual halfway point between steelblue and brown:
 
 ```js
 lab("steelblue", "brown")(0.5); // #8e5c6d
