@@ -124,13 +124,13 @@ Subsequently, `value("$20", "$10")(1/3)` returns `$16.67`.
 
 ![rgb](https://cloud.githubusercontent.com/assets/230541/8027976/07e91580-0d58-11e5-8d3f-4c50f152a2e3.png)
 
-Returns an RGB color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [rgb](#rgb). The return value of the interpolator is a hexadecimal RGB string.
+Returns an RGB color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [color.rgb](https://github.com/d3/d3-color#rgb). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hsl" href="#hsl">#</a> <b>hsl</b>(<i>a</i>, <i>b</i>)
 
 ![hsl](https://cloud.githubusercontent.com/assets/230541/8027979/07fec100-0d58-11e5-90df-dc458ae7af10.png)
 
-Returns an HSL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HSL; they will be converted to HSL using [hsl](#hsl). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
+Returns an HSL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HSL; they will be converted to HSL using [color.hsl](https://github.com/d3/d3-color#hsl). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hslLong" href="#hslLong">#</a> <b>hslLong</b>(<i>a</i>, <i>b</i>)
 
@@ -142,13 +142,13 @@ Like [hsl](#hsl), but does not use the shortest path between hues.
 
 ![lab](https://cloud.githubusercontent.com/assets/230541/8027977/07eaea04-0d58-11e5-8f4f-b739eb842549.png)
 
-Returns a Lab color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in Lab; they will be converted to Lab using [lab](#lab). The return value of the interpolator is a hexadecimal RGB string.
+Returns a Lab color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in Lab; they will be converted to Lab using [color.lab](https://github.com/d3/d3-color#lab). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hcl" href="#hcl">#</a> <b>hcl</b>(<i>a</i>, <i>b</i>)
 
 ![hcl](https://cloud.githubusercontent.com/assets/230541/8027978/07f91002-0d58-11e5-92f0-f06899907c6a.png)
 
-Returns an HCL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HCL; they will be converted to HCL using [hcl](#hcl). If either color’s hue or chroma is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
+Returns an HCL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HCL; they will be converted to HCL using [color.hcl](https://github.com/d3/d3-color#hcl). If either color’s hue or chroma is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hclLong" href="#hclLong">#</a> <b>hclLong</b>(<i>a</i>, <i>b</i>)
 
@@ -160,7 +160,7 @@ Like [hcl](#hcl), but does not use the shortest path between hues.
 
 ![cubehelix](https://cloud.githubusercontent.com/assets/230541/8027999/737cde08-0d58-11e5-8130-36e2437996ee.png)
 
-Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the default *gamma* of 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
+Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the default *gamma* of 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="cubehelixLong" href="#cubehelixLong">#</a> <b>cubehelixLong</b>(<i>a</i>, <i>b</i>)
 
