@@ -1,4 +1,4 @@
-import interpolate from "./interpolate";
+import value from "./value";
 
 // TODO sparse arrays?
 export default function(a, b) {
@@ -9,7 +9,7 @@ export default function(a, b) {
       n0 = Math.min(a.length, b.length),
       i;
 
-  for (i = 0; i < n0; ++i) x.push(interpolate(a[i], b[i]));
+  for (i = 0; i < n0; ++i) x.push(value(a[i], b[i]));
   for (; i < na; ++i) c[i] = a[i];
   for (; i < nb; ++i) c[i] = b[i];
 

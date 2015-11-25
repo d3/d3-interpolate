@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
@@ -25,7 +25,7 @@
     "prepublish": "npm run test && uglifyjs build/d3-interpolate.js -c -m -o build/d3-interpolate.min.js && rm -f build/d3-interpolate.zip && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
   },
   "dependencies": {
-    "d3-color": "~0.2.8"
+    "d3-color": "~0.3.0"
   },
   "devDependencies": {
     "faucet": "0.0",
