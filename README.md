@@ -77,7 +77,7 @@ Returns an interpolator between the two arrays *a* and *b*. Internally, an array
 
 For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, then the result of the interpolator for *t* = .5 is the array `[.5, 5.5, 100]`.
 
-Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
+Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
 
 <a name="object" href="#object">#</a> <b>object</b>(<i>a</i>, <i>b</i>)
 
@@ -87,7 +87,7 @@ For example, if *a* is the object `{x: 0, y: 1}` and *b* is the object `{x: 1, y
 
 Object interpolation is particularly useful for *dataspace interpolation*, where data is interpolated rather than attribute values. For example, you can interpolate an object which describes an arc in a pie chart, and then use d3.svg.arc to compute the new SVG path data.
 
-Note: **no defensive copy** of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made because interpolators should be fast, as they are part of the inner loop of animation.
+Note: **no defensive copy** of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
 
 <a name="transform" href="#transform">#</a> <b>transform</b>(<i>a</i>, <i>b</i>)
 
