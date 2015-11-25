@@ -45,7 +45,7 @@ Returns an interpolator between the two arbitrary values *a* and *b*. The interp
 4. If *b* is an object and not coercible to a number, [object](#object) is used.
 5. Otherwise, [number](#number) is used.
 
-Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [interpolators](#interpolators) array.
+Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [values](#values) array.
 
 <a name="number" href="#number">#</a> <b>number</b>(<i>a</i>, <i>b</i>)
 
@@ -185,3 +185,5 @@ Like [cubehelixGamma](#cubehelixGamma), but does not use the shortest path betwe
 * A new [cubehelix](#cubehelix) color space!
 
 * New “long” methods for hue interpolation in [HSL](#hslLong), [HCL](#hclLong) and [Cubehelix](#cubehelixLong).
+
+* Renamed the generic interpolate method and interpolators array to [value](#value) and [values](#values), respectively.
