@@ -37,7 +37,7 @@ If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest re
 
 <a name="value" href="#value">#</a> <b>value</b>(<i>a</i>, <i>b</i>)
 
-Returns an interpolator between the two values *a* and *b*. The type of interpolator is based on the type of the end value *b*, using the following algorithm:
+Returns an interpolator between the two arbitrary values *a* and *b*. The type of interpolator is based on the type of the end value *b*, using the following algorithm:
 
 1. If *b* is a [color](https://github.com/d3/d3-color#color), [rgb](#rgb) is used.
 2. If *b* is a string, [string](#string) is used.
