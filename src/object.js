@@ -1,4 +1,4 @@
-import interpolate from "./interpolate";
+import value from "./value";
 
 export default function(a, b) {
   var i = {},
@@ -7,7 +7,7 @@ export default function(a, b) {
 
   for (k in a) {
     if (k in b) {
-      i[k] = interpolate(a[k], b[k]);
+      i[k] = value(a[k], b[k]);
     } else {
       c[k] = a[k];
     }

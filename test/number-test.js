@@ -3,8 +3,8 @@ var tape = require("tape"),
 
 require("./inDelta");
 
-tape("interpolateNumber(a, b) interpolates between two numbers a and b", function(test) {
-  var i = interpolate.interpolateNumber(10, 42);
+tape("number(a, b) interpolates between two numbers a and b", function(test) {
+  var i = interpolate.number(10, 42);
   test.inDelta(i(0.0), 10.0);
   test.inDelta(i(0.1), 13.2);
   test.inDelta(i(0.2), 16.4);

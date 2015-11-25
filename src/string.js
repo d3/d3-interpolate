@@ -1,15 +1,15 @@
-import interpolateNumber from "./interpolateNumber";
+import number from "./number";
 
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
     reB = new RegExp(reA.source, "g");
 
-function interpolate0(b) {
+function zero(b) {
   return function() {
     return b;
   };
 }
 
-function interpolate1(b) {
+function one(b) {
   return function(t) {
     return b(t) + "";
   };
@@ -40,7 +40,7 @@ export default function(a, b) {
       else s[++i] = bm;
     } else { // interpolate non-matching numbers
       s[++i] = null;
-      q.push({i: i, x: interpolateNumber(am, bm)});
+      q.push({i: i, x: number(am, bm)});
     }
     bi = reB.lastIndex;
   }
@@ -55,8 +55,8 @@ export default function(a, b) {
   // Special optimization for only a single match.
   // Otherwise, interpolate each of the numbers and rejoin the string.
   return s.length < 2 ? (q[0]
-      ? interpolate1(q[0].x)
-      : interpolate0(b))
+      ? one(q[0].x)
+      : zero(b))
       : (b = q.length, function(t) {
           for (var i = 0, o; i < b; ++i) s[(o = q[i]).i] = o.x(t);
           return s.join("");
