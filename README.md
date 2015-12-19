@@ -129,57 +129,57 @@ Subsequently, `d3_interpolate.value("$20", "$10")(1/3)` returns `$16.67`.
 
 <a name="rgb" href="#rgb">#</a> d3_interpolate.<b>rgb</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgb.png" width="100%" height="80" alt="rgb">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgb.png" width="100%" height="40" alt="rgb">
 
 Returns an RGB color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [color.rgb](https://github.com/d3/d3-color#rgb). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hsl" href="#hsl">#</a> d3_interpolate.<b>hsl</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hsl.png" width="100%" height="80" alt="hsl">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hsl.png" width="100%" height="40" alt="hsl">
 
 Returns an HSL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HSL; they will be converted to HSL using [color.hsl](https://github.com/d3/d3-color#hsl). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hslLong" href="#hslLong">#</a> d3_interpolate.<b>hslLong</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hslLong.png" width="100%" height="80" alt="hslLong">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hslLong.png" width="100%" height="40" alt="hslLong">
 
 Like [hsl](#hsl), but does not use the shortest path between hues.
 
 <a name="lab" href="#lab">#</a> d3_interpolate.<b>lab</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/lab.png" width="100%" height="80" alt="lab">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/lab.png" width="100%" height="40" alt="lab">
 
 Returns a Lab color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in Lab; they will be converted to Lab using [color.lab](https://github.com/d3/d3-color#lab). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hcl" href="#hcl">#</a> d3_interpolate.<b>hcl</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hcl.png" width="100%" height="80" alt="hcl">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hcl.png" width="100%" height="40" alt="hcl">
 
 Returns an HCL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HCL; they will be converted to HCL using [color.hcl](https://github.com/d3/d3-color#hcl). If either color’s hue or chroma is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="hclLong" href="#hclLong">#</a> d3_interpolate.<b>hclLong</b>(<i>a</i>, <i>b</i>)
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hclLong.png" width="100%" height="80" alt="hclLong">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/hclLong.png" width="100%" height="40" alt="hclLong">
 
 Like [hcl](#hcl), but does not use the shortest path between hues.
 
 <a name="cubehelix" href="#cubehelix">#</a> d3_interpolate.<b>cubehelix</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelix.png" width="100%" height="80" alt="cubehelix">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelix.png" width="100%" height="40" alt="cubehelix">
 
 Or, with a gamma of 3.0 to emphasize high-intensity values:
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGamma.png" width="100%" height="80" alt="cubehelixGamma">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGamma.png" width="100%" height="40" alt="cubehelixGamma">
 
 Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the specified *gamma*. If *gamma* is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="cubehelixLong" href="#cubehelixLong">#</a> d3_interpolate.<b>cubehelixLong</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="80" alt="cubehelixLong">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="40" alt="cubehelixLong">
 
 Or, with a gamma of 3.0 to emphasize high-intensity values:
 
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGammaLong.png" width="100%" height="80" alt="cubehelixGammaLong">
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGammaLong.png" width="100%" height="40" alt="cubehelixGammaLong">
 
 Like [cubehelix](#cubehelix), but does not use the shortest path between hues.
 
