@@ -13,9 +13,6 @@ export {default as hslLong} from "./src/hslLong";
 export {default as lab} from "./src/lab";
 export {default as hcl} from "./src/hcl";
 export {default as hclLong} from "./src/hclLong";
-
-import cubehelixGamma from "./src/cubehelixGamma";
-import cubehelixGammaLong from "./src/cubehelixGammaLong";
-export var cubehelix = cubehelixGamma(1);
-export var cubehelixLong = cubehelixGammaLong(1);
-export {cubehelixGamma, cubehelixGammaLong};
+export {default as cubehelix} from "./src/cubehelix";
+export {default as cubehelixLong} from "./src/cubehelixLong";
+export {default as bind} from "./src/bind";

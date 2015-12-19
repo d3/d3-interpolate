@@ -163,30 +163,31 @@ Returns an HCL color space interpolator between the two colors *a* and *b*. The 
 
 Like [hcl](#hcl), but does not use the shortest path between hues.
 
-<a name="cubehelix" href="#cubehelix">#</a> d3_interpolate.<b>cubehelix</b>(<i>a</i>, <i>b</i>)
+<a name="cubehelix" href="#cubehelix">#</a> d3_interpolate.<b>cubehelix</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelix.png" width="100%" height="80" alt="cubehelix">
 
-Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the default *gamma* of 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
-
-<a name="cubehelixLong" href="#cubehelixLong">#</a> d3_interpolate.<b>cubehelixLong</b>(<i>a</i>, <i>b</i>)
-
-<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="80" alt="cubehelixLong">
-
-Like [cubehelix](#cubehelix), but does not use the shortest path between hues.
-
-<a name="cubehelixGamma" href="#cubehelixGamma">#</a> d3_interpolate.<b>cubehelixGamma</b>(<i>gamma</i>)
+Or, with a gamma of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGamma.png" width="100%" height="80" alt="cubehelixGamma">
 
-Returns a Cubehelix color space interpolator factory using the specified *gamma*. A gamma value less than one emphasizes low intensity values, while a gamma value greater than one emphasizes high intensity values. For example:
+Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the specified *gamma*. If *gamma* is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
-```js
-var i = d3_interpolate.cubehelixGamma(3)("purple", "orange");
-```
+<a name="cubehelixLong" href="#cubehelixLong">#</a> d3_interpolate.<b>cubehelixLong</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
 
-<a name="cubehelixGammaLong" href="#cubehelixGammaLong">#</a> d3_interpolate.<b>cubehelixGammaLong</b>(<i>gamma</i>)
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="80" alt="cubehelixLong">
+
+Or, with a gamma of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGammaLong.png" width="100%" height="80" alt="cubehelixGammaLong">
 
-Like [cubehelixGamma](#cubehelixGamma), but does not use the shortest path between hues.
+Like [cubehelix](#cubehelix), but does not use the shortest path between hues.
+
+<a name="bind" href="#bind">#</a> d3_interpolate.<b>bind</b>(<i>type</i>[, <i>parameters…</i>])
+
+A convenience function for binding zero or more *parameters* to the specified interpolation function *type*. If no *parameters* are specified, this function simply returns *type*. The returned function takes two arguments *a* and *b* and passes any optional *parameters* to the underlying function *type*. For example, the following statements are equivalent:
+
+```js
+d3_interpolate.bind(d3_interpolate.cubehelix, 3)("purple", "orange");
+d3_interpolate.cubehelix("purple", "orange", 3);
+```

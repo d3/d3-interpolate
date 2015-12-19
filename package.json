@@ -1,11 +1,12 @@
 {
   "name": "d3-interpolate",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
     "interpolate",
-    "interpolation"
+    "interpolation",
+    "color"
   ],
   "homepage": "https://github.com/d3/d3-interpolate",
   "license": "BSD-3-Clause",
