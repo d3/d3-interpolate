@@ -18,3 +18,9 @@ tape("array(a, b) merges non-shared elements", function(test) {
   test.end();
 });
 
+tape("array(a, b) treats undefined as an empty array", function(test) {
+  test.deepEqual(interpolate.array(undefined, [2, 12])(.5), [2, 12]);
+  test.deepEqual(interpolate.array([2, 12], undefined)(.5), [2, 12]);
+  test.deepEqual(interpolate.array(undefined, undefined)(.5), []);
+  test.end();
+});
