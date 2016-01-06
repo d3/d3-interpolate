@@ -5,6 +5,9 @@ export default function(a, b) {
       c = {},
       k;
 
+  a = typeof a === "object" ? a : {};
+  b = typeof b === "object" ? b : {};
+
   for (k in a) {
     if (k in b) {
       i[k] = value(a[k], b[k]);
