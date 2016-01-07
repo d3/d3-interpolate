@@ -1,15 +1,15 @@
 var tape = require("tape"),
     interpolate = require("../");
 
-tape("bind(type) returns type", function(test) {
-  test.equal(interpolate.bind(interpolate.cubehelix), interpolate.cubehelix);
-  test.equal(interpolate.bind(interpolate.rgb), interpolate.rgb);
+tape("interpolateBind(type) returns type", function(test) {
+  test.equal(interpolate.interpolateBind(interpolate.interpolateCubehelix), interpolate.interpolateCubehelix);
+  test.equal(interpolate.interpolateBind(interpolate.interpolateRgb), interpolate.interpolateRgb);
   test.end();
 });
 
-tape("bind(type, parameter) binds the specified parameter to the given type", function(test) {
-  test.equal(interpolate.bind(interpolate.cubehelix, 3)("purple", "orange")(0.5), interpolate.cubehelix("purple", "orange", 3)(0.5));
-  test.equal(interpolate.bind(interpolate.cubehelixLong, 3)("purple", "orange")(0.5), interpolate.cubehelixLong("purple", "orange", 3)(0.5));
-  test.equal(interpolate.bind(interpolate.rgb, 3)("purple", "orange")(0.5), interpolate.rgb("purple", "orange", 3)(0.5)); // ignored
+tape("interpolateBind(type, parameter) binds the specified parameter to the given type", function(test) {
+  test.equal(interpolate.interpolateBind(interpolate.interpolateCubehelix, 3)("purple", "orange")(0.5), interpolate.interpolateCubehelix("purple", "orange", 3)(0.5));
+  test.equal(interpolate.interpolateBind(interpolate.interpolateCubehelixLong, 3)("purple", "orange")(0.5), interpolate.interpolateCubehelixLong("purple", "orange", 3)(0.5));
+  test.equal(interpolate.interpolateBind(interpolate.interpolateRgb, 3)("purple", "orange")(0.5), interpolate.interpolateRgb("purple", "orange", 3)(0.5)); // ignored
   test.end();
 });

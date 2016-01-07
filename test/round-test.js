@@ -1,8 +1,8 @@
 var tape = require("tape"),
     interpolate = require("../");
 
-tape("round(a, b) interpolates between two numbers a and b, and then rounds", function(test) {
-  var i = interpolate.round(10, 42);
+tape("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", function(test) {
+  var i = interpolate.interpolateRound(10, 42);
   test.equal(i(0.0), 10);
   test.equal(i(0.1), 13);
   test.equal(i(0.2), 16);
@@ -17,8 +17,8 @@ tape("round(a, b) interpolates between two numbers a and b, and then rounds", fu
   test.end();
 });
 
-tape("round(a, b) does not pre-round a and b", function(test) {
-  var i = interpolate.round(2.6, 3.6);
+tape("interpolateRound(a, b) does not pre-round a and b", function(test) {
+  var i = interpolate.interpolateRound(2.6, 3.6);
   test.equal(i(0.6), 3);
   test.end();
 });
