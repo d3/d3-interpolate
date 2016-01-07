@@ -5,8 +5,8 @@ export default function(a, b) {
       c = {},
       k;
 
-  a = typeof a === "object" ? a : {};
-  b = typeof b === "object" ? b : {};
+  if (a === null || typeof a !== "object") a = {};
+  if (b === null || typeof b !== "object") b = {};
 
   for (k in a) {
     if (k in b) {
