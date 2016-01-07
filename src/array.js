@@ -4,8 +4,8 @@ import value from "./value";
 export default function(a, b) {
   var x = [],
       c = [],
-      na = Array.isArray(a) ? a.length : 0,
-      nb = Array.isArray(b) ? b.length : 0,
+      na = a ? a.length : 0,
+      nb = b ? b.length : 0,
       n0 = Math.min(na, nb),
       i;
 
