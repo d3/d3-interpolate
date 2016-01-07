@@ -38,6 +38,9 @@ tape("object(a, b) merges non-shared properties", function(test) {
 tape("object(a, b) treats undefined as an empty object", function(test) {
   test.deepEqual(interpolate.object(NaN, {foo: 2})(.5), {foo: 2});
   test.deepEqual(interpolate.object({foo: 2}, undefined)(.5), {foo: 2});
+  test.deepEqual(interpolate.object(undefined, {foo: 2})(.5), {foo: 2});
+  test.deepEqual(interpolate.object({foo: 2}, null)(.5), {foo: 2});
+  test.deepEqual(interpolate.object(null, {foo: 2})(.5), {foo: 2});
   test.deepEqual(interpolate.object(null, NaN)(.5), {});
   test.end();
 });
