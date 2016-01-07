@@ -18,3 +18,19 @@ tape("array(a, b) merges non-shared elements", function(test) {
   test.end();
 });
 
+tape("array(a, b) treats undefined as an empty array", function(test) {
+  test.deepEqual(interpolate.array(undefined, [2, 12])(.5), [2, 12]);
+  test.deepEqual(interpolate.array([2, 12], undefined)(.5), [2, 12]);
+  test.deepEqual(interpolate.array(undefined, undefined)(.5), []);
+  test.end();
+});
+
+tape("array(a, b) interpolates array-like objects", function(test) {
+  var array = new Float64Array(2),
+      args = (function() { return arguments; })(2, 12);
+  array[0] = 2;
+  array[1] = 12;
+  test.deepEqual(interpolate.array(array, [4, 24])(.5), [3, 18]);
+  test.deepEqual(interpolate.array(args, [4, 24])(.5), [3, 18]);
+  test.end();
+});

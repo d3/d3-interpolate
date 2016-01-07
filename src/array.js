@@ -4,9 +4,9 @@ import value from "./value";
 export default function(a, b) {
   var x = [],
       c = [],
-      na = a.length,
-      nb = b.length,
-      n0 = Math.min(a.length, b.length),
+      na = a ? a.length : 0,
+      nb = b ? b.length : 0,
+      n0 = Math.min(na, nb),
       i;
 
   for (i = 0; i < n0; ++i) x.push(value(a[i], b[i]));
