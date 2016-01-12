@@ -1,7 +1,7 @@
 import {cubehelix} from "d3-color";
 
 export default function(a, b, gamma) {
-  if (arguments.length < 3) gamma = 1;
+  gamma = gamma == null ? 1 : +gamma;
   a = cubehelix(a);
   b = cubehelix(b);
   var ah = isNaN(a.h) ? b.h : a.h,
