@@ -17,4 +17,4 @@ export default function(a, b, gamma) {
     a.l = al + bl * Math.pow(t, gamma);
     return a + "";
   };
-};
+}

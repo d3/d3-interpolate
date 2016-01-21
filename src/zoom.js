@@ -61,4 +61,4 @@ export default function(p0, p1) {
   i.duration = S * 1000;
 
   return i;
-};
+}

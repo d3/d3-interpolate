@@ -22,7 +22,7 @@
   },
   "scripts": {
     "pretest": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export * from \\\"../index\\\"; export {version};\");' > build/bundle.js && rollup -f umd -g d3-color:d3_color -u d3-interpolate -n d3_interpolate -o build/d3-interpolate.js -- build/bundle.js",
-    "test": "faucet `find test -name '*-test.js'`",
+    "test": "faucet `find test -name '*-test.js'` && eslint index.js src",
     "prepublish": "npm run test && uglifyjs build/d3-interpolate.js -c -m -o build/d3-interpolate.min.js && rm -f build/d3-interpolate.zip && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
   },
   "dependencies": {

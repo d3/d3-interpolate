@@ -102,4 +102,4 @@ export default function(a, b) {
     while (++i < n) s[(o = q[i]).i] = o.x(t);
     return s.join("");
   };
-};
+}

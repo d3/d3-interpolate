@@ -13,4 +13,4 @@ function bindN(type, args) {
 
 export default function(type) {
   return arguments.length === 1 ? type : bindN(type, arguments);
-};
+}

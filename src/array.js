@@ -17,4 +17,4 @@ export default function(a, b) {
     for (i = 0; i < n0; ++i) c[i] = x[i](t);
     return c;
   };
-};
+}

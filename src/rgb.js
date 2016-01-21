@@ -15,4 +15,4 @@ export default function(a, b) {
     a.b = ab + bb * t;
     return a + "";
   };
-};
+}

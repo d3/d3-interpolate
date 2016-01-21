@@ -61,4 +61,4 @@ export default function(a, b) {
           for (var i = 0, o; i < b; ++i) s[(o = q[i]).i] = o.x(t);
           return s.join("");
         });
-};
+}
