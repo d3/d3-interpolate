@@ -15,4 +15,3 @@ export {default as interpolateHcl} from "./src/hcl";
 export {default as interpolateHclLong} from "./src/hclLong";
 export {default as interpolateCubehelix} from "./src/cubehelix";
 export {default as interpolateCubehelixLong} from "./src/cubehelixLong";
-export {default as interpolateBind} from "./src/bind";

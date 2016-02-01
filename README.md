@@ -35,7 +35,7 @@ If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest re
 
 ```html
 <script src="https://d3js.org/d3-color.v0.3.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v0.4.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v0.5.min.js"></script>
 ```
 
 In a vanilla environment, a `d3_interpolate` global is exported. [Try d3-interpolate in your browser.](https://tonicdev.com/npm/d3-interpolate)
@@ -163,31 +163,30 @@ Returns an HCL color space interpolator between the two colors *a* and *b*. The 
 
 Like [interpolateHcl](#interpolateHcl), but does not use the shortest path between hues.
 
-<a name="interpolateCubehelix" href="#interpolateCubehelix">#</a> d3.<b>interpolateCubehelix</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
+<a name="interpolateCubehelix" href="#interpolateCubehelix">#</a> d3.<b>interpolateCubehelix</b>(<i>a</i>, <i>b</i>)
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelix.png" width="100%" height="40" alt="cubehelix">
 
-Or, with a gamma of 3.0 to emphasize high-intensity values:
+Or, with a [gamma](#cubehelix_gamma) of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGamma.png" width="100%" height="40" alt="cubehelixGamma">
 
-Returns a Cubehelix color space interpolator between the two colors *a* and *b* using the specified *gamma*. If *gamma* is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
+Returns a Cubehelix color space interpolator between the two colors *a* and *b* using a configurable [gamma](#cubehelix_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
-<a name="interpolateCubehelixLong" href="#interpolateCubehelixLong">#</a> d3.<b>interpolateCubehelixLong</b>(<i>a</i>, <i>b</i>[, <i>gamma</i>])
+<a name="interpolateCubehelixLong" href="#interpolateCubehelixLong">#</a> d3.<b>interpolateCubehelixLong</b>(<i>a</i>, <i>b</i>)
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="40" alt="cubehelixLong">
 
-Or, with a gamma of 3.0 to emphasize high-intensity values:
+Or, with a [gamma](#cubehelix_gamma) of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGammaLong.png" width="100%" height="40" alt="cubehelixGammaLong">
 
 Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortest path between hues.
 
-<a name="interpolateBind" href="#interpolateBind">#</a> d3.<b>interpolateBind</b>(<i>type</i>[, <i>parameters…</i>])
+<a name="cubehelix_gamma" href="#cubehelix_gamma">#</a> <i>cubehelix</i>.<b>gamma</b>(<i>gamma</i>)
 
-A convenience function for binding zero or more *parameters* to the specified interpolation function *type*. If no *parameters* are specified, this function simply returns *type*. The returned function takes two arguments *a* and *b* and passes any optional *parameters* to the underlying function *type*. For example, the following statements are equivalent:
+Returns a new Cubehelix interpolator factory using the specified *gamma*. For example, to interpolate from red to blue with a gamma of 3.0:
 
 ```js
-d3.interpolateBind(d3.interpolateCubehelix, 3)("purple", "orange");
-d3.interpolateCubehelix("purple", "orange", 3);
+var interpolate = d3.interpolateCubehelix.gamma(3.0)("red", "blue");
 ```
