@@ -191,7 +191,7 @@ Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortes
 
 <a name="interpolate_gamma" href="#interpolate_gamma">#</a> <i>interpolate</i>.<b>gamma</b>(<i>gamma</i>)
 
-Returns a new interpolator factory using the specified *gamma*. (Here, *interpolate* refers to [interpolateRgb](#interpolateRgb), [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong).) For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space:
+Given that *interpolate* is one of [interpolateRgb](#interpolateRgb), [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong), returns a new interpolator factory of the same type using the specified *gamma*. For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space:
 
 ```js
 var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
