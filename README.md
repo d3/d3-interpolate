@@ -181,7 +181,7 @@ Returns a Cubehelix color space interpolator between the two colors *a* and *b* 
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixLong.png" width="100%" height="40" alt="cubehelixLong">
 
-Or, with a [gamma](#cubehelix_gamma) of 3.0 to emphasize high-intensity values:
+Or, with a [gamma](#interpolate_gamma) of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGammaLong.png" width="100%" height="40" alt="cubehelixGammaLong">
 
