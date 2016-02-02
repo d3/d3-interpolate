@@ -139,7 +139,7 @@ Returns an RGB color space interpolator between the two colors *a* and *b* with 
 
 <a name="rgb_gamma" href="#rgb_gamma">#</a> <i>rgb</i>.<b>gamma</b>(<i>gamma</i>)
 
-Returns a new RGB interpolator factory using the specified *gamma*. For example, to interpolate from purple to orange with a gamma of 2.2:
+Returns a new RGB interpolator factory using the specified *gamma*. (Here, *rgb* refers to [interpolateRgb](#interpolateRgb).) For example, to interpolate from purple to orange with a gamma of 2.2:
 
 ```js
 var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
@@ -199,7 +199,7 @@ Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortes
 
 <a name="cubehelix_gamma" href="#cubehelix_gamma">#</a> <i>cubehelix</i>.<b>gamma</b>(<i>gamma</i>)
 
-Returns a new Cubehelix interpolator factory using the specified *gamma*. For example, to interpolate from red to blue with a gamma of 3.0:
+Returns a new Cubehelix interpolator factory using the specified *gamma*. (Here, *cubehelix* refers to [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong).) For example, to interpolate from red to blue with a gamma of 3.0:
 
 ```js
 var interpolate = d3.interpolateCubehelix.gamma(3.0)("red", "blue");
