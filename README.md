@@ -131,21 +131,11 @@ The returned interpolator exposes a *duration* property which encodes the recomm
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgb.png" width="100%" height="40" alt="rgb">
 
-Or, with a corrected [gamma](#rgb_gamma) of 2.2:
+Or, with a corrected [gamma](#interpolate_gamma) of 2.2:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgbGamma.png" width="100%" height="40" alt="rgbGamma">
 
-Returns an RGB color space interpolator between the two colors *a* and *b* with a configurable [gamma](#rgb_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [color.rgb](https://github.com/d3/d3-color#rgb). The return value of the interpolator is a hexadecimal RGB string.
-
-<a name="rgb_gamma" href="#rgb_gamma">#</a> <i>rgb</i>.<b>gamma</b>(<i>gamma</i>)
-
-Returns a new RGB interpolator factory using the specified *gamma*. (Here, *rgb* refers to [interpolateRgb](#interpolateRgb).) For example, to interpolate from purple to orange with a gamma of 2.2:
-
-```js
-var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
-```
-
-See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
+Returns an RGB color space interpolator between the two colors *a* and *b* with a configurable [gamma](#interpolate_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [color.rgb](https://github.com/d3/d3-color#rgb). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="interpolateHsl" href="#interpolateHsl">#</a> d3.<b>interpolateHsl</b>(<i>a</i>, <i>b</i>)
 
@@ -181,11 +171,11 @@ Like [interpolateHcl](#interpolateHcl), but does not use the shortest path betwe
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelix.png" width="100%" height="40" alt="cubehelix">
 
-Or, with a [gamma](#cubehelix_gamma) of 3.0 to emphasize high-intensity values:
+Or, with a [gamma](#interpolate_gamma) of 3.0 to emphasize high-intensity values:
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/cubehelixGamma.png" width="100%" height="40" alt="cubehelixGamma">
 
-Returns a Cubehelix color space interpolator between the two colors *a* and *b* using a configurable [gamma](#cubehelix_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
+Returns a Cubehelix color space interpolator between the two colors *a* and *b* using a configurable [gamma](#interpolate_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in Cubehelix; they will be converted to Cubehelix using [color.cubehelix](https://github.com/d3/d3-color#cubehelix). If either color’s hue or saturation is NaN, the opposing color’s channel value is used. The shortest path between hues is used. The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="interpolateCubehelixLong" href="#interpolateCubehelixLong">#</a> d3.<b>interpolateCubehelixLong</b>(<i>a</i>, <i>b</i>)
 
@@ -197,10 +187,14 @@ Or, with a [gamma](#cubehelix_gamma) of 3.0 to emphasize high-intensity values:
 
 Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortest path between hues.
 
-<a name="cubehelix_gamma" href="#cubehelix_gamma">#</a> <i>cubehelix</i>.<b>gamma</b>(<i>gamma</i>)
+### Gamma Correction
 
-Returns a new Cubehelix interpolator factory using the specified *gamma*. (Here, *cubehelix* refers to [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong).) For example, to interpolate from red to blue with a gamma of 3.0:
+<a name="interpolate_gamma" href="#interpolate_gamma">#</a> <i>interpolate</i>.<b>gamma</b>(<i>gamma</i>)
+
+Returns a new interpolator factory using the specified *gamma*. (Here, *interpolate* refers to [interpolateRgb](#interpolateRgb), [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong).) For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space:
 
 ```js
-var interpolate = d3.interpolateCubehelix.gamma(3.0)("red", "blue");
+var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 ```
+
+See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
