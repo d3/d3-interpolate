@@ -81,3 +81,13 @@ tape("interpolateHcl(a, b) uses b’s chroma when a’s chroma is undefined", fu
   test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#f00")(.5), "#a60000");
   test.end();
 });
+
+tape("interpolateHcl(a, b) uses b’s luminance when a’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateHcl(null, color.hcl(20, 80, 50))(0.5), "#ea134d");
+  test.end();
+});
+
+tape("interpolateHcl(a, b) uses zero when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateHcl(color.hcl(20, 80, 50), null)(0.5), "#990019");
+  test.end();
+});

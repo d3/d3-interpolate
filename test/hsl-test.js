@@ -48,3 +48,13 @@ tape("interpolateHsl(a, b) uses b’s saturation when a’s saturation is undefi
   test.equal(interpolate.interpolateHsl("#000", "#f00")(.5), "#800000");
   test.end();
 });
+
+tape("interpolateHsl(a, b) uses b’s lightness when a’s lightness is undefined", function(test) {
+  test.equal(interpolate.interpolateHsl(null, color.hsl(20, 1.0, 0.5))(0.5), "#ff5500");
+  test.end();
+});
+
+tape("interpolateHsl(a, b) uses zero when b’s lightness is undefined", function(test) {
+  test.equal(interpolate.interpolateHsl(color.hsl(20, 1.0, 0.5), null)(0.5), "#802b00");
+  test.end();
+});

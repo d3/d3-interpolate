@@ -6,9 +6,15 @@ export default function(a, b) {
   var al = a.l,
       aa = a.a,
       ab = a.b,
-      bl = b.l - al,
-      ba = b.a - aa,
-      bb = b.b - ab;
+      bl = b.l || 0,
+      ba = b.a || 0,
+      bb = b.b || 0;
+  if (isNaN(al)) al = bl;
+  if (isNaN(aa)) aa = ba;
+  if (isNaN(ab)) ab = bb;
+  bl -= al;
+  ba -= aa;
+  bb -= ab;
   return function(t) {
     a.l = al + bl * t;
     a.a = aa + ba * t;

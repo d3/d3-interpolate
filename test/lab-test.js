@@ -13,3 +13,19 @@ tape("interpolateLab(a, b) interpolates in Lab and returns a hexadecimal string"
   test.equal(interpolate.interpolateLab("steelblue", "#f00")(.2), "#8a7793");
   test.end();
 });
+
+tape("interpolateLab(a, b) uses b’s channel value when a’s channel value is undefined", function(test) {
+  test.equal(interpolate.interpolateLab(null, color.lab(20, 40, 60))(0.5), color.lab(20, 40, 60) + "");
+  test.equal(interpolate.interpolateLab(color.lab(NaN, 20, 40), color.lab(60, 80, 100))(0.5), color.lab(60, 50, 70) + "");
+  test.equal(interpolate.interpolateLab(color.lab(20, NaN, 40), color.lab(60, 80, 100))(0.5), color.lab(40, 80, 70) + "");
+  test.equal(interpolate.interpolateLab(color.lab(20, 40, NaN), color.lab(60, 80, 100))(0.5), color.lab(40, 60, 100) + "");
+  test.end();
+});
+
+tape("interpolateLab(a, b) uses zero when b’s channel value is undefined", function(test) {
+  test.equal(interpolate.interpolateLab(color.lab(20, 40, 60), null)(0.5), color.lab(10, 20, 30) + "");
+  test.equal(interpolate.interpolateLab(color.lab(60, 80, 100), color.lab(NaN, 20, 40))(0.5), color.lab(30, 50, 70) + "");
+  test.equal(interpolate.interpolateLab(color.lab(60, 80, 100), color.lab(20, NaN, 40))(0.5), color.lab(40, 40, 70) + "");
+  test.equal(interpolate.interpolateLab(color.lab(60, 80, 100), color.lab(20, 40, NaN))(0.5), color.lab(40, 60, 50) + "");
+  test.end();
+});

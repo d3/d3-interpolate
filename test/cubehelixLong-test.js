@@ -69,3 +69,13 @@ tape("interpolateCubehelixLong(a, b) uses b’s chroma when a’s chroma is unde
   test.equal(interpolate.interpolateCubehelixLong(color.hcl(NaN, NaN, 0), "#f00")(0.5), "#930000");
   test.end();
 });
+
+tape("interpolateCubehelixLong(a, b) uses b’s luminance when a’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelixLong(null, color.cubehelix(20, 1.5, 0.5))(0.5), "#f85d00");
+  test.end();
+});
+
+tape("interpolateCubehelixLong(a, b) uses zero when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelixLong(color.cubehelix(20, 1.5, 0.5), null)(0.5), "#9a2600");
+  test.end();
+});

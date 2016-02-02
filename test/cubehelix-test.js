@@ -48,25 +48,35 @@ tape("interpolateCubehelix(a, b) uses the shortest path when interpolating hue d
 });
 
 tape("interpolateCubehelix(a, b) uses a’s hue when b’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix("#f60", color.hcl(NaN, NaN, 0))(0.5), "#a22900");
-  test.equal(interpolate.interpolateCubehelix("#6f0", color.hcl(NaN, NaN, 0))(0.5), "#03ad00");
+  test.equal(interpolate.interpolateCubehelix("#f60", color.cubehelix(NaN, NaN, 0))(0.5), "#a22900");
+  test.equal(interpolate.interpolateCubehelix("#6f0", color.cubehelix(NaN, NaN, 0))(0.5), "#03ad00");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses b’s hue when a’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.hcl(NaN, NaN, 0), "#f60")(0.5), "#a22900");
-  test.equal(interpolate.interpolateCubehelix(color.hcl(NaN, NaN, 0), "#6f0")(0.5), "#03ad00");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f60")(0.5), "#a22900");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#6f0")(0.5), "#03ad00");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses a’s chroma when b’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix("#ccc", color.hcl(NaN, NaN, 0))(0.5), "#666666");
-  test.equal(interpolate.interpolateCubehelix("#f00", color.hcl(NaN, NaN, 0))(0.5), "#930000");
+  test.equal(interpolate.interpolateCubehelix("#ccc", color.cubehelix(NaN, NaN, 0))(0.5), "#666666");
+  test.equal(interpolate.interpolateCubehelix("#f00", color.cubehelix(NaN, NaN, 0))(0.5), "#930000");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses b’s chroma when a’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.hcl(NaN, NaN, 0), "#ccc")(0.5), "#666666");
-  test.equal(interpolate.interpolateCubehelix(color.hcl(NaN, NaN, 0), "#f00")(0.5), "#930000");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#ccc")(0.5), "#666666");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f00")(0.5), "#930000");
+  test.end();
+});
+
+tape("interpolateCubehelix(a, b) uses b’s luminance when a’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelix(null, color.cubehelix(20, 1.5, 0.5))(0.5), "#f85d00");
+  test.end();
+});
+
+tape("interpolateCubehelix(a, b) uses zero when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(20, 1.5, 0.5), null)(0.5), "#9a2600");
   test.end();
 });

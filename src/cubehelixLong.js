@@ -6,12 +6,18 @@ export default (function gamma(y) {
   function cubehelix(a, b) {
     a = color(a);
     b = color(b);
-    var ah = isNaN(a.h) ? b.h : a.h,
-        as = isNaN(a.s) ? b.s : a.s,
+    var ah = a.h,
+        as = a.s,
         al = a.l,
-        bh = isNaN(b.h) ? 0 : b.h - ah,
-        bs = isNaN(b.s) ? 0 : b.s - as,
-        bl = b.l - al;
+        bh = b.h,
+        bs = b.s,
+        bl = b.l || 0;
+    if (isNaN(ah)) ah = bh;
+    if (isNaN(as)) as = bs;
+    if (isNaN(al)) al = bl;
+    bh = (bh - ah) || 0;
+    bs = (bs - as) || 0;
+    bl -= al;
     return function(t) {
       a.h = ah + bh * t;
       a.s = as + bs * t;
