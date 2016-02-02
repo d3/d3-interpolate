@@ -131,17 +131,21 @@ The returned interpolator exposes a *duration* property which encodes the recomm
 
 <img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgb.png" width="100%" height="40" alt="rgb">
 
+Or, with a corrected [gamma](#rgb_gamma) of 2.2:
+
+<img src="https://raw.githubusercontent.com/d3/d3-interpolate/master/img/rgbGamma.png" width="100%" height="40" alt="rgbGamma">
+
 Returns an RGB color space interpolator between the two colors *a* and *b* with a configurable [gamma](#rgb_gamma). If the gamma is not specified, it defaults to 1.0. The colors *a* and *b* need not be in RGB; they will be converted to RGB using [color.rgb](https://github.com/d3/d3-color#rgb). The return value of the interpolator is a hexadecimal RGB string.
 
 <a name="rgb_gamma" href="#rgb_gamma">#</a> <i>rgb</i>.<b>gamma</b>(<i>gamma</i>)
 
-Returns a new RGB interpolator factory using the specified *gamma*. For example, to interpolate from red to blue with a gamma of 2.2:
+Returns a new RGB interpolator factory using the specified *gamma*. For example, to interpolate from purple to orange with a gamma of 2.2:
 
 ```js
-var interpolate = d3.interpolateRgb.gamma(2.2)("red", "blue");
+var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 ```
 
-See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html) for more information on gamma-corrected interpolation.
+See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
 
 <a name="interpolateHsl" href="#interpolateHsl">#</a> d3.<b>interpolateHsl</b>(<i>a</i>, <i>b</i>)
 
