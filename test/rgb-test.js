@@ -29,3 +29,25 @@ tape("interpolateRgb(a, b) uses zero when b’s channel value is undefined", fun
   test.equal(interpolate.interpolateRgb(color.rgb(60, 80, 100), color.rgb(20, 40, NaN))(0.5), color.rgb(40, 60, 50) + "");
   test.end();
 });
+
+tape("interpolateRgb.gamma(3)(a, b) returns the expected values", function(test) {
+  test.equal(interpolate.interpolateRgb.gamma(3)("steelblue", "#f00")(0.2), "#9979a7");
+  test.end();
+});
+
+tape("interpolateRgb.gamma(g) coerces the specified gamma to a number", function(test) {
+  test.equal(interpolate.interpolateRgb.gamma({valueOf: function() { return 3; }})("steelblue", "#f00")(0.2), "#9979a7");
+  test.end();
+});
+
+tape("interpolateRgb(a, b) is equivalent to interpolateRgb.gamma(1)(a, b)", function(test) {
+  var i0 = interpolate.interpolateRgb.gamma(1)("purple", "orange"),
+      i1 = interpolate.interpolateRgb("purple", "orange");
+  test.equal(i1(0.0), i0(0.0));
+  test.equal(i1(0.2), i0(0.2));
+  test.equal(i1(0.4), i0(0.4));
+  test.equal(i1(0.6), i0(0.6));
+  test.equal(i1(0.8), i0(0.8));
+  test.equal(i1(1.0), i0(1.0));
+  test.end();
+});
