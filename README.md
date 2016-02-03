@@ -34,7 +34,7 @@ Note that the generic value interpolator detects not only nested objects and arr
 If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. Create a custom build using [Rollup](https://github.com/rollup/rollup) or your preferred bundler. You can also load directly from [d3js.org](https://d3js.org):
 
 ```html
-<script src="https://d3js.org/d3-color.v0.3.min.js"></script>
+<script src="https://d3js.org/d3-color.v0.4.min.js"></script>
 <script src="https://d3js.org/d3-interpolate.v0.5.min.js"></script>
 ```
 
