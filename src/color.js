@@ -22,12 +22,12 @@ export function hue(a, b) {
 }
 
 export function gamma(y) {
-  return (y = +y) === 1 ? color : function(a, b) {
+  return (y = +y) === 1 ? nogamma : function(a, b) {
     return b - a ? exponential(a, b, y) : constant(isNaN(a) ? b : a);
   };
 }
 
-export default function color(a, b) {
+export default function nogamma(a, b) {
   var d = b - a;
   return d ? linear(a, d) : constant(isNaN(a) ? b : a);
 }

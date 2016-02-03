@@ -11,6 +11,7 @@ tape("interpolateHclLong(a, b) converts a and b to HCL colors", function(test) {
 
 tape("interpolateHclLong(a, b) interpolates in HCL and returns an RGB string", function(test) {
   test.equal(interpolate.interpolateHclLong("steelblue", "#f00")(0.2), "rgb(0, 144, 174)");
+  test.equal(interpolate.interpolateHclLong("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(0, 144, 174, 0.84)");
   test.end();
 });
 

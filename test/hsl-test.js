@@ -11,6 +11,7 @@ tape("interpolateHsl(a, b) converts a and b to HSL colors", function(test) {
 
 tape("interpolateHsl(a, b) interpolates in HSL and returns an RGB string", function(test) {
   test.equal(interpolate.interpolateHsl("steelblue", "#f00")(0.2), "rgb(56, 61, 195)");
+  test.equal(interpolate.interpolateHsl("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(56, 61, 195, 0.84)");
   test.end();
 });
 

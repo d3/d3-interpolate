@@ -21,4 +21,4 @@ export default (function gamma(y) {
   interpolateRgb.gamma = gamma;
 
   return interpolateRgb;
-})(1)
+})(1);

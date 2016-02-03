@@ -11,6 +11,7 @@ tape("interpolateCubehelix(a, b) converts a and b to Cubehelix colors", function
 
 tape("interpolateCubehelix(a, b) interpolates in Cubehelix and returns an RGB string", function(test) {
   test.equal(interpolate.interpolateCubehelix("steelblue", "#f00")(0.2), "rgb(88, 100, 218)");
+  test.equal(interpolate.interpolateCubehelix("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(88, 100, 218, 0.84)");
   test.end();
 });
 
