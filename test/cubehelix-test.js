@@ -9,18 +9,19 @@ tape("interpolateCubehelix(a, b) converts a and b to Cubehelix colors", function
   test.end();
 });
 
-tape("interpolateCubehelix(a, b) interpolates in Cubehelix and returns an RGB hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateCubehelix("steelblue", "#f00")(0.2), "#5864da");
+tape("interpolateCubehelix(a, b) interpolates in Cubehelix and returns an RGB string", function(test) {
+  test.equal(interpolate.interpolateCubehelix("steelblue", "#f00")(0.2), "rgb(88, 100, 218)");
+  test.equal(interpolate.interpolateCubehelix("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(88, 100, 218, 0.84)");
   test.end();
 });
 
 tape("interpolateCubehelix.gamma(3)(a, b) returns the expected values", function(test) {
-  test.equal(interpolate.interpolateCubehelix.gamma(3)("steelblue", "#f00")(0.2), "#606be4");
+  test.equal(interpolate.interpolateCubehelix.gamma(3)("steelblue", "#f00")(0.2), "rgb(96, 107, 228)");
   test.end();
 });
 
 tape("interpolateCubehelix.gamma(g) coerces the specified gamma to a number", function(test) {
-  test.equal(interpolate.interpolateCubehelix.gamma({valueOf: function() { return 3; }})("steelblue", "#f00")(0.2), "#606be4");
+  test.equal(interpolate.interpolateCubehelix.gamma({valueOf: function() { return 3; }})("steelblue", "#f00")(0.2), "rgb(96, 107, 228)");
   test.end();
 });
 
@@ -38,45 +39,45 @@ tape("interpolateCubehelix(a, b) is equivalent to interpolateCubehelix.gamma(1)(
 
 tape("interpolateCubehelix(a, b) uses the shortest path when interpolating hue difference greater than 180°", function(test) {
   var i = interpolate.interpolateCubehelix("purple", "orange");
-  test.equal(i(0.0), "#800080");
-  test.equal(i(0.2), "#d0017f");
-  test.equal(i(0.4), "#ff115d");
-  test.equal(i(0.6), "#ff342b");
-  test.equal(i(0.8), "#ff6905");
-  test.equal(i(1.0), "#ffa500");
+  test.equal(i(0.0), "rgb(128, 0, 128)");
+  test.equal(i(0.2), "rgb(208, 1, 127)");
+  test.equal(i(0.4), "rgb(255, 17, 93)");
+  test.equal(i(0.6), "rgb(255, 52, 43)");
+  test.equal(i(0.8), "rgb(255, 105, 5)");
+  test.equal(i(1.0), "rgb(255, 165, 0)");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses a’s hue when b’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix("#f60", color.cubehelix(NaN, NaN, 0))(0.5), "#a22900");
-  test.equal(interpolate.interpolateCubehelix("#6f0", color.cubehelix(NaN, NaN, 0))(0.5), "#03ad00");
+  test.equal(interpolate.interpolateCubehelix("#f60", color.cubehelix(NaN, NaN, 0))(0.5), "rgb(162, 41, 0)");
+  test.equal(interpolate.interpolateCubehelix("#6f0", color.cubehelix(NaN, NaN, 0))(0.5), "rgb(3, 173, 0)");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses b’s hue when a’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f60")(0.5), "#a22900");
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#6f0")(0.5), "#03ad00");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f60")(0.5), "rgb(162, 41, 0)");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#6f0")(0.5), "rgb(3, 173, 0)");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses a’s chroma when b’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix("#ccc", color.cubehelix(NaN, NaN, 0))(0.5), "#666666");
-  test.equal(interpolate.interpolateCubehelix("#f00", color.cubehelix(NaN, NaN, 0))(0.5), "#930000");
+  test.equal(interpolate.interpolateCubehelix("#ccc", color.cubehelix(NaN, NaN, 0))(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateCubehelix("#f00", color.cubehelix(NaN, NaN, 0))(0.5), "rgb(147, 0, 0)");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses b’s chroma when a’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#ccc")(0.5), "#666666");
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f00")(0.5), "#930000");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#ccc")(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(NaN, NaN, 0), "#f00")(0.5), "rgb(147, 0, 0)");
   test.end();
 });
 
 tape("interpolateCubehelix(a, b) uses b’s luminance when a’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(null, color.cubehelix(20, 1.5, 0.5))(0.5), "#f85d00");
+  test.equal(interpolate.interpolateCubehelix(null, color.cubehelix(20, 1.5, 0.5))(0.5), "rgb(248, 93, 0)");
   test.end();
 });
 
-tape("interpolateCubehelix(a, b) uses zero when b’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(20, 1.5, 0.5), null)(0.5), "#9a2600");
+tape("interpolateCubehelix(a, b) uses a’s luminance when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(20, 1.5, 0.5), null)(0.5), "rgb(248, 93, 0)");
   test.end();
 });

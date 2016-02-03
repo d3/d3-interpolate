@@ -1,25 +1,16 @@
 import {hcl} from "d3-color";
-import deltaHue from "./deltaHue";
+import interpolateColor, {hue as interpolateHue} from "./color";
 
-export default function(a, b) {
-  a = hcl(a);
-  b = hcl(b);
-  var ah = a.h,
-      ac = a.c,
-      al = a.l,
-      bh = b.h,
-      bc = b.c,
-      bl = b.l || 0;
-  if (isNaN(ah)) ah = bh;
-  if (isNaN(ac)) ac = bc;
-  if (isNaN(al)) al = bl;
-  bh = deltaHue(bh, ah) || 0;
-  bc = (bc - ac) || 0;
-  bl -= al;
+export default function interpolateHcl(start, end) {
+  var h = interpolateHue((start = hcl(start)).h, (end = hcl(end)).h),
+      c = interpolateColor(start.c, end.c),
+      l = interpolateColor(start.l, end.l),
+      opacity = interpolateColor(start.opacity, end.opacity);
   return function(t) {
-    a.h = ah + bh * t;
-    a.c = ac + bc * t;
-    a.l = al + bl * t;
-    return a + "";
+    start.h = h(t);
+    start.c = c(t);
+    start.l = l(t);
+    start.opacity = opacity(t);
+    return start + "";
   };
 }
