@@ -1,6 +1,6 @@
 import {lab} from "d3-color";
 
-export default function(a, b) {
+export default function interpolateLab(a, b) {
   a = lab(a);
   b = lab(b);
   var al = a.l,

@@ -16,10 +16,10 @@ tape("interpolateObject(a, b) interpolates inherited properties in a and b", fun
 });
 
 tape("interpolateObject(a, b) interpolates color properties as rgb", function(test) {
-  test.deepEqual(interpolate.interpolateObject({background: "red"}, {background: "green"})(.5), {background: "#804000"});
-  test.deepEqual(interpolate.interpolateObject({fill: "red"}, {fill: "green"})(.5), {fill: "#804000"});
-  test.deepEqual(interpolate.interpolateObject({stroke: "red"}, {stroke: "green"})(.5), {stroke: "#804000"});
-  test.deepEqual(interpolate.interpolateObject({color: "red"}, {color: "green"})(.5), {color: "#804000"});
+  test.deepEqual(interpolate.interpolateObject({background: "red"}, {background: "green"})(.5), {background: "rgb(128, 64, 0)"});
+  test.deepEqual(interpolate.interpolateObject({fill: "red"}, {fill: "green"})(.5), {fill: "rgb(128, 64, 0)"});
+  test.deepEqual(interpolate.interpolateObject({stroke: "red"}, {stroke: "green"})(.5), {stroke: "rgb(128, 64, 0)"});
+  test.deepEqual(interpolate.interpolateObject({color: "red"}, {color: "green"})(.5), {color: "rgb(128, 64, 0)"});
   test.end();
 });
 

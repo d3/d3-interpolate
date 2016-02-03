@@ -1,12 +1,12 @@
-import {cubehelix as color} from "d3-color";
+import {cubehelix} from "d3-color";
 import deltaHue from "./deltaHue";
 
 export default (function gamma(y) {
   y = +y;
 
-  function cubehelix(a, b) {
-    a = color(a);
-    b = color(b);
+  function interpolateCubehelix(a, b) {
+    a = cubehelix(a);
+    b = cubehelix(b);
     var ah = a.h,
         as = a.s,
         al = a.l,
@@ -27,7 +27,7 @@ export default (function gamma(y) {
     };
   }
 
-  cubehelix.gamma = gamma;
+  interpolateCubehelix.gamma = gamma;
 
-  return cubehelix;
+  return interpolateCubehelix;
 })(1);

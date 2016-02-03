@@ -1,6 +1,6 @@
 import {hsl} from "d3-color";
 
-export default function(a, b) {
+export default function interpolateHslLong(a, b) {
   a = hsl(a);
   b = hsl(b);
   var ah = a.h,

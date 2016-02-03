@@ -27,7 +27,7 @@
     "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags && cp build/d3-interpolate.js ../d3.github.com/d3-interpolate.v0.5.js && cp build/d3-interpolate.min.js ../d3.github.com/d3-interpolate.v0.5.min.js && cd ../d3.github.com && git add d3-interpolate.v0.5.js d3-interpolate.v0.5.min.js && git commit -m \"d3-interpolate ${VERSION}\" && git push"
   },
   "dependencies": {
-    "d3-color": "~0.3.4"
+    "d3-color": "~0.4.0"
   },
   "devDependencies": {
     "faucet": "0.0",

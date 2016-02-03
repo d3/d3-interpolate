@@ -1,7 +1,7 @@
 import {hcl} from "d3-color";
 import deltaHue from "./deltaHue";
 
-export default function(a, b) {
+export default function interpolateHcl(a, b) {
   a = hcl(a);
   b = hcl(b);
   var ah = a.h,

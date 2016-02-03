@@ -10,7 +10,7 @@ tape("interpolateLab(a, b) converts a and b to Lab colors", function(test) {
 });
 
 tape("interpolateLab(a, b) interpolates in Lab and returns a hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateLab("steelblue", "#f00")(.2), "#8a7793");
+  test.equal(interpolate.interpolateLab("steelblue", "#f00")(.2), "rgb(138, 119, 147)");
   test.end();
 });
 

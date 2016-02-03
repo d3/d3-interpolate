@@ -1,6 +1,6 @@
 import {hcl} from "d3-color";
 
-export default function(a, b) {
+export default function interpolateHclLong(a, b) {
   a = hcl(a);
   b = hcl(b);
   var ah = a.h,
