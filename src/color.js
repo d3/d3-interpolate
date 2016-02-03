@@ -1,8 +1,4 @@
-function constant(x) {
-  return function() {
-    return x;
-  };
-}
+import constant from "./constant";
 
 function linear(a, d) {
   return function(t) {
