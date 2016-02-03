@@ -15,16 +15,16 @@ The returned function `i` is called an *interpolator*. Given a starting value *a
 You can interpolate more than just numbers. To find the perceptual midpoint between steelblue and brown:
 
 ```js
-d3.interpolateLab("steelblue", "brown")(0.5); // "#8e5c6d"
+d3.interpolateLab("steelblue", "brown")(0.5); // "rgb(142, 92, 109)"
 ```
 
 Here’s a more elaborate example demonstrating type inference used by [interpolate](#interpolate):
 
 ```js
 var i = d3.interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
-i(0.0); // {colors: ["#ff0000", "#0000ff"]}
-i(0.5); // {colors: ["#ff8080", "#000080"]}
-i(1.0); // {colors: ["#ffffff", "#000000"]}
+i(0.0); // {colors: ["rgb(255, 0, 0)", "rgb(0, 0, 255)"]}
+i(0.5); // {colors: ["rgb(255, 128, 128)", "rgb(0, 0, 128)"]}
+i(1.0); // {colors: ["rgb(255, 255, 255)", "rgb(0, 0, 0)"]}
 ```
 
 Note that the generic value interpolator detects not only nested objects and arrays, but also color strings and numbers embedded in strings!
