@@ -9,8 +9,8 @@ tape("interpolateHsl(a, b) converts a and b to HSL colors", function(test) {
   test.end();
 });
 
-tape("interpolateHsl(a, b) interpolates in HSL and returns an RGB hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateHsl("steelblue", "#f00")(.2), "rgb(56, 61, 195)");
+tape("interpolateHsl(a, b) interpolates in HSL and returns an RGB string", function(test) {
+  test.equal(interpolate.interpolateHsl("steelblue", "#f00")(0.2), "rgb(56, 61, 195)");
   test.end();
 });
 
@@ -26,26 +26,26 @@ tape("interpolateHsl(a, b) uses the shortest path when interpolating hue", funct
 });
 
 tape("interpolateHsl(a, b) uses a’s hue when b’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHsl("#f60", "#000")(.5), "rgb(128, 51, 0)");
-  test.equal(interpolate.interpolateHsl("#6f0", "#fff")(.5), "rgb(179, 255, 128)");
+  test.equal(interpolate.interpolateHsl("#f60", "#000")(0.5), "rgb(128, 51, 0)");
+  test.equal(interpolate.interpolateHsl("#6f0", "#fff")(0.5), "rgb(179, 255, 128)");
   test.end();
 });
 
 tape("interpolateHsl(a, b) uses b’s hue when a’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHsl("#000", "#f60")(.5), "rgb(128, 51, 0)");
-  test.equal(interpolate.interpolateHsl("#fff", "#6f0")(.5), "rgb(179, 255, 128)");
+  test.equal(interpolate.interpolateHsl("#000", "#f60")(0.5), "rgb(128, 51, 0)");
+  test.equal(interpolate.interpolateHsl("#fff", "#6f0")(0.5), "rgb(179, 255, 128)");
   test.end();
 });
 
 tape("interpolateHsl(a, b) uses a’s saturation when b’s saturation is undefined", function(test) {
-  test.equal(interpolate.interpolateHsl("#ccc", "#000")(.5), "rgb(102, 102, 102)");
-  test.equal(interpolate.interpolateHsl("#f00", "#000")(.5), "rgb(128, 0, 0)");
+  test.equal(interpolate.interpolateHsl("#ccc", "#000")(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateHsl("#f00", "#000")(0.5), "rgb(128, 0, 0)");
   test.end();
 });
 
 tape("interpolateHsl(a, b) uses b’s saturation when a’s saturation is undefined", function(test) {
-  test.equal(interpolate.interpolateHsl("#000", "#ccc")(.5), "rgb(102, 102, 102)");
-  test.equal(interpolate.interpolateHsl("#000", "#f00")(.5), "rgb(128, 0, 0)");
+  test.equal(interpolate.interpolateHsl("#000", "#ccc")(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateHsl("#000", "#f00")(0.5), "rgb(128, 0, 0)");
   test.end();
 });
 

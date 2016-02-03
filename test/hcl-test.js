@@ -9,8 +9,8 @@ tape("interpolateHcl(a, b) converts a and b to HCL colors", function(test) {
   test.end();
 });
 
-tape("interpolateHcl(a, b) interpolates in HCL and returns an RGB hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateHcl("steelblue", "#f00")(.2), "rgb(105, 120, 201)");
+tape("interpolateHcl(a, b) interpolates in HCL and returns an RGB string", function(test) {
+  test.equal(interpolate.interpolateHcl("steelblue", "#f00")(0.2), "rgb(105, 120, 201)");
   test.end();
 });
 
@@ -59,26 +59,26 @@ tape("interpolateHcl(a, b) uses the shortest path when interpolating hue differe
 });
 
 tape("interpolateHcl(a, b) uses a’s hue when b’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHcl("#f60", color.hcl(NaN, NaN, 0))(.5), "rgb(155, 0, 0)");
-  test.equal(interpolate.interpolateHcl("#6f0", color.hcl(NaN, NaN, 0))(.5), "rgb(0, 129, 0)");
+  test.equal(interpolate.interpolateHcl("#f60", color.hcl(NaN, NaN, 0))(0.5), "rgb(155, 0, 0)");
+  test.equal(interpolate.interpolateHcl("#6f0", color.hcl(NaN, NaN, 0))(0.5), "rgb(0, 129, 0)");
   test.end();
 });
 
 tape("interpolateHcl(a, b) uses b’s hue when a’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#f60")(.5), "rgb(155, 0, 0)");
-  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#6f0")(.5), "rgb(0, 129, 0)");
+  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#f60")(0.5), "rgb(155, 0, 0)");
+  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#6f0")(0.5), "rgb(0, 129, 0)");
   test.end();
 });
 
 tape("interpolateHcl(a, b) uses a’s chroma when b’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateHcl("#ccc", color.hcl(NaN, NaN, 0))(.5), "rgb(97, 97, 97)");
-  test.equal(interpolate.interpolateHcl("#f00", color.hcl(NaN, NaN, 0))(.5), "rgb(166, 0, 0)");
+  test.equal(interpolate.interpolateHcl("#ccc", color.hcl(NaN, NaN, 0))(0.5), "rgb(97, 97, 97)");
+  test.equal(interpolate.interpolateHcl("#f00", color.hcl(NaN, NaN, 0))(0.5), "rgb(166, 0, 0)");
   test.end();
 });
 
 tape("interpolateHcl(a, b) uses b’s chroma when a’s chroma is undefined", function(test) {
-  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#ccc")(.5), "rgb(97, 97, 97)");
-  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#f00")(.5), "rgb(166, 0, 0)");
+  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#ccc")(0.5), "rgb(97, 97, 97)");
+  test.equal(interpolate.interpolateHcl(color.hcl(NaN, NaN, 0), "#f00")(0.5), "rgb(166, 0, 0)");
   test.end();
 });
 

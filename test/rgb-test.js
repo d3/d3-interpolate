@@ -9,8 +9,9 @@ tape("interpolateRgb(a, b) converts a and b to RGB colors", function(test) {
   test.end();
 });
 
-tape("interpolateRgb(a, b) interpolates in RGB and returns a hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateRgb("steelblue", "#f00")(.2), "rgb(107, 104, 144)");
+tape("interpolateRgb(a, b) interpolates in RGB and returns an RGB string", function(test) {
+  test.equal(interpolate.interpolateRgb("steelblue", "#f00")(0.2), "rgb(107, 104, 144)");
+  test.equal(interpolate.interpolateRgb("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(107, 104, 144, 0.84)");
   test.end();
 });
 

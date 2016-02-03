@@ -9,8 +9,8 @@ tape("interpolateHslLong(a, b) converts a and b to HSL colors", function(test) {
   test.end();
 });
 
-tape("interpolateHslLong(a, b) interpolates in HSL and returns an RGB hexadecimal string", function(test) {
-  test.equal(interpolate.interpolateHslLong("steelblue", "#f00")(.2), "rgb(56, 195, 162)");
+tape("interpolateHslLong(a, b) interpolates in HSL and returns an RGB string", function(test) {
+  test.equal(interpolate.interpolateHslLong("steelblue", "#f00")(0.2), "rgb(56, 195, 162)");
   test.end();
 });
 
@@ -26,26 +26,26 @@ tape("interpolateHslLong(a, b) does not use the shortest path when interpolating
 });
 
 tape("interpolateHslLong(a, b) uses a’s hue when b’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHslLong("#f60", "#000")(.5), "rgb(128, 51, 0)");
-  test.equal(interpolate.interpolateHslLong("#6f0", "#fff")(.5), "rgb(179, 255, 128)");
+  test.equal(interpolate.interpolateHslLong("#f60", "#000")(0.5), "rgb(128, 51, 0)");
+  test.equal(interpolate.interpolateHslLong("#6f0", "#fff")(0.5), "rgb(179, 255, 128)");
   test.end();
 });
 
 tape("interpolateHslLong(a, b) uses b’s hue when a’s hue is undefined", function(test) {
-  test.equal(interpolate.interpolateHslLong("#000", "#f60")(.5), "rgb(128, 51, 0)");
-  test.equal(interpolate.interpolateHslLong("#fff", "#6f0")(.5), "rgb(179, 255, 128)");
+  test.equal(interpolate.interpolateHslLong("#000", "#f60")(0.5), "rgb(128, 51, 0)");
+  test.equal(interpolate.interpolateHslLong("#fff", "#6f0")(0.5), "rgb(179, 255, 128)");
   test.end();
 });
 
 tape("interpolateHslLong(a, b) uses a’s saturation when b’s saturation is undefined", function(test) {
-  test.equal(interpolate.interpolateHslLong("#ccc", "#000")(.5), "rgb(102, 102, 102)");
-  test.equal(interpolate.interpolateHslLong("#f00", "#000")(.5), "rgb(128, 0, 0)");
+  test.equal(interpolate.interpolateHslLong("#ccc", "#000")(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateHslLong("#f00", "#000")(0.5), "rgb(128, 0, 0)");
   test.end();
 });
 
 tape("interpolateHslLong(a, b) uses b’s saturation when a’s saturation is undefined", function(test) {
-  test.equal(interpolate.interpolateHslLong("#000", "#ccc")(.5), "rgb(102, 102, 102)");
-  test.equal(interpolate.interpolateHslLong("#000", "#f00")(.5), "rgb(128, 0, 0)");
+  test.equal(interpolate.interpolateHslLong("#000", "#ccc")(0.5), "rgb(102, 102, 102)");
+  test.equal(interpolate.interpolateHslLong("#000", "#f00")(0.5), "rgb(128, 0, 0)");
   test.end();
 });
 

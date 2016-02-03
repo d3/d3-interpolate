@@ -9,7 +9,7 @@ tape("interpolateCubehelixLong(a, b) converts a and b to Cubehelix colors", func
   test.end();
 });
 
-tape("interpolateCubehelixLong(a, b) interpolates in Cubehelix and returns an RGB hexadecimal string", function(test) {
+tape("interpolateCubehelixLong(a, b) interpolates in Cubehelix and returns an RGB string", function(test) {
   test.equal(interpolate.interpolateCubehelixLong("steelblue", "#f00")(0.2), "rgb(88, 100, 218)");
   test.end();
 });
