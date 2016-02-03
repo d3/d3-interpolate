@@ -76,7 +76,7 @@ tape("interpolateCubehelix(a, b) uses b’s luminance when a’s luminance is un
   test.end();
 });
 
-tape("interpolateCubehelix(a, b) uses zero when b’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateCubehelix(color.cubehelix(20, 1.5, 0.5), null)(0.5), "rgb(154, 38, 0)");
+tape("interpolateCubehelix(a, b) uses a’s luminance when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateCubehelix(color.cubehelix(20, 1.5, 0.5), null)(0.5), "rgb(248, 93, 0)");
   test.end();
 });

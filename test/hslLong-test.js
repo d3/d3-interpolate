@@ -54,7 +54,7 @@ tape("interpolateHslLong(a, b) uses b’s lightness when a’s lightness is unde
   test.end();
 });
 
-tape("interpolateHslLong(a, b) uses zero when b’s lightness is undefined", function(test) {
-  test.equal(interpolate.interpolateHslLong(color.hsl(20, 1.0, 0.5), null)(0.5), "rgb(128, 43, 0)");
+tape("interpolateHslLong(a, b) uses a’s lightness when b’s lightness is undefined", function(test) {
+  test.equal(interpolate.interpolateHslLong(color.hsl(20, 1.0, 0.5), null)(0.5), "rgb(255, 85, 0)");
   test.end();
 });

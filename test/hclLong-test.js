@@ -54,7 +54,7 @@ tape("interpolateHclLong(a, b) uses b’s luminance when a’s luminance is unde
   test.end();
 });
 
-tape("interpolateHclLong(a, b) uses zero when b’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateHclLong(color.hcl(20, 80, 50), null)(0.5), "rgb(153, 0, 25)");
+tape("interpolateHclLong(a, b) uses a’s luminance when b’s luminance is undefined", function(test) {
+  test.equal(interpolate.interpolateHclLong(color.hcl(20, 80, 50), null)(0.5), "rgb(234, 19, 77)");
   test.end();
 });

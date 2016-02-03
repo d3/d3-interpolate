@@ -1,29 +1,20 @@
 import {cubehelix} from "d3-color";
-import deltaHue from "./deltaHue";
+import interpolateColor, {hue as interpolateHue} from "./color";
 
 export default (function gamma(y) {
   y = +y;
 
-  function interpolateCubehelix(a, b) {
-    a = cubehelix(a);
-    b = cubehelix(b);
-    var ah = a.h,
-        as = a.s,
-        al = a.l,
-        bh = b.h,
-        bs = b.s,
-        bl = b.l || 0;
-    if (isNaN(ah)) ah = bh;
-    if (isNaN(as)) as = bs;
-    if (isNaN(al)) al = bl;
-    bh = deltaHue(bh, ah) || 0;
-    bs = (bs - as) || 0;
-    bl -= al;
+  function interpolateCubehelix(start, end) {
+    var h = interpolateHue((start = cubehelix(start)).h, (end = cubehelix(end)).h),
+        s = interpolateColor(start.s, end.s),
+        l = interpolateColor(start.l, end.l),
+        opacity = interpolateColor(start.opacity, end.opacity);
     return function(t) {
-      a.h = ah + bh * t;
-      a.s = as + bs * t;
-      a.l = al + bl * Math.pow(t, y);
-      return a + "";
+      start.h = h(t);
+      start.s = s(t);
+      start.l = l(Math.pow(t, y));
+      start.opacity = opacity(t);
+      return start + "";
     };
   }
 
