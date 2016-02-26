@@ -5,7 +5,7 @@ export {default as interpolateNumber} from "./src/number";
 export {default as interpolateObject} from "./src/object";
 export {default as interpolateRound} from "./src/round";
 export {default as interpolateString} from "./src/string";
-export {default as interpolateTransform} from "./src/transform";
+export {interpolateTransformCss, interpolateTransformSvg} from "./src/transform/index";
 export {default as interpolateZoom} from "./src/zoom";
 export {default as interpolateRgb} from "./src/rgb";
 export {default as interpolateHsl} from "./src/hsl";
