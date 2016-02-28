@@ -42,16 +42,28 @@ tape("interpolate(a, b) interpolates arrays if b is an array, even if b is coerc
 });
 
 tape("interpolate(a, b) interpolates numbers if b is a number", function(test) {
-  test.deepEqual(interpolate.interpolate(1, 2)(0.5), 1.5);
+  test.strictEqual(interpolate.interpolate(1, 2)(0.5), 1.5);
+  test.ok(isNaN(interpolate.interpolate(1, NaN)(0.5)));
   test.end();
 });
 
 tape("interpolate(a, b) interpolates numbers if b is an object and coercible to a number", function(test) {
-  test.deepEqual(interpolate.interpolate(1, {valueOf: function() { return 2; }})(0.5), 1.5);
+  test.strictEqual(interpolate.interpolate(1, {valueOf: function() { return 2; }})(0.5), 1.5);
+  test.strictEqual(interpolate.interpolate(false, true)(0.5), 0.5);
   test.end();
 });
 
 tape("interpolate(a, b) interpolates objects if b is an object and not coercible to a number", function(test) {
   test.deepEqual(interpolate.interpolate({color: "red"}, {color: "blue"})(0.5), {color: "rgb(128, 0, 128)"});
+  test.end();
+});
+
+tape("interpolate(a, b) returns null if b is null", function(test) {
+  test.strictEqual(interpolate.interpolate(0, null)(0.5), null);
+  test.end();
+});
+
+tape("interpolate(a, b) returns undefined if b is undefined", function(test) {
+  test.strictEqual(interpolate.interpolate(0, undefined)(0.5), undefined);
   test.end();
 });

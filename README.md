@@ -51,12 +51,13 @@ var interpolate = d3_interpolate.interpolateRgb("steelblue", "brown");
 
 Returns an interpolator between the two arbitrary values *a* and *b*. The interpolator implementation is based on the type of the end value *b*, using the following algorithm:
 
-1. If *b* is a string and coercible to a color, [interpolateRgb](#interpolateRgb) is used.
-2. If *b* is a string and not coercible to a color, [interpolateString](#interpolateString) is used.
-3. If *b* is a [color](https://github.com/d3/d3-color#color), [interpolateRgb](#interpolateRgb) is used.
-4. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), [interpolateArray](#interpolateArray) is used.
-5. If *b* is a number or coercible to a number, [interpolateNumber](#interpolateNumber) is used.
-6. Otherwise, [interpolateObject](#interpolateObject) is used.
+1. If *b* is null or undefined, the constant *b* is used.
+2. If *b* is a string and coercible to a color, [interpolateRgb](#interpolateRgb) is used.
+3. If *b* is a string and not coercible to a color, [interpolateString](#interpolateString) is used.
+4. If *b* is a [color](https://github.com/d3/d3-color#color), [interpolateRgb](#interpolateRgb) is used.
+5. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), [interpolateArray](#interpolateArray) is used.
+6. If *b* is a number or coercible to a number, [interpolateNumber](#interpolateNumber) is used.
+7. Otherwise, [interpolateObject](#interpolateObject) is used.
 
 Based on the chosen interpolator, *a* is coerced to a suitable corresponding type.
 
