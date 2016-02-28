@@ -7,9 +7,10 @@ import string from "./string";
 
 export default function(a, b) {
   var t = typeof b, c;
-  return (t === "string" ? ((c = color(b)) ? (b = c, rgb) : string)
+  return (t === "number" ? number
+      : t === "string" ? ((c = color(b)) ? (b = c, rgb) : string)
       : b instanceof color ? rgb
       : Array.isArray(b) ? array
-      : t === "object" && isNaN(b) ? object
+      : isNaN(b) ? object
       : number)(a, b);
 }
