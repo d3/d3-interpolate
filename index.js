@@ -1,5 +1,4 @@
 export {default as interpolate} from "./src/value";
-export {default as interpolators} from "./src/values";
 export {default as interpolateArray} from "./src/array";
 export {default as interpolateNumber} from "./src/number";
 export {default as interpolateObject} from "./src/object";

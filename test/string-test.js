@@ -58,4 +58,3 @@ tape("interpolateString(a, b) with two numerically-equivalent numbers, returns t
   test.equal(interpolate.interpolateString("top: 1e3px;", "top: 1000px;")(0.5), "top: 1000px;");
   test.end();
 });
-
