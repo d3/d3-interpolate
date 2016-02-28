@@ -51,13 +51,14 @@ var interpolate = d3_interpolate.interpolateRgb("steelblue", "brown");
 
 Returns an interpolator between the two arbitrary values *a* and *b*. The interpolator implementation is based on the type of the end value *b*, using the following algorithm:
 
-1. If *b* is a [color](https://github.com/d3/d3-color#color), [interpolateRgb](#interpolateRgb) is used.
-2. If *b* is a string, [interpolateString](#interpolateString) is used.
-3. If *b* is an array, [interpolateArray](#interpolateArray) is used.
-4. If *b* is an object and not coercible to a number, [interpolateObject](#interpolateObject) is used.
-5. Otherwise, [interpolateNumber](#interpolateNumber) is used.
+1. If *b* is a string and coercible to a color, [interpolateRgb](#interpolateRgb) is used.
+2. If *b* is a string and not coercible to a color, [interpolateString](#interpolateString) is used.
+3. If *b* is a [color](https://github.com/d3/d3-color#color), [interpolateRgb](#interpolateRgb) is used.
+4. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), [interpolateArray](#interpolateArray) is used.
+5. If *b* is a number or coercible to a number, [interpolateNumber](#interpolateNumber) is used.
+6. Otherwise, [interpolateObject](#interpolateObject) is used.
 
-Based on the chosen interpolator, *a* is coerced to a suitable corresponding type. The behavior of this method may be augmented to support additional types by pushing custom interpolator factories onto the [interpolators](#interpolators) array.
+Based on the chosen interpolator, *a* is coerced to a suitable corresponding type.
 
 <a name="interpolateNumber" href="#interpolateNumber">#</a> d3.<b>interpolateNumber</b>(<i>a</i>, <i>b</i>)
 
@@ -70,27 +71,6 @@ function interpolate(t) {
 ```
 
 Caution: avoid interpolating to or from the number zero when the interpolator is used to generate a string. When very small values are stringified, they may be converted to scientific notation, which is an invalid attribute or style property value. For example, the number `0.0000001` is converted to the string `"1e-7"`. This is particularly noticeable with interpolating opacity. To avoid scientific notation, start or end the transition at 1e-6: the smallest value that is not stringified in scientific notation.
-
-<a name="interpolators" href="#interpolators">#</a> d3.<b>interpolators</b>
-
-The array of built-in interpolator factories, as used by [interpolate](#interpolate). Additional interpolator factories may be pushed onto the end of this array. Each factory should return an interpolator if it supports interpolating the two specified input values; otherwise, the factory should return a falsey value and other interpolators will be tried.
-
-For example, to register a custom interpolator that formats dollars and cents, you might say:
-
-```js
-d3.interpolators.push(function(a, b) {
-  var re = /^\$([0-9,.]+)$/, ma, mb, f = d3.format(",.02f");
-  if ((ma = re.exec(a)) && (mb = re.exec(b))) {
-    a = parseFloat(ma[1]);
-    b = parseFloat(mb[1]) - a;
-    return function(t) {
-      return "$" + f(a + b * t);
-    };
-  }
-});
-```
-
-Subsequently, `d3.interpolate("$20", "$10")(1/3)` returns `$16.67`.
 
 <a name="interpolateRound" href="#interpolateRound">#</a> d3.<b>interpolateRound</b>(<i>a</i>, <i>b</i>)
 
