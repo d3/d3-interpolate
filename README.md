@@ -58,7 +58,7 @@ Returns an interpolator between the two arbitrary values *a* and *b*. The interp
 5. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), use [interpolateArray](#interpolateArray).
 6. Use [interpolateObject](#interpolateObject).
 
-Based on the chosen interpolator, *a* is coerced to a suitable corresponding type.
+Based on the chosen interpolator, *a* is coerced to the suitable corresponding type.
 
 <a name="interpolateNumber" href="#interpolateNumber">#</a> d3.<b>interpolateNumber</b>(<i>a</i>, <i>b</i>)
 
