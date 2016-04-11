@@ -15,6 +15,6 @@ export default function(a, b) {
 
   return function(t) {
     for (i = 0; i < n0; ++i) c[i] = x[i](t);
-    return c;
+    return c.slice(0, nb);
   };
 }
