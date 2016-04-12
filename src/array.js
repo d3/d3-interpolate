@@ -10,11 +10,10 @@ export default function(a, b) {
       i;
 
   for (i = 0; i < n0; ++i) x.push(value(a[i], b[i]));
-  for (; i < na; ++i) c[i] = a[i];
   for (; i < nb; ++i) c[i] = b[i];
 
   return function(t) {
     for (i = 0; i < n0; ++i) c[i] = x[i](t);
-    return c.slice(0, nb);
+    return c;
   };
 }
