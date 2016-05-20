@@ -29,17 +29,21 @@ tape("interpolateObject(a, b) interpolates nested objects and arrays", function(
   test.end();
 });
 
-tape("interpolateObject(a, b) merges non-shared properties", function(test) {
+tape("interpolateObject(a, b) ignores properties in a that are not in b", function(test) {
+  test.deepEqual(interpolate.interpolateObject({foo: 2, bar: 12}, {foo: 4})(0.5), {foo: 3});
+  test.end();
+});
+
+tape("interpolateObject(a, b) uses constant properties in b that are not in a", function(test) {
   test.deepEqual(interpolate.interpolateObject({foo: 2}, {foo: 4, bar: 12})(0.5), {foo: 3, bar: 12});
-  test.deepEqual(interpolate.interpolateObject({foo: 2, bar: 12}, {foo: 4})(0.5), {foo: 3, bar: 12});
   test.end();
 });
 
 tape("interpolateObject(a, b) treats undefined as an empty object", function(test) {
   test.deepEqual(interpolate.interpolateObject(NaN, {foo: 2})(0.5), {foo: 2});
-  test.deepEqual(interpolate.interpolateObject({foo: 2}, undefined)(0.5), {foo: 2});
+  test.deepEqual(interpolate.interpolateObject({foo: 2}, undefined)(0.5), {});
   test.deepEqual(interpolate.interpolateObject(undefined, {foo: 2})(0.5), {foo: 2});
-  test.deepEqual(interpolate.interpolateObject({foo: 2}, null)(0.5), {foo: 2});
+  test.deepEqual(interpolate.interpolateObject({foo: 2}, null)(0.5), {});
   test.deepEqual(interpolate.interpolateObject(null, {foo: 2})(0.5), {foo: 2});
   test.deepEqual(interpolate.interpolateObject(null, NaN)(0.5), {});
   test.end();

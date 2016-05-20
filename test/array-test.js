@@ -12,15 +12,19 @@ tape("interpolateArray(a, b) interpolates nested objects and arrays", function(t
   test.end();
 });
 
-tape("interpolateArray(a, b) merges non-shared elements", function(test) {
+tape("interpolateArray(a, b) ignores elements in a that are not in b", function(test) {
+  test.deepEqual(interpolate.interpolateArray([2, 12, 12], [4, 24])(0.5), [3, 18]);
+  test.end();
+});
+
+tape("interpolateArray(a, b) uses constant elements in b that are not in a", function(test) {
   test.deepEqual(interpolate.interpolateArray([2, 12], [4, 24, 12])(0.5), [3, 18, 12]);
-  test.deepEqual(interpolate.interpolateArray([2, 12, 12], [4, 24])(0.5), [3, 18, 12]);
   test.end();
 });
 
 tape("interpolateArray(a, b) treats undefined as an empty array", function(test) {
   test.deepEqual(interpolate.interpolateArray(undefined, [2, 12])(0.5), [2, 12]);
-  test.deepEqual(interpolate.interpolateArray([2, 12], undefined)(0.5), [2, 12]);
+  test.deepEqual(interpolate.interpolateArray([2, 12], undefined)(0.5), []);
   test.deepEqual(interpolate.interpolateArray(undefined, undefined)(0.5), []);
   test.end();
 });

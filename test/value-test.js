@@ -49,7 +49,7 @@ tape("interpolate(a, b) interpolates numbers if b is a number", function(test) {
 
 tape("interpolate(a, b) interpolates objects if b is an object, even if it is coercible to a number", function(test) {
   test.deepEqual(interpolate.interpolate({color: "red"}, {color: "blue"})(0.5), {color: "rgb(128, 0, 128)"});
-  test.deepEqual(interpolate.interpolate(1, {valueOf: function() { return 2; }})(0.5), {});
+  test.deepEqual(interpolate.interpolate(1, new Number(2))(0.5), {});
   test.end();
 });
 
