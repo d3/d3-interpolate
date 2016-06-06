@@ -1,14 +1,14 @@
-import {rgb} from "d3-color";
-import {gamma as interpolateGamma} from "./color";
+import {rgb as colorRgb} from "d3-color";
+import {gamma} from "./color";
 
-export default (function gamma(y) {
-  var interpolateColor = interpolateGamma(y);
+export default (function rgbGamma(y) {
+  var color = gamma(y);
 
-  function interpolateRgb(start, end) {
-    var r = interpolateColor((start = rgb(start)).r, (end = rgb(end)).r),
-        g = interpolateColor(start.g, end.g),
-        b = interpolateColor(start.b, end.b),
-        opacity = interpolateColor(start.opacity, end.opacity);
+  function rgb(start, end) {
+    var r = color((start = colorRgb(start)).r, (end = colorRgb(end)).r),
+        g = color(start.g, end.g),
+        b = color(start.b, end.b),
+        opacity = color(start.opacity, end.opacity);
     return function(t) {
       start.r = r(t);
       start.g = g(t);
@@ -18,7 +18,7 @@ export default (function gamma(y) {
     };
   }
 
-  interpolateRgb.gamma = gamma;
+  rgb.gamma = rgbGamma;
 
-  return interpolateRgb;
+  return rgb;
 })(1);
