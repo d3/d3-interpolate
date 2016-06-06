@@ -190,7 +190,7 @@ See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.arch
 
 ### Splines
 
-Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an ending value *b* at *t* = 1, spline interpolators smoothly blend multiple input values for *t* in [0,1] using piecewise polynomial functions. Currently, only the simplest spline method is supported: cubic uniform nonrational [B-splines](https://en.wikipedia.org/wiki/B-spline), also known as basis splines.
+Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an ending value *b* at *t* = 1, spline interpolators smoothly blend multiple input values for *t* in [0,1] using piecewise polynomial functions. Only cubic uniform nonrational [B-splines](https://en.wikipedia.org/wiki/B-spline) are currently supported, also known as basis splines.
 
 <a href="#interpolateBasis" name="interpolateBasis">#</a> d3.<b>interpolateBasis</b>(<i>values</i>)
 
