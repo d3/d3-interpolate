@@ -9,7 +9,7 @@ export function basis(t1, v0, v1, v2, v3) {
 export default function(values) {
   var n = values.length - 1;
   return function(t) {
-    var i = Math.min(n - 1, Math.floor(t * n)),
+    var i = t <= 0 ? (t = 0) : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n),
         v1 = values[i],
         v2 = values[i + 1],
         v0 = i > 0 ? values[i - 1] : 2 * v1 - v2,

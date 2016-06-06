@@ -3,7 +3,7 @@ import {basis} from "./basis";
 export default function(values) {
   var n = values.length;
   return function(t) {
-    var i = Math.floor(t * n),
+    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n),
         v0 = values[(i + n - 1) % n],
         v1 = values[i % n],
         v2 = values[(i + 1) % n],
