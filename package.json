@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
