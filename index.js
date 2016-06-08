@@ -1,4 +1,3 @@
-export {version} from "./build/package";
 export {default as interpolate} from "./src/value";
 export {default as interpolateArray} from "./src/array";
 export {default as interpolateBasis} from "./src/basis";
