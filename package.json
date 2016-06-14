@@ -4,6 +4,7 @@
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
+    "d3-module",
     "interpolate",
     "interpolation",
     "color"
