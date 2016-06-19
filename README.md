@@ -65,7 +65,7 @@ Based on the chosen interpolator, *a* is coerced to the suitable corresponding t
 Returns an interpolator between the two numbers *a* and *b*. The returned interpolator is equivalent to:
 
 ```js
-function interpolate(t) {
+function interpolator(t) {
   return a * (1 - t) + b * t;
 }
 ```
@@ -118,9 +118,9 @@ The returned interpolator exposes a *duration* property which encodes the recomm
 
 ### Sampling
 
-<a name="quantize" href="#quantize">#</a> d3.<b>quantize</b>(<i>interpolate</i>, <i>n</i>)
+<a name="quantize" href="#quantize">#</a> d3.<b>quantize</b>(<i>interpolator</i>, <i>n</i>)
 
-Returns *n* uniformly-spaced samples from the specified *interpolate* function, where *n* is an integer greater than one. The first sample is always at *t* = 0, and the last sample is always at *t* = 1. This can be useful in generating a fixed number of samples from a given interpolator, such as to derive the range of a [quantize scale](https://github.com/d3/d3-scale#quantize-scales) from a [continuous interpolator](https://github.com/d3/d3-scale#interpolateWarm).
+Returns *n* uniformly-spaced samples from the specified *interpolator*, where *n* is an integer greater than one. The first sample is always at *t* = 0, and the last sample is always at *t* = 1. This can be useful in generating a fixed number of samples from a given interpolator, such as to derive the range of a [quantize scale](https://github.com/d3/d3-scale#quantize-scales) from a [continuous interpolator](https://github.com/d3/d3-scale#interpolateWarm).
 
 Caution: this method will not work with interpolators that do not return defensive copies of their output, such as [d3.interpolateArray](#interpolateArray) and [d3.interpolateObject](#interpolateObject). For those interpolators, you must wrap the interpolator and create a copy for each returned value.
 
@@ -199,7 +199,7 @@ Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortes
 Given that *interpolate* is one of [interpolateRgb](#interpolateRgb), [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong), returns a new interpolator factory of the same type using the specified *gamma*. For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space:
 
 ```js
-var interpolate = d3.interpolateRgb.gamma(2.2)("purple", "orange");
+var interpolator = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 ```
 
 See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
