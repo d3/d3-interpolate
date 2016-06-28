@@ -18,6 +18,6 @@ export function parseCss(value) {
 export function parseSvg(value) {
   if (!svgNode) svgNode = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svgNode.setAttribute("transform", value == null ? "" : value);
-  var m = svgNode.transform.baseVal.consolidate().matrix;
+  var m = svgNode.transform.baseVal.consolidate() ? svgNode.transform.baseVal.consolidate().matrix : {a: 1, b: 0, c: 0, d: 1, e: 0, f: 0};
   return decompose(m.a, m.b, m.c, m.d, m.e, m.f);
 }
