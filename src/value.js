@@ -1,6 +1,7 @@
 import {color} from "d3-color";
 import rgb from "./rgb";
 import array from "./array";
+import date from "./date";
 import number from "./number";
 import object from "./object";
 import string from "./string";
@@ -12,6 +13,8 @@ export default function(a, b) {
       : (t === "number" ? number
       : t === "string" ? ((c = color(b)) ? (b = c, rgb) : string)
       : b instanceof color ? rgb
+      : b instanceof Date ? date
       : Array.isArray(b) ? array
-      : object)(a, b);
+      : isNaN(b) ? object
+      : number)(a, b);
 }

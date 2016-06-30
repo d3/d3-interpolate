@@ -47,9 +47,22 @@ tape("interpolate(a, b) interpolates numbers if b is a number", function(test) {
   test.end();
 });
 
-tape("interpolate(a, b) interpolates objects if b is an object, even if it is coercible to a number", function(test) {
+tape("interpolate(a, b) interpolates objects if b is an object that is not coercible to a number", function(test) {
   test.deepEqual(interpolate.interpolate({color: "red"}, {color: "blue"})(0.5), {color: "rgb(128, 0, 128)"});
-  test.deepEqual(interpolate.interpolate(1, new Number(2))(0.5), {});
+  test.end();
+});
+
+tape("interpolate(a, b) interpolates numbers if b is an object that is coercible to a number", function(test) {
+  test.strictEqual(interpolate.interpolate(1, new Number(2))(0.5), 1.5);
+  test.strictEqual(interpolate.interpolate(1, new String("2"))(0.5), 1.5);
+  test.end();
+});
+
+tape("interpolate(a, b) interpolates dates if b is a date", function(test) {
+  var i = interpolate.interpolate(new Date(2000, 0, 1), new Date(2000, 0, 2)),
+      d = i(0.5);
+  test.equal(d instanceof Date, true);
+  test.strictEqual(+i(0.5), +new Date(2000, 0, 1, 12));
   test.end();
 });
 

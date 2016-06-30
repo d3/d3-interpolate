@@ -2,6 +2,7 @@ export {default as interpolate} from "./src/value";
 export {default as interpolateArray} from "./src/array";
 export {default as interpolateBasis} from "./src/basis";
 export {default as interpolateBasisClosed} from "./src/basisClosed";
+export {default as interpolateDate} from "./src/date";
 export {default as interpolateNumber} from "./src/number";
 export {default as interpolateObject} from "./src/object";
 export {default as interpolateRound} from "./src/round";
