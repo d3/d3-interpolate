@@ -25,7 +25,7 @@
     "pretest": "rm -rf build && mkdir build && rollup --banner \"$(preamble)\" -f umd -g d3-color:d3 -n d3 -o build/d3-interpolate.js -- index.js",
     "test": "tape 'test/**/*-test.js' && eslint index.js src test",
     "prepublish": "npm run test && uglifyjs --preamble \"$(preamble)\" build/d3-interpolate.js -c -m -o build/d3-interpolate.min.js",
-    "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git push --tags && cp build/d3-interpolate.js ../d3.github.com/d3-interpolate.v1.js && cp build/d3-interpolate.min.js ../d3.github.com/d3-interpolate.v1.min.js && cd ../d3.github.com && git add d3-interpolate.v1.js d3-interpolate.v1.min.js && git commit -m \"d3-interpolate ${VERSION}\" && git push && cd - && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
+    "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git push --tags && cd ../d3.github.com && git pull && cp ../d3-interpolate/build/d3-interpolate.js d3-interpolate.v1.js && cp ../d3-interpolate/build/d3-interpolate.min.js d3-interpolate.v1.min.js && git add d3-interpolate.v1.js d3-interpolate.v1.min.js && git commit -m \"d3-interpolate ${VERSION}\" && git push && cd - && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
   },
   "dependencies": {
     "d3-color": "1"
