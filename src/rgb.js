@@ -1,7 +1,7 @@
 import {rgb as colorRgb} from "d3-color";
 import basis from "./basis";
 import basisClosed from "./basisClosed";
-import {gamma} from "./color";
+import nogamma, {gamma} from "./color";
 
 export default (function rgbGamma(y) {
   var color = gamma(y);
@@ -10,7 +10,7 @@ export default (function rgbGamma(y) {
     var r = color((start = colorRgb(start)).r, (end = colorRgb(end)).r),
         g = color(start.g, end.g),
         b = color(start.b, end.b),
-        opacity = color(start.opacity, end.opacity);
+        opacity = nogamma(start.opacity, end.opacity);
     return function(t) {
       start.r = r(t);
       start.g = g(t);

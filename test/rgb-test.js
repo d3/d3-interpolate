@@ -36,6 +36,11 @@ tape("interpolateRgb.gamma(3)(a, b) returns the expected values", function(test)
   test.end();
 });
 
+tape("interpolateRgb.gamma(3)(a, b) uses linear interpolation for opacity", function(test) {
+  test.equal(interpolate.interpolateRgb.gamma(3)("transparent", "#f00")(0.2), "rgba(255, 0, 0, 0.2)");
+  test.end();
+});
+
 tape("interpolateRgb.gamma(g) coerces the specified gamma to a number", function(test) {
   test.equal(interpolate.interpolateRgb.gamma({valueOf: function() { return 3; }})("steelblue", "#f00")(0.2), "rgb(153, 121, 167)");
   test.end();
