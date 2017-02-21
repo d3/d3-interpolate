@@ -73,3 +73,12 @@ tape("interpolate(a, b) returns the constant b if b is null, undefined or a bool
   test.strictEqual(interpolate.interpolate(0, false)(0.5), false);
   test.end();
 });
+
+tape("interpolate(a, b) interpolates objects without prototype", function(test) {
+  test.deepEqual(interpolate.interpolate(noproto({foo: 0}), noproto({foo: 2}))(0.5), {foo: 1});
+  test.end();
+});
+
+function noproto(properties) {
+  return Object.assign(Object.create(null), properties);
+}
