@@ -48,3 +48,14 @@ tape("interpolateObject(a, b) treats undefined as an empty object", function(tes
   test.deepEqual(interpolate.interpolateObject(null, NaN)(0.5), {});
   test.end();
 });
+
+tape("interpolateObject(a, b) interpolates objects without prototype", function(test) {
+  function noProto(properties) {
+    return Object.assign(
+      Object.create(null),
+      properties
+    );
+  }
+  test.deepEqual(interpolate.interpolateObject(noProto({foo: 0}), noProto({foo: 2}))(0.5), {foo: 1});
+  test.end();
+});
