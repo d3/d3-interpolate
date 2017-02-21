@@ -15,6 +15,6 @@ export default function(a, b) {
       : b instanceof color ? rgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array
-      : !b.valueOf || isNaN(b)) ? object
+      : !b.valueOf || isNaN(b) ? object
       : number)(a, b);
 }
