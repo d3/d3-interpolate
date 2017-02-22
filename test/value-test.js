@@ -79,6 +79,53 @@ tape("interpolate(a, b) interpolates objects without prototype", function(test) 
   test.end();
 });
 
-function noproto(properties) {
-  return Object.assign(Object.create(null), properties);
+tape("interpolate(a, b) interpolates objects with numeric valueOf as numbers", function(test) {
+  var proto = {valueOf: foo};
+  test.deepEqual(interpolate.interpolate(noproto({foo: 0}, proto), noproto({foo: 2}, proto))(0.5), 1);
+  test.end();
+});
+
+tape("interpolate(a, b) interpolates objects with string valueOf as numbers if valueOf result is coercible to number", function(test) {
+  var proto = {valueOf: fooString};
+  test.deepEqual(interpolate.interpolate(noproto({foo: 0}, proto), noproto({foo: 2}, proto))(0.5), 1);
+  test.end();
+});
+
+tape("interpolate(a, b) interpolates objects with string valueOf as objects if valueOf result is not coercible to number", function(test) {
+  var proto = {valueOf: fooString};
+  
+  // valueOf appears here as object because:
+  // - we use for-in loop and it will ignore only fields coming from built-in prototypes;
+  // - we replace functions with objects.
+  test.deepEqual(interpolate.interpolate(noproto({foo: "bar"}, proto), noproto({foo: "baz"}, proto))(0.5), {foo: "baz", valueOf: {}});
+  test.end();
+});
+
+
+tape("interpolate(a, b) interpolates objects with toString as numbers if toString result is coercible to number", function(test) {
+  var proto = {toString: fooString};
+  test.deepEqual(interpolate.interpolate(noproto({foo: 0}, proto), noproto({foo: 2}, proto))(0.5), 1);
+  test.end();
+});
+
+tape("interpolate(a, b) interpolates objects with toString as objects if toString result is not coercible to number", function(test) {
+  var proto = {toString: fooString};
+  
+  // toString appears here as object because:
+  // - we use for-in loop and it will ignore only fields coming from built-in prototypes;
+  // - we replace functions with objects.
+  test.deepEqual(interpolate.interpolate(noproto({foo: "bar"}, proto), noproto({foo: "baz"}, proto))(0.5), {foo: "baz", toString: {}});
+  test.end();
+});
+
+function noproto(properties, proto = null) {
+  return Object.assign(Object.create(proto), properties);
+}
+
+function foo() {
+  return this.foo;
+}
+
+function fooString() {
+  return String(this.foo);
 }
