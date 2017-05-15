@@ -91,16 +91,14 @@ tape("interpolate(a, b) interpolates objects with string valueOf as numbers if v
   test.end();
 });
 
+// valueOf appears here as object because:
+// - we use for-in loop and it will ignore only fields coming from built-in prototypes;
+// - we replace functions with objects.
 tape("interpolate(a, b) interpolates objects with string valueOf as objects if valueOf result is not coercible to number", function(test) {
   var proto = {valueOf: fooString};
-  
-  // valueOf appears here as object because:
-  // - we use for-in loop and it will ignore only fields coming from built-in prototypes;
-  // - we replace functions with objects.
   test.deepEqual(interpolate.interpolate(noproto({foo: "bar"}, proto), noproto({foo: "baz"}, proto))(0.5), {foo: "baz", valueOf: {}});
   test.end();
 });
-
 
 tape("interpolate(a, b) interpolates objects with toString as numbers if toString result is coercible to number", function(test) {
   var proto = {toString: fooString};
@@ -108,12 +106,11 @@ tape("interpolate(a, b) interpolates objects with toString as numbers if toStrin
   test.end();
 });
 
+// toString appears here as object because:
+// - we use for-in loop and it will ignore only fields coming from built-in prototypes;
+// - we replace functions with objects.
 tape("interpolate(a, b) interpolates objects with toString as objects if toString result is not coercible to number", function(test) {
   var proto = {toString: fooString};
-  
-  // toString appears here as object because:
-  // - we use for-in loop and it will ignore only fields coming from built-in prototypes;
-  // - we replace functions with objects.
   test.deepEqual(interpolate.interpolate(noproto({foo: "bar"}, proto), noproto({foo: "baz"}, proto))(0.5), {foo: "baz", toString: {}});
   test.end();
 });
