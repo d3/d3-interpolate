@@ -1,4 +1,4 @@
-export {default as interpolate} from "./src/value";
+export {default as interpolate, customInterpolate} from "./src/value";
 export {default as interpolateArray} from "./src/array";
 export {default as interpolateBasis} from "./src/basis";
 export {default as interpolateBasisClosed} from "./src/basisClosed";
