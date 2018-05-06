@@ -14,4 +14,5 @@ export {default as interpolateHsl, hslLong as interpolateHslLong} from "./src/hs
 export {default as interpolateLab} from "./src/lab";
 export {default as interpolateHcl, hclLong as interpolateHclLong} from "./src/hcl";
 export {default as interpolateCubehelix, cubehelixLong as interpolateCubehelixLong} from "./src/cubehelix";
+export {default as piecewise} from "./src/piecewise";
 export {default as quantize} from "./src/quantize";
