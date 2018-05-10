@@ -1,6 +1,6 @@
-import value from "./value";
+import interpolate from "./value";
 
-export default function(a, b) {
+export default function(a, b, value = interpolate) {
   var i = {},
       c = {},
       k;
