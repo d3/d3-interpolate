@@ -124,6 +124,10 @@ Returns an interpolator between the two views *a* and *b* of a two-dimensional p
 
 The returned interpolator exposes a *duration* property which encodes the recommended transition duration in milliseconds. This duration is based on the path length of the curved trajectory through *x,y* space. If you want to a slower or faster transition, multiply this by an arbitrary scale factor (<i>V</i> as described in the original paper).
 
+<a name="interpolateDiscrete" href="#interpolateDiscrete">#</a> d3.<b>interpolateDiscrete</b>(<i>values</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/discrete.js "Source")
+
+Returns a discrete interpolator for the given array of *values*. The returned interpolator maps *t* in [0, 1 / *n*) to *values*[0], *t* in [1 / *n*, 2 / *n*) to *values*[1], and so on, where *n* = *values*.length. In effect, this is a lightweight [quantize scale](https://github.com/d3/d3-scale/blob/master/README.md#quantize-scales) with a fixed domain of [0, 1].
+
 ### Sampling
 
 <a name="quantize" href="#quantize">#</a> d3.<b>quantize</b>(<i>interpolator</i>, <i>n</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/quantize.js "Source")
