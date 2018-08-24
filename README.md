@@ -216,6 +216,10 @@ var interpolator = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 
 See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
 
+<a name="interpolateHue" href="#interpolateHue">#</a> d3.<b>interpolateHue</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/hue.js "Source")
+
+Returns an interpolator between the two hue angles *a* and *b*. If either hue is NaN, the opposing value is used. The shortest path between hues is used. The return value of the interpolator is a number in [0, 360).
+
 ### Splines
 
 Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an ending value *b* at *t* = 1, spline interpolators smoothly blend multiple input values for *t* in [0,1] using piecewise polynomial functions. Only cubic uniform nonrational [B-splines](https://en.wikipedia.org/wiki/B-spline) are currently supported, also known as basis splines.
