@@ -187,8 +187,8 @@ cross-spawn@^6.0.5:
     which "^1.2.9"
 
 d3-color@1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.2.2.tgz#01ffc37603ac46357fb47d7ab02b0369d2a57766"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.2.3.tgz#6c67bb2af6df3cc8d79efcc4d3a3e83e28c8048f"
 
 debug@^3.1.0:
   version "3.1.0"
