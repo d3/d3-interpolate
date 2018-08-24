@@ -15,7 +15,7 @@
     "name": "Mike Bostock",
     "url": "http://bost.ocks.org/mike"
   },
-  "main": "build/d3-interpolate.js",
+  "main": "dist/d3-interpolate.min.js",
   "module": "index",
   "jsnext:main": "index",
   "repository": {
@@ -23,10 +23,10 @@
     "url": "https://github.com/d3/d3-interpolate.git"
   },
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup -c",
-    "test": "tape 'test/**/*-test.js' && eslint index.js src test",
-    "prepublish": "yarn test",
-    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../d3-interpolate/build/d3-interpolate.js d3-interpolate.v1.js && cp ../d3-interpolate/build/d3-interpolate.min.js d3-interpolate.v1.min.js && git add d3-interpolate.v1.js d3-interpolate.v1.min.js && git commit -m \"d3-interpolate ${npm_package_version}\" && git push && cd - && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
+    "pretest": "rollup -c",
+    "test": "tape 'test/**/*-test.js' && eslint index.js src",
+    "prepublishOnly": "rm -rf dist && yarn test",
+    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../${npm_package_name}/dist/${npm_package_name}.js ${npm_package_name}.v1.js && cp ../${npm_package_name}/dist/${npm_package_name}.min.js ${npm_package_name}.v1.min.js && git add ${npm_package_name}.v1.js ${npm_package_name}.v1.min.js && git commit -m \"${npm_package_name} ${npm_package_version}\" && git push && cd - && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"
   },
   "dependencies": {
     "d3-color": "1"
