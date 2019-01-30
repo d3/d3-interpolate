@@ -18,3 +18,10 @@ tape("interpolateNumber(a, b) interpolates between two numbers a and b", functio
   test.inDelta(i(1.0), 42.0);
   test.end();
 });
+
+tape("interpolateNumber(a, b) always returns b for t=1 (also for very large a)", function(test) {
+  var i = interpolate.interpolateNumber(2e+42, 335);
+  test.equal(i(0.0), 2e+42);
+  test.equal(i(1.0), 335);
+  test.end();
+});
