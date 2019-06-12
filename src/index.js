@@ -10,6 +10,7 @@ export {default as interpolateObject} from "./object";
 export {default as interpolateRound} from "./round";
 export {default as interpolateString} from "./string";
 export {interpolateTransformCss, interpolateTransformSvg} from "./transform/index";
+export {default as interpolateTypedArray} from "./typedArray";
 export {default as interpolateZoom} from "./zoom";
 export {default as interpolateRgb, rgbBasis as interpolateRgbBasis, rgbBasisClosed as interpolateRgbBasisClosed} from "./rgb";
 export {default as interpolateHsl, hslLong as interpolateHslLong} from "./hsl";

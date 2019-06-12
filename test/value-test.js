@@ -36,6 +36,12 @@ tape("interpolate(a, b) interpolates arrays if b is an array", function(test) {
   test.end();
 });
 
+tape("interpolate(a, b) interpolates typed arrays if b is a typed array", function(test) {
+  test.deepEqual(interpolate.interpolate([0], Float64Array.from([1]))(0.5), [0.5]);
+  test.ok(interpolate.interpolate([0], Float64Array.from([1]))(0.5) instanceof Float64Array);
+  test.end();
+});
+
 tape("interpolate(a, b) interpolates arrays if b is an array, even if b is coercible to a number", function(test) {
   test.deepEqual(interpolate.interpolate([1], [2])(0.5), [1.5]);
   test.end();

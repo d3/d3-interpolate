@@ -57,8 +57,9 @@ Returns an interpolator between the two arbitrary values *a* and *b*. The interp
 4. If *b* is a [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), use [interpolateDate](#interpolateDate).
 5. If *b* is a string, use [interpolateString](#interpolateString).
 6. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), use [interpolateArray](#interpolateArray).
-7. If *b* is coercible to a number, use [interpolateNumber](#interpolateNumber).
-8. Use [interpolateObject](#interpolateObject).
+7. If *b* is a [typed array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), use [interpolateTypedArray](#interpolateTypedArray).
+8. If *b* is coercible to a number, use [interpolateNumber](#interpolateNumber).
+9. Use [interpolateObject](#interpolateObject).
 
 Based on the chosen interpolator, *a* is coerced to the suitable corresponding type.
 
@@ -94,7 +95,7 @@ Note: **no defensive copy** of the returned date is created; the same Date insta
 
 <a name="interpolateArray" href="#interpolateArray">#</a> d3.<b>interpolateArray</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/array.js "Source")
 
-Returns an interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length in *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
+Returns an interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length as *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
 
 For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, then the result of the interpolator for *t* = 0.5 is the array `[0.5, 5.5, 100]`.
 
@@ -109,6 +110,14 @@ For example, if *a* is the object `{x: 0, y: 1}` and *b* is the object `{x: 1, y
 Object interpolation is particularly useful for *dataspace interpolation*, where data is interpolated rather than attribute values. For example, you can interpolate an object which describes an arc in a pie chart, and then use d3.svg.arc to compute the new SVG path data.
 
 Note: **no defensive copy** of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
+
+<a name="interpolateTypedArray" href="#interpolateTypedArray">#</a> d3.<b>interpolateTypedArray</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/typedArray.js "Source")
+
+Returns an interpolator between the two typed arrays *a* and *b*. Internally, two arrays are created: a template array with the same length and type as *b*, and a differences template with the same length as *a* and same type as *b*. For each element in *b*, if there exists a corresponding element in *a*, the numbers are interpolated linearly and the result saved in the template. If there is no such element, the static value from *b* is used. The updated array template is then returned.
+
+For example, if *a* is `Float32Array.from([0, 1])` and *b* is `Float64Array.from([1, 10, 100])`, then the result of the interpolator for *t* = 0.5 is the Float64Array `[0.5, 5.5, 100]`.
+
+Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
 
 <a name="interpolateTransformCss" href="#interpolateTransformCss">#</a> d3.<b>interpolateTransformCss</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/transform/index.js#L62 "Source")
 

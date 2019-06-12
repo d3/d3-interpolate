@@ -5,6 +5,7 @@ import date from "./date";
 import number from "./number";
 import object from "./object";
 import string from "./string";
+import typedArray from "./typedArray";
 import constant from "./constant";
 
 export default function(a, b) {
@@ -15,6 +16,11 @@ export default function(a, b) {
       : b instanceof color ? rgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array
+      : isTypedArray(b) ? typedArray
       : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);
+}
+
+function isTypedArray(x) {
+  return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }
