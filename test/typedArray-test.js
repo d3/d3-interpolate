@@ -30,3 +30,8 @@ tape("interpolateTypedArray(a, b) uses b’s array type", function(test) {
   test.ok(interpolate.interpolateTypedArray(Float64Array.from([2, 12]), Uint16Array.from([4, 24, 12]))(0.5) instanceof Uint16Array);
   test.end();
 });
+
+tape("interpolateTypedArray(a, b) works with unsigned data", function(test) {
+  test.deepEqual(interpolate.interpolateTypedArray(Uint8Array.from([1, 12]), Uint8Array.from([255, 0]))(0.5), Uint8Array.from([128, 6]));
+  test.end();
+});
