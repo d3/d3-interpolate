@@ -113,11 +113,11 @@ Note: **no defensive copy** of the template object is created; modifications of 
 
 <a name="interpolateTypedArray" href="#interpolateTypedArray">#</a> d3.<b>interpolateTypedArray</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/typedArray.js "Source")
 
-Returns an interpolator between the two typed arrays *a* and *b*. Internally, two arrays are created: a template array with the same length and type as *b*, and a differences template with the same length as *a* and same type as *b*. For each element in *b*, if there exists a corresponding element in *a*, the numbers are interpolated linearly and the result saved in the template. If there is no such element, the static value from *b* is used. The updated array template is then returned.
+Returns an interpolator between the two typed arrays *a* and *b*. Internally, a template array is created with the same length and type as *b*. For each element in *b*, if there exists a corresponding element in *a*, the numbers are interpolated linearly and the result saved in the template. If there is no such element, the static value from *b* is used. The updated array template is then returned.
 
 For example, if *a* is `Float32Array.from([0, 1])` and *b* is `Float64Array.from([1, 10, 100])`, then the result of the interpolator for *t* = 0.5 is the Float64Array `[0.5, 5.5, 100]`.
 
-Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
+Note: for performance reasons, **no defensive copy** of the arguments and template arrays is created; modifications of any of them may affect subsequent evaluation of the interpolator.
 
 <a name="interpolateTransformCss" href="#interpolateTransformCss">#</a> d3.<b>interpolateTransformCss</b>(<i>a</i>, <i>b</i>) [<>](https://github.com/d3/d3-interpolate/blob/master/src/transform/index.js#L62 "Source")
 
