@@ -230,6 +230,26 @@ Returns a uniform nonrational B-spline interpolator through the specified array 
 
 Returns a uniform nonrational B-spline interpolator through the specified array of *values*, which must be numbers. The control points are implicitly repeated such that the resulting one-dimensional spline has cyclical C² continuity when repeated around *t* in [0,1]. See also [d3.curveBasisClosed](https://github.com/d3/d3-shape/blob/master/README.md#curveBasisClosed).
 
+<a href="#interpolateCardinal" name="interpolateCardinal">#</a> d3.<b>interpolateCardinal</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/cardinal.js)
+
+Returns interpolator based on cubic Cardinal spline.
+
+<a href="#interpolateCatmullRom" name="interpolateCatmullRom">#</a> d3.<b>interpolateCatmullRom</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/catmullRom.js)
+
+Returns interpolator based on a cubic Catmull–Rom spline.
+
+<a href="#interpolateMonotoneX" name="interpolateMonotoneX">#</a> d3.<b>interpolateMonotoneX</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/monotoneX.js)
+
+Returns interpolator based on MonotoneX spline.
+
+<a href="#interpolateFromCurve" name="interpolateFromCurve">#</a> d3.<b>interpolateFromCurve</b>(<i>values, curve, epsilon, samples</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/fromCurve.js)
+
+Returns interpolator based on d3.curve function.
+
+```js
+var interpolator = d3.interpolateFromCurve([1,2,7,2], d3.curveMonotoneX, 0.00001, 100);
+```
+
 ### Piecewise
 
 <a name="piecewise" href="#piecewise">#</a> d3.<b>piecewise</b>(<i>interpolate</i>, <i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/piecewise.js), [Examples](https://observablehq.com/@d3/d3-piecewise)
