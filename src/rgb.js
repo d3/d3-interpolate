@@ -1,7 +1,7 @@
 import {rgb as colorRgb} from "d3-color";
-import basis from "./basis";
-import basisClosed from "./basisClosed";
-import nogamma, {gamma} from "./color";
+import basis from "./basis.js";
+import basisClosed from "./basisClosed.js";
+import nogamma, {gamma} from "./color.js";
 
 export default (function rgbGamma(y) {
   var color = gamma(y);

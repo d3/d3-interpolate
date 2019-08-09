@@ -1,4 +1,4 @@
-import decompose, {identity} from "./decompose";
+import decompose, {identity} from "./decompose.js";
 
 var cssNode,
     cssRoot,

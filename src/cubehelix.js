@@ -1,5 +1,5 @@
 import {cubehelix as colorCubehelix} from "d3-color";
-import color, {hue} from "./color";
+import color, {hue} from "./color.js";
 
 function cubehelix(hue) {
   return (function cubehelixGamma(y) {
