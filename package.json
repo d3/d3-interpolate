@@ -36,6 +36,7 @@
   "dependencies": {
     "d3-color": "1"
   },
+  "sideEffects": false,
   "devDependencies": {
     "eslint": "6",
     "rollup": "1",
