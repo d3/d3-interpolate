@@ -104,7 +104,7 @@ Returns an interpolator between the two objects *a* and *b*. Internally, an obje
 
 For example, if *a* is the object `{x: 0, y: 1}` and *b* is the object `{x: 1, y: 10, z: 100}`, the result of the interpolator for *t* = 0.5 is the object `{x: 0.5, y: 5.5, z: 100}`.
 
-Object interpolation is particularly useful for *dataspace interpolation*, where data is interpolated rather than attribute values. For example, you can interpolate an object which describes an arc in a pie chart, and then use [d3.arc](https://github.com/d3/d3-shape#arc) to compute the new SVG path data.
+Object interpolation is particularly useful for *dataspace interpolation*, where data is interpolated rather than attribute values. For example, you can interpolate an object which describes an arc in a pie chart, and then use [d3.arc](https://github.com/d3/d3-shape/blob/master/README.md#arc) to compute the new SVG path data.
 
 Note: **no defensive copy** of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
 
@@ -130,7 +130,7 @@ Returns a discrete interpolator for the given array of *values*. The returned in
 
 <a name="quantize" href="#quantize">#</a> d3.<b>quantize</b>(<i>interpolator</i>, <i>n</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/quantize.js), [Examples](https://observablehq.com/@d3/d3-quantize)
 
-Returns *n* uniformly-spaced samples from the specified *interpolator*, where *n* is an integer greater than one. The first sample is always at *t* = 0, and the last sample is always at *t* = 1. This can be useful in generating a fixed number of samples from a given interpolator, such as to derive the range of a [quantize scale](https://github.com/d3/d3-scale#quantize-scales) from a [continuous interpolator](https://github.com/d3/d3-scale#interpolateWarm).
+Returns *n* uniformly-spaced samples from the specified *interpolator*, where *n* is an integer greater than one. The first sample is always at *t* = 0, and the last sample is always at *t* = 1. This can be useful in generating a fixed number of samples from a given interpolator, such as to derive the range of a [quantize scale](https://github.com/d3/d3-scale/blob/master/README.md#quantize-scales) from a [continuous interpolator](https://github.com/d3/d3-scale-chromatic/blob/master/README.md#interpolateWarm).
 
 Caution: this method will not work with interpolators that do not return defensive copies of their output, such as [d3.interpolateArray](#interpolateArray), [d3.interpolateDate](#interpolateDate) and [d3.interpolateObject](#interpolateObject). For those interpolators, you must wrap the interpolator and create a copy for each returned value.
 
@@ -224,7 +224,7 @@ Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an 
 
 <a href="#interpolateBasis" name="interpolateBasis">#</a> d3.<b>interpolateBasis</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/basis.js), [Examples](https://observablehq.com/@d3/d3-interpolatebasis)
 
-Returns a uniform nonrational B-spline interpolator through the specified array of *values*, which must be numbers. Implicit control points are generated such that the interpolator returns *values*[0] at *t* = 0 and *values*[*values*.length - 1] at *t* = 1. See also [d3.curveBasis](https://github.com/d3/d3-shape#curveBasis).
+Returns a uniform nonrational B-spline interpolator through the specified array of *values*, which must be numbers. Implicit control points are generated such that the interpolator returns *values*[0] at *t* = 0 and *values*[*values*.length - 1] at *t* = 1. See also [d3.curveBasis](https://github.com/d3/d3-shape/blob/master/README.md#curveBasis).
 
 <a href="#interpolateBasisClosed" name="interpolateBasisClosed">#</a> d3.<b>interpolateBasisClosed</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/basisClosed.js), [Examples](https://observablehq.com/@d3/d3-interpolatebasis)
 
