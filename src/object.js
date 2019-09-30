@@ -1,4 +1,4 @@
-import value from "./value";
+import value from "./value.js";
 
 export default function(a, b) {
   var i = {},

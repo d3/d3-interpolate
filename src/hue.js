@@ -1,4 +1,4 @@
-import {hue} from "./color";
+import {hue} from "./color.js";
 
 export default function(a, b) {
   var i = hue(+a, +b);

@@ -1,12 +1,12 @@
 import {color} from "d3-color";
-import rgb from "./rgb";
-import array from "./array";
-import date from "./date";
-import number from "./number";
-import object from "./object";
-import string from "./string";
-import typedArray from "./typedArray";
-import constant from "./constant";
+import rgb from "./rgb.js";
+import array from "./array.js";
+import date from "./date.js";
+import number from "./number.js";
+import object from "./object.js";
+import string from "./string.js";
+import typedArray from "./typedArray.js";
+import constant from "./constant.js";
 
 export default function(a, b) {
   var t = typeof b, c;

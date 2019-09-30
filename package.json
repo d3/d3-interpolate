@@ -23,6 +23,10 @@
     "type": "git",
     "url": "https://github.com/d3/d3-interpolate.git"
   },
+  "files": [
+    "dist/**/*.js",
+    "src/**/*.js"
+  ],
   "scripts": {
     "pretest": "rollup -c",
     "test": "tape 'test/**/*-test.js' && eslint src",
@@ -33,9 +37,9 @@
     "d3-color": "1"
   },
   "devDependencies": {
-    "eslint": "5",
-    "rollup": "0.64",
-    "rollup-plugin-terser": "1",
+    "eslint": "6",
+    "rollup": "1",
+    "rollup-plugin-terser": "5",
     "tape": "4"
   }
 }
