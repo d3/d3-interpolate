@@ -1,6 +1,8 @@
 import value from "./value.js";
+import {default as typedArray, isTypedArray} from "./typedArray.js";
 
 export default function(a, b) {
+  if (isTypedArray(b)) return typedArray(a, b);
   var nb = b ? b.length : 0,
       na = a ? Math.min(nb, a.length) : 0,
       x = new Array(na),

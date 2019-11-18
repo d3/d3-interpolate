@@ -5,8 +5,8 @@ import date from "./date.js";
 import number from "./number.js";
 import object from "./object.js";
 import string from "./string.js";
-import typedArray from "./typedArray.js";
 import constant from "./constant.js";
+import {default as typedArray, isTypedArray} from "./typedArray.js";
 
 export default function(a, b) {
   var t = typeof b, c;
@@ -19,8 +19,4 @@ export default function(a, b) {
       : isTypedArray(b) ? typedArray
       : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);
-}
-
-function isTypedArray(x) {
-  return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }

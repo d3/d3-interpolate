@@ -8,3 +8,7 @@ export default function(a, b) {
     return c;
   };
 }
+
+export function isTypedArray(x) {
+  return ArrayBuffer.isView(x) && !(x instanceof DataView);
+}
