@@ -1,6 +1,8 @@
 import value from "./value.js";
+import {default as numberArray, isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
+  if (isNumberArray(b)) return numberArray(a, b);
   var nb = b ? b.length : 0,
       na = a ? Math.min(nb, a.length) : 0,
       x = new Array(na),

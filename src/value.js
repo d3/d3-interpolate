@@ -6,6 +6,7 @@ import number from "./number.js";
 import object from "./object.js";
 import string from "./string.js";
 import constant from "./constant.js";
+import {default as numberArray, isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
   var t = typeof b, c;
@@ -14,6 +15,7 @@ export default function(a, b) {
       : t === "string" ? ((c = color(b)) ? (b = c, rgb) : string)
       : b instanceof color ? rgb
       : b instanceof Date ? date
+      : isNumberArray(b) ? numberArray
       : Array.isArray(b) ? array
       : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);

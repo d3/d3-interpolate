@@ -54,9 +54,10 @@ Returns an interpolator between the two arbitrary values *a* and *b*. The interp
 3. If *b* is a [color](https://github.com/d3/d3-color/blob/master/README.md#color) or a string coercible to a color, use [interpolateRgb](#interpolateRgb).
 4. If *b* is a [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), use [interpolateDate](#interpolateDate).
 5. If *b* is a string, use [interpolateString](#interpolateString).
-6. If *b* is an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), use [interpolateArray](#interpolateArray).
-7. If *b* is coercible to a number, use [interpolateNumber](#interpolateNumber).
-8. Use [interpolateObject](#interpolateObject).
+6. If *b* is a number array (a [typed array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) or an array containing only numbers, use [interpolateNumberArray](#interpolateNumberArray).
+7. If *b* is a generic [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), use [interpolateArray](#interpolateArray).
+8. If *b* is coercible to a number, use [interpolateNumber](#interpolateNumber).
+9. Use [interpolateObject](#interpolateObject).
 
 Based on the chosen interpolator, *a* is coerced to the suitable corresponding type.
 
@@ -92,11 +93,19 @@ Note: **no defensive copy** of the returned date is created; the same Date insta
 
 <a name="interpolateArray" href="#interpolateArray">#</a> d3.<b>interpolateArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/array.js), [Examples](https://observablehq.com/@d3/d3-interpolateobject)
 
-Returns an interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length in *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
+Returns an interpolator between the two arrays *a* and *b*. Internally, an array template is created that is the same length as *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
 
 For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, then the result of the interpolator for *t* = 0.5 is the array `[0.5, 5.5, 100]`.
 
 Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
+
+If the array is a typed array (Float64Array, etc) or contains only numbers, the interpolateNumberArray method is called instead.
+
+<a name="interpolateNumberArray" href="#interpolateNumberArray">#</a> d3.<b>interpolateNumberArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/numberArray.js) <!-- , [Examples](https://observablehq.com/@d3/d3-interpolateobject) -->
+
+Returns an interpolator between the two number arrays *a* and *b*. Internally, an array template is created that is the same type and length as *b*. For each element in *b*, if there exists a corresponding element in *a*, the values are directly interpolated in the array template. If there is no such element, the static value from *b* is copied. The updated array template is then returned.
+
+Note: For performance reasons, **no defensive copy** is made of the template array and the arguments *a* and *b*; modifications of these arrays may affect subsequent evaluation of the interpolator.
 
 <a name="interpolateObject" href="#interpolateObject">#</a> d3.<b>interpolateObject</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/object.js), [Examples](https://observablehq.com/@d3/d3-interpolateobject)
 
