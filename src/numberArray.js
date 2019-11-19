@@ -10,6 +10,5 @@ export default function(a, b) {
 }
 
 export function isNumberArray(x) {
-  if (ArrayBuffer.isView(x)) return !(x instanceof DataView);
-  return Array.isArray(x) && x.every(i => typeof i == "number");
+  return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }

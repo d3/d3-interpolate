@@ -54,7 +54,7 @@ Returns an interpolator between the two arbitrary values *a* and *b*. The interp
 3. If *b* is a [color](https://github.com/d3/d3-color/blob/master/README.md#color) or a string coercible to a color, use [interpolateRgb](#interpolateRgb).
 4. If *b* is a [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), use [interpolateDate](#interpolateDate).
 5. If *b* is a string, use [interpolateString](#interpolateString).
-6. If *b* is a number array (a [typed array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) or an array containing only numbers, use [interpolateNumberArray](#interpolateNumberArray).
+6. If *b* is a [typed array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) of numbers, use [interpolateNumberArray](#interpolateNumberArray).
 7. If *b* is a generic [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray), use [interpolateArray](#interpolateArray).
 8. If *b* is coercible to a number, use [interpolateNumber](#interpolateNumber).
 9. Use [interpolateObject](#interpolateObject).
@@ -99,7 +99,7 @@ For example, if *a* is the array `[0, 1]` and *b* is the array `[1, 10, 100]`, t
 
 Note: **no defensive copy** of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator. No copy is made for performance reasons; interpolators are often part of the inner loop of [animated transitions](https://github.com/d3/d3-transition).
 
-If the array is a typed array (Float64Array, etc) or contains only numbers, the interpolateNumberArray method is called instead.
+If the array is a typed array (Float64Array, etc), the interpolateNumberArray method is called instead.
 
 <a name="interpolateNumberArray" href="#interpolateNumberArray">#</a> d3.<b>interpolateNumberArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/numberArray.js) <!-- , [Examples](https://observablehq.com/@d3/d3-interpolateobject) -->
 
