@@ -4,7 +4,7 @@ export default function(a, b) {
     c = b.slice(),
     i;
   return function(t) {
-    for (i = 0; i < na; ++i) c[i] = a[i] + (b[i] - a[i]) * t;
+    for (i = 0; i < na; ++i) c[i] = a[i] * (1 - t) + b[i] * t;
     return c;
   };
 }
