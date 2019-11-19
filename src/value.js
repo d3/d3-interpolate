@@ -1,6 +1,6 @@
 import {color} from "d3-color";
 import rgb from "./rgb.js";
-import array from "./array.js";
+import {genericArray} from "./array.js";
 import date from "./date.js";
 import number from "./number.js";
 import object from "./object.js";
@@ -16,7 +16,7 @@ export default function(a, b) {
       : b instanceof color ? rgb
       : b instanceof Date ? date
       : isNumberArray(b) ? numberArray
-      : Array.isArray(b) ? array
+      : Array.isArray(b) ? genericArray
       : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);
 }
