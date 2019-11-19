@@ -1,8 +1,8 @@
 export default function(a, b) {
   if (!b) b = [];
   var na = a ? Math.min(b.length, a.length) : 0,
-    c = b.slice();
-  let i;
+    c = b.slice(),
+    i;
   return function(t) {
     for (i = 0; i < na; ++i) c[i] = a[i] + (b[i] - a[i]) * t;
     return c;
