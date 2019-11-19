@@ -22,3 +22,10 @@ tape("interpolateRound(a, b) does not pre-round a and b", function(test) {
   test.equal(i(0.6), 3);
   test.end();
 });
+
+tape("interpolateRound(a, b) gives exact ends for t=0 and t=1", function(test) {
+  var a = 2e+42, b = 335;
+  test.equal(interpolate.interpolateRound(a, b)(1), b);
+  test.equal(interpolate.interpolateRound(a, b)(0), a);
+  test.end();
+});
