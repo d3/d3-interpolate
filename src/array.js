@@ -1,5 +1,5 @@
 import value from "./value.js";
-import {default as numberArray, isNumberArray} from "./numberArray.js";
+import numberArray, {isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
   if (isNumberArray(b)) return numberArray(a, b);

@@ -6,7 +6,7 @@ import number from "./number.js";
 import object from "./object.js";
 import string from "./string.js";
 import constant from "./constant.js";
-import {default as numberArray, isNumberArray} from "./numberArray.js";
+import numberArray, {isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
   var t = typeof b, c;
