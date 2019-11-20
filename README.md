@@ -101,7 +101,7 @@ Note: **no defensive copy** of the template array is created; modifications of t
 
 If the array is a typed array (Float64Array, etc), the interpolateNumberArray method is called instead.
 
-<a name="interpolateNumberArray" href="#interpolateNumberArray">#</a> d3.<b>interpolateNumberArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/numberArray.js) <!-- , [Examples](https://observablehq.com/@d3/d3-interpolateobject) -->
+<a name="interpolateNumberArray" href="#interpolateNumberArray">#</a> d3.<b>interpolateNumberArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/numberArray.js), [Examples](https://observablehq.com/@d3/d3-interpolatenumberarray)
 
 Returns an interpolator between the two number arrays *a* and *b*. Internally, an array template is created that is the same type and length as *b*. For each element in *b*, if there exists a corresponding element in *a*, the values are directly interpolated in the array template. If there is no such element, the static value from *b* is copied. The updated array template is then returned.
 
