@@ -16,3 +16,10 @@ tape("interpolateDate(a, b) reuses the output datea", function(test) {
   test.strictEqual(i(0.2), i(0.4));
   test.end();
 });
+
+tape("interpolateDate(a, b) gives exact ends for t=0 and t=1", function(test) {
+  var a = new Date(1e8 * 24 * 60 * 60 * 1000), b = new Date(-1e8 * 24 * 60 * 60 * 1000 +1);
+  test.equal(+interpolate.interpolateDate(a, b)(1), +b);
+  test.equal(+interpolate.interpolateDate(a, b)(0), +a);
+  test.end();
+});
