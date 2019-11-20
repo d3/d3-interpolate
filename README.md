@@ -93,7 +93,7 @@ Note: **no defensive copy** of the returned date is created; the same Date insta
 
 <a name="interpolateArray" href="#interpolateArray">#</a> d3.<b>interpolateArray</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/array.js), [Examples](https://observablehq.com/@d3/d3-interpolateobject)
 
-Returns an interpolator between the two arrays *a* and *b*. If the array is a typed array (e.g., Float64Array), the interpolateNumberArray method is called instead.
+Returns an interpolator between the two arrays *a* and *b*. If *b* is a typed array (e.g., Float64Array), [interpolateNumberArray](#interpolateNumberArray) is called instead.
 
 Internally, an array template is created that is the same length as *b*. For each element in *b*, if there exists a corresponding element in *a*, a generic interpolator is created for the two elements using [interpolate](#interpolate). If there is no such element, the static value from *b* is used in the template. Then, for the given parameter *t*, the template’s embedded interpolators are evaluated. The updated array template is then returned.
 
