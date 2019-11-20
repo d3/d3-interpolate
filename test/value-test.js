@@ -115,6 +115,19 @@ tape("interpolate(a, b) interpolates objects with toString as objects if toStrin
   test.end();
 });
 
+tape("interpolate(a, b) interpolates number arrays if b is a typed array", function(test) {
+  test.deepEqual(interpolate.interpolate([0, 0], Float64Array.of(-1, 1))(0.5), Float64Array.of(-0.5, 0.5));
+  test.assert(interpolate.interpolate([0, 0], Float64Array.of(-1, 1))(0.5) instanceof Float64Array);
+  test.deepEqual(interpolate.interpolate([0, 0], Float32Array.of(-1, 1))(0.5), Float32Array.of(-0.5, 0.5));
+  test.assert(interpolate.interpolate([0, 0], Float32Array.of(-1, 1))(0.5) instanceof Float32Array);
+  test.deepEqual(interpolate.interpolate([0, 0], Uint32Array.of(-2, 2))(0.5), Uint32Array.of(Math.pow(2, 31) - 1, 1));
+  test.assert(interpolate.interpolate([0, 0], Uint32Array.of(-1, 1))(0.5) instanceof Uint32Array);
+  test.deepEqual(interpolate.interpolate([0, 0], Uint8Array.of(-2, 2))(0.5), Uint8Array.of(Math.pow(2, 7) - 1, 1));
+  test.assert(interpolate.interpolate([0, 0], Uint8Array.of(-1, 1))(0.5) instanceof Uint8Array);
+  test.end();
+});
+
+
 function noproto(properties, proto = null) {
   return Object.assign(Object.create(proto), properties);
 }
