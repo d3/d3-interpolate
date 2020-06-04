@@ -38,3 +38,10 @@ tape("interpolateArray(a, b) interpolates array-like objects", function(test) {
   test.deepEqual(interpolate.interpolateArray(args, [4, 24])(0.5), [3, 18]);
   test.end();
 });
+
+tape("interpolateArray(a, b) gives exact ends for t=0 and t=1", function(test) {
+  var a = [2e+42], b = [335];
+  test.deepEqual(interpolate.interpolateArray(a, b)(1), b);
+  test.deepEqual(interpolate.interpolateArray(a, b)(0), a);
+  test.end();
+});

@@ -1,5 +1,5 @@
-import number from "../number";
-import {parseCss, parseSvg} from "./parse";
+import number from "../number.js";
+import {parseCss, parseSvg} from "./parse.js";
 
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
 

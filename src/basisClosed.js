@@ -1,4 +1,4 @@
-import {basis} from "./basis";
+import {basis} from "./basis.js";
 
 export default function(values) {
   var n = values.length;

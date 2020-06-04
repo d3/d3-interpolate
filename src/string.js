@@ -1,4 +1,4 @@
-import number from "./number";
+import number from "./number.js";
 
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
     reB = new RegExp(reA.source, "g");

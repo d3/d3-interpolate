@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "1.1.1",
+  "version": "1.4.0",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "keywords": [
     "d3",
@@ -15,27 +15,32 @@
     "name": "Mike Bostock",
     "url": "http://bost.ocks.org/mike"
   },
-  "main": "build/d3-interpolate.js",
-  "module": "index",
-  "jsnext:main": "index",
+  "main": "dist/d3-interpolate.js",
+  "unpkg": "dist/d3-interpolate.min.js",
+  "jsdelivr": "dist/d3-interpolate.min.js",
+  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/d3/d3-interpolate.git"
   },
+  "files": [
+    "dist/**/*.js",
+    "src/**/*.js"
+  ],
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup --banner \"$(preamble)\" -f umd -g d3-color:d3 -n d3 -o build/d3-interpolate.js -- index.js",
-    "test": "tape 'test/**/*-test.js' && eslint index.js src test",
-    "prepublish": "npm run test && uglifyjs --preamble \"$(preamble)\" build/d3-interpolate.js -c -m -o build/d3-interpolate.min.js",
-    "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git push --tags && cd ../d3.github.com && git pull && cp ../d3-interpolate/build/d3-interpolate.js d3-interpolate.v1.js && cp ../d3-interpolate/build/d3-interpolate.min.js d3-interpolate.v1.min.js && git add d3-interpolate.v1.js d3-interpolate.v1.min.js && git commit -m \"d3-interpolate ${VERSION}\" && git push && cd - && zip -j build/d3-interpolate.zip -- LICENSE README.md build/d3-interpolate.js build/d3-interpolate.min.js"
+    "pretest": "rollup -c",
+    "test": "tape 'test/**/*-test.js' && eslint src",
+    "prepublishOnly": "rm -rf dist && yarn test",
+    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../${npm_package_name}/dist/${npm_package_name}.js ${npm_package_name}.v${npm_package_version%%.*}.js && cp ../${npm_package_name}/dist/${npm_package_name}.min.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git add ${npm_package_name}.v${npm_package_version%%.*}.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git commit -m \"${npm_package_name} ${npm_package_version}\" && git push && cd - && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"
   },
   "dependencies": {
     "d3-color": "1"
   },
+  "sideEffects": false,
   "devDependencies": {
-    "eslint": "2",
-    "package-preamble": "0.0",
-    "rollup": "0.34",
-    "tape": "4",
-    "uglify-js": "2"
+    "eslint": "6",
+    "rollup": "1",
+    "rollup-plugin-terser": "5",
+    "tape": "4"
   }
 }

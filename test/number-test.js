@@ -18,3 +18,11 @@ tape("interpolateNumber(a, b) interpolates between two numbers a and b", functio
   test.inDelta(i(1.0), 42.0);
   test.end();
 });
+
+
+tape("interpolateNumber(a, b) gives exact ends for t=0 and t=1", function(test) {
+  var a = 2e+42, b = 335;
+  test.equal(interpolate.interpolateNumber(a, b)(1), b);
+  test.equal(interpolate.interpolateNumber(a, b)(0), a);
+  test.end();
+});

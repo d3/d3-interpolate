@@ -1,4 +1,4 @@
-import constant from "./constant";
+import constant from "./constant.js";
 
 function linear(a, d) {
   return function(t) {

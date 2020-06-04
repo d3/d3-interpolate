@@ -1,5 +1,5 @@
 import {hsl as colorHsl} from "d3-color";
-import color, {hue} from "./color";
+import color, {hue} from "./color.js";
 
 function hsl(hue) {
   return function(start, end) {

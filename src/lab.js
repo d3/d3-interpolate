@@ -1,5 +1,5 @@
 import {lab as colorLab} from "d3-color";
-import color from "./color";
+import color from "./color.js";
 
 export default function lab(start, end) {
   var l = color((start = colorLab(start)).l, (end = colorLab(end)).l),

@@ -1,5 +1,5 @@
 import {hcl as colorHcl} from "d3-color";
-import color, {hue} from "./color";
+import color, {hue} from "./color.js";
 
 function hcl(hue) {
   return function(start, end) {

@@ -10,19 +10,19 @@ tape("interpolateHclLong(a, b) converts a and b to HCL colors", function(test) {
 });
 
 tape("interpolateHclLong(a, b) interpolates in HCL and returns an RGB string", function(test) {
-  test.equal(interpolate.interpolateHclLong("steelblue", "#f00")(0.2), "rgb(0, 144, 174)");
-  test.equal(interpolate.interpolateHclLong("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(0, 144, 174, 0.84)");
+  test.equal(interpolate.interpolateHclLong("steelblue", "#f00")(0.2), "rgb(0, 144, 169)");
+  test.equal(interpolate.interpolateHclLong("rgba(70, 130, 180, 1)", "rgba(255, 0, 0, 0.2)")(0.2), "rgba(0, 144, 169, 0.84)");
   test.end();
 });
 
 tape("interpolateHclLong(a, b) does not use the shortest path when interpolating hue", function(test) {
   var i = interpolate.interpolateHclLong(color.hcl(10, 50, 50), color.hcl(350, 50, 50));
-  test.equal(i(0.0), "rgb(196, 79, 106)");
-  test.equal(i(0.2), "rgb(156, 111, 29)");
-  test.equal(i(0.4), "rgb(46, 135, 69)");
+  test.equal(i(0.0), "rgb(194, 78, 107)");
+  test.equal(i(0.2), "rgb(151, 111, 28)");
+  test.equal(i(0.4), "rgb(35, 136, 68)");
   test.equal(i(0.6), "rgb(0, 138, 165)");
-  test.equal(i(0.8), "rgb(67, 118, 202)");
-  test.equal(i(1.0), "rgb(189, 81, 135)");
+  test.equal(i(0.8), "rgb(91, 116, 203)");
+  test.equal(i(1.0), "rgb(189, 79, 136)");
   test.end();
 });
 
@@ -51,11 +51,11 @@ tape("interpolateHclLong(a, b) uses b’s chroma when a’s chroma is undefined"
 });
 
 tape("interpolateHclLong(a, b) uses b’s luminance when a’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateHclLong(null, color.hcl(20, 80, 50))(0.5), "rgb(234, 19, 77)");
+  test.equal(interpolate.interpolateHclLong(null, color.hcl(20, 80, 50))(0.5), "rgb(230, 13, 79)");
   test.end();
 });
 
 tape("interpolateHclLong(a, b) uses a’s luminance when b’s luminance is undefined", function(test) {
-  test.equal(interpolate.interpolateHclLong(color.hcl(20, 80, 50), null)(0.5), "rgb(234, 19, 77)");
+  test.equal(interpolate.interpolateHclLong(color.hcl(20, 80, 50), null)(0.5), "rgb(230, 13, 79)");
   test.end();
 });
