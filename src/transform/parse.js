@@ -2,6 +2,7 @@ import decompose, {identity} from "./decompose.js";
 
 var svgNode;
 
+/* eslint-disable no-undef */
 export function parseCss(value) {
   const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
   return m.isIdentity ? identity : decompose(m.a, m.b, m.c, m.d, m.e, m.f);
