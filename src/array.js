@@ -1,6 +1,11 @@
-import value from "./value";
+import value from "./value.js";
+import numberArray, {isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
+  return (isNumberArray(b) ? numberArray : genericArray)(a, b);
+}
+
+export function genericArray(a, b) {
   var nb = b ? b.length : 0,
       na = a ? Math.min(nb, a.length) : 0,
       x = new Array(na),
