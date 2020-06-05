@@ -57,7 +57,7 @@ export default (function zoomRho(rho, rho2, rho4) {
       }
     }
 
-    i.duration = S * 1000;
+    i.duration = S * 1000 * rho / Math.SQRT2;
 
     return i;
   }
