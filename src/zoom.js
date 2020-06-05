@@ -63,7 +63,6 @@ export default (function zoomRho(rho, rho2, rho4) {
   }
 
   zoom.rho = function(_) {
-    if (arguments.length === 0) return rho;
     var _1 = Math.max(1e-3, +_), _2 = _1 * _1, _4 = _2 * _2;
     return zoomRho(_1, _2, _4);
   };

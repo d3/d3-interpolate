@@ -15,10 +15,9 @@ tape("interpolateZoom returns the expected duration", function(test) {
 
 tape("interpolateZoom parameter rho() defaults to sqrt(2)", function(test) {
   test.inDelta(
+    interpolate.interpolateZoom([0,0,1], [10, 10, 5])(0.5),
     interpolate.interpolateZoom.rho(Math.sqrt(2))([0,0,1], [10, 10, 5])(0.5),
-    interpolate.interpolateZoom([0,0,1], [10, 10, 5])(0.5)
   );
-  test.inDelta(interpolate.interpolateZoom.rho(), Math.sqrt(2));
   test.end();
 });
 
