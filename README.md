@@ -221,7 +221,7 @@ Given that *interpolate* is one of [interpolateRgb](#interpolateRgb), [interpola
 var interpolator = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 ```
 
-See Eric Brasseur’s article, [Gamma error in picture scaling](https://web.archive.org/web/20160112115812/http://www.4p8.com/eric.brasseur/gamma.html), for more on gamma correction.
+See Eric Brasseur’s article, [Gamma error in picture scaling](http://www.ericbrasseur.org/gamma.html), for more on gamma correction.
 
 <a name="interpolateHue" href="#interpolateHue">#</a> d3.<b>interpolateHue</b>(<i>a</i>, <i>b</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/hue.js), [Examples](https://observablehq.com/@d3/working-with-color)
 
