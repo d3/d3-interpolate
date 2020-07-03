@@ -231,7 +231,7 @@ Returns an interpolator between the two hue angles *a* and *b*. If either hue is
 
 ### Splines
 
-Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an ending value *b* at *t* = 1, spline interpolators smoothly blend multiple input values for *t* in [0,1] using piecewise polynomial functions. Cubic uniform nonrational [B-splines](https://en.wikipedia.org/wiki/B-spline), also known as basis splines, are supported, as well as the standard [cubic Hermite splines](https://en.wikipedia.org/wiki/Cubic_Hermite_spline).
+Whereas standard interpolators blend from a starting value *a* at *t* = 0 to an ending value *b* at *t* = 1, spline interpolators smoothly blend multiple input values for *t* in [0,1] using piecewise polynomial functions. Cubic uniform nonrational [B-splines](https://en.wikipedia.org/wiki/B-spline), also known as basis splines, are supported, as well as the [cubic Hermite splines](https://en.wikipedia.org/wiki/Cubic_Hermite_spline) and [monotone cubic splines](https://en.wikipedia.org/wiki/Monotone_cubic_interpolation).
 
 <a href="#interpolateBasis" name="interpolateBasis">#</a> d3.<b>interpolateBasis</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/basis.js), [Examples](https://observablehq.com/@d3/d3-interpolatebasis)
 
@@ -248,6 +248,15 @@ Returns a cubic Hermite spline interpolator through the specified array of *valu
 <a href="#interpolateCubicClosed" name="interpolateCubicClosed">#</a> d3.<b>interpolateCubicClosed</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/cubic.js)<!-- , [Examples](https://observablehq.com/@d3/d3-interpolatecubic) -->
 
 Returns a closed cubic Hermite spline interpolator through the specified array of *values*, which must be numbers. The interpolator returns *values*[*i*] at *t* = *i* / (*values*.length), and is cyclical (*f*(1 + *t*) = *f*(*t*)).
+
+
+<a href="#interpolateMonotone" name="interpolateMonotone">#</a> d3.<b>interpolateMonotone</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/monotone.js)<!-- , [Examples](https://observablehq.com/@d3/d3-interpolatemonotone) -->
+
+Returns a monotone cubic spline interpolator through the specified array of *values*, which must be numbers. The interpolator returns *values*[*i*] at *t* = *i* / (*values*.length - 1).
+
+<a href="#interpolateMonotoneClosed" name="interpolateMonotoneClosed">#</a> d3.<b>interpolateMonotoneClosed</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/monotone.js)<!-- , [Examples](https://observablehq.com/@d3/d3-interpolatemonotone) -->
+
+Returns a closed monotone cubic spline interpolator through the specified array of *values*, which must be numbers. The interpolator returns *values*[*i*] at *t* = *i* / (*values*.length), and is cyclical (*f*(1 + *t*) = *f*(*t*)).
 
 
 ### Piecewise
