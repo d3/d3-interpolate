@@ -5,6 +5,7 @@ export {default as interpolateBasisClosed} from "./basisClosed.js";
 export {default as interpolateDate} from "./date.js";
 export {default as interpolateDiscrete} from "./discrete.js";
 export {default as interpolateHue} from "./hue.js";
+export {default as interpolateCubic, closed as interpolateCubicClosed} from "./cubic.js";
 export {default as interpolateNumber} from "./number.js";
 export {default as interpolateNumberArray} from "./numberArray.js";
 export {default as interpolateObject} from "./object.js";
