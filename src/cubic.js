@@ -1,3 +1,5 @@
+import {clamp, floor, frac, min} from "./math.js";
+
 export default function cubic(values, type = "default") {
   let n = values.length - 1, k;
   values = values.slice();
@@ -18,7 +20,7 @@ export default function cubic(values, type = "default") {
   }
 
   function cubic(t) {
-    const i = Math.min(n - 1, Math.floor(t * n)),
+    const i = min(n - 1, floor(t * n)),
       v0 = values[i],
       v1 = values[i + 1],
       v2 = values[i + 2],
@@ -34,12 +36,4 @@ export default function cubic(values, type = "default") {
 
 export function closed (values) {
   return cubic(values, "closed");
-}
-
-function frac(t) {
-  return t - Math.floor(t);
-}
-
-function clamp(t, min, max) {
-  return Math.min(max, Math.max(min, t));
 }
