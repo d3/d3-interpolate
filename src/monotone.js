@@ -1,13 +1,9 @@
 import {abs, clamp, frac, min, sign} from "./math.js";
 
-export default function monotone(values, type = "default") {
+export default function monotone(values, type) {
   let n = values.length - 1, k;
   values = values.slice();
   switch (type) {
-    case "default":
-      values.push(2 * values[n] - values[n - 1]);
-      values.unshift(2 * values[0] - values[1]);
-      return t => monotone(clamp(t, 0, 1));
     case "closed":
       values.unshift(values[n]);
       values.push(values[1]);
@@ -17,6 +13,11 @@ export default function monotone(values, type = "default") {
       return t => monotone(k * frac(t));
     case "open":
       throw new Error('open monotone spline not implemented yet');
+    case "clamped":
+    default:
+      values.push(2 * values[n] - values[n - 1]);
+      values.unshift(2 * values[0] - values[1]);
+      return t => monotone(clamp(t, 0, 1));
   }
 
   function monotone(t) {

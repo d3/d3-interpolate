@@ -1,13 +1,9 @@
 import {clamp, floor, frac, min} from "./math.js";
 
-export default function cubic(values, type = "default") {
+export default function cubic(values, type) {
   let n = values.length - 1, k;
   values = values.slice();
   switch (type) {
-    case "default":
-      values.push(2 * values[n] - values[n - 1]);
-      values.unshift(2 * values[0] - values[1]);
-      return t => cubic(clamp(t, 0, 1));
     case "closed":
       values.unshift(values[n]);
       values.push(values[1]);
@@ -17,6 +13,11 @@ export default function cubic(values, type = "default") {
       return t => cubic(k * frac(t));
     case "open":
       throw new Error('open cubic spline not implemented yet');
+    case "clamped":
+    default:
+      values.push(2 * values[n] - values[n - 1]);
+      values.unshift(2 * values[0] - values[1]);
+      return t => cubic(clamp(t, 0, 1));
   }
 
   function cubic(t) {
