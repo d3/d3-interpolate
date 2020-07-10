@@ -6,6 +6,6 @@ export var sign = Math.sign || function(x) { return x > 0 ? 1 : x < 0 ? -1 : 0; 
 export function frac(t) {
   return t - floor(t);
 }
-export function clamp(t, mi, ma) {
-  return min(ma, max(mi, t));
+export function clamp(t, lo, hi) {
+  return t < lo ? lo : t > hi ? hi : t;
 }
