@@ -133,6 +133,10 @@ Returns an interpolator between the two views *a* and *b* of a two-dimensional p
 
 The returned interpolator exposes a *duration* property which encodes the recommended transition duration in milliseconds. This duration is based on the path length of the curved trajectory through *x,y* space. If you want a slower or faster transition, multiply this by an arbitrary scale factor (<i>V</i> as described in the original paper).
 
+<a name="interpolate_rho" href="#interpolate_rho">#</a> *interpolateZoom*.<b>rho</b>(<i>rho</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/zoom.js)<!-- , [Examples](https://observablehq.com/@d3/interpolatezoom-rho) -->
+
+Given a [zoom interpolator](#interpolateZoom), returns a new zoom interpolator using the specified curvature *rho*. When *rho* is close to 0, the interpolator is almost linear. The default curvature is sqrt(2).
+
 <a name="interpolateDiscrete" href="#interpolateDiscrete">#</a> d3.<b>interpolateDiscrete</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/discrete.js), [Examples](https://observablehq.com/@d3/d3-interpolatediscrete)
 
 Returns a discrete interpolator for the given array of *values*. The returned interpolator maps *t* in [0, 1 / *n*) to *values*[0], *t* in [1 / *n*, 2 / *n*) to *values*[1], and so on, where *n* = *values*.length. In effect, this is a lightweight [quantize scale](https://github.com/d3/d3-scale/blob/master/README.md#quantize-scales) with a fixed domain of [0, 1].
