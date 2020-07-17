@@ -247,10 +247,12 @@ Returns a uniform nonrational B-spline interpolator through the specified array 
 
 ### Piecewise
 
-<a name="piecewise" href="#piecewise">#</a> d3.<b>piecewise</b>(<i>interpolate</i>, <i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/piecewise.js), [Examples](https://observablehq.com/@d3/d3-piecewise)
+<a name="piecewise" href="#piecewise">#</a> d3.<b>piecewise</b>([<i>interpolate</i>, ]<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/piecewise.js), [Examples](https://observablehq.com/@d3/d3-piecewise)
 
 Returns a piecewise interpolator, composing interpolators for each adjacent pair of *values*. The returned interpolator maps *t* in [0, 1 / (*n* - 1)] to *interpolate*(*values*[0], *values*[1]), *t* in [1 / (*n* - 1), 2 / (*n* - 1)] to *interpolate*(*values*[1], *values*[2]), and so on, where *n* = *values*.length. In effect, this is a lightweight [linear scale](https://github.com/d3/d3-scale/blob/master/README.md#linear-scales). For example, to blend through red, green and blue:
 
 ```js
 var interpolate = d3.piecewise(d3.interpolateRgb.gamma(2.2), ["red", "green", "blue"]);
 ```
+
+If  *interpolate* is not specified, defaults to [d3.interpolate](#interpolate).
