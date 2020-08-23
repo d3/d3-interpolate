@@ -1,6 +1,11 @@
 import {terser} from "rollup-plugin-terser";
 import * as meta from "./package.json";
 
+function onwarn(message, warn) {
+  if (message.code === "CIRCULAR_DEPENDENCY") return;
+  warn(message);
+}
+
 const config = {
   input: "src/index.js",
   external: Object.keys(meta.dependencies || {}).filter(key => /^d3-/.test(key)),
@@ -13,7 +18,8 @@ const config = {
     banner: `// ${meta.homepage} v${meta.version} Copyright ${(new Date).getFullYear()} ${meta.author.name}`,
     globals: Object.assign({}, ...Object.keys(meta.dependencies || {}).filter(key => /^d3-/.test(key)).map(key => ({[key]: "d3"})))
   },
-  plugins: []
+  plugins: [],
+  onwarn
 };
 
 export default [

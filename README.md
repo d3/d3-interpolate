@@ -31,13 +31,13 @@ Note that the generic value interpolator detects not only nested objects and arr
 
 ## Installing
 
-If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-interpolate.v1.min.js) or as part of [D3](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported. 
+If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-interpolate.v2.min.js) or as part of [D3](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported. 
 
 In vanilla, a `d3` global is exported. (If using [color interpolation](#color-spaces), also load [d3-color](https://github.com/d3/d3-color).)
 
 ```html
-<script src="https://d3js.org/d3-color.v1.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-color.v2.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
 <script>
 
 var interpolate = d3.interpolateRgb("steelblue", "brown");
@@ -132,6 +132,10 @@ Returns an interpolator between the two 2D SVG transforms represented by *a* and
 Returns an interpolator between the two views *a* and *b* of a two-dimensional plane, based on [“Smooth and efficient zooming and panning”](http://www.win.tue.nl/~vanwijk/zoompan.pdf) by Jarke J. van Wijk and Wim A.A. Nuij. Each view is defined as an array of three numbers: *cx*, *cy* and *width*. The first two coordinates *cx*, *cy* represent the center of the viewport; the last coordinate *width* represents the size of the viewport.
 
 The returned interpolator exposes a *duration* property which encodes the recommended transition duration in milliseconds. This duration is based on the path length of the curved trajectory through *x,y* space. If you want a slower or faster transition, multiply this by an arbitrary scale factor (<i>V</i> as described in the original paper).
+
+<a name="interpolate_rho" href="#interpolate_rho">#</a> *interpolateZoom*.<b>rho</b>(<i>rho</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/zoom.js)<!-- , [Examples](https://observablehq.com/@d3/interpolatezoom-rho) -->
+
+Given a [zoom interpolator](#interpolateZoom), returns a new zoom interpolator using the specified curvature *rho*. When *rho* is close to 0, the interpolator is almost linear. The default curvature is sqrt(2).
 
 <a name="interpolateDiscrete" href="#interpolateDiscrete">#</a> d3.<b>interpolateDiscrete</b>(<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/discrete.js), [Examples](https://observablehq.com/@d3/d3-interpolatediscrete)
 
@@ -243,10 +247,12 @@ Returns a uniform nonrational B-spline interpolator through the specified array 
 
 ### Piecewise
 
-<a name="piecewise" href="#piecewise">#</a> d3.<b>piecewise</b>(<i>interpolate</i>, <i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/piecewise.js), [Examples](https://observablehq.com/@d3/d3-piecewise)
+<a name="piecewise" href="#piecewise">#</a> d3.<b>piecewise</b>([<i>interpolate</i>, ]<i>values</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/piecewise.js), [Examples](https://observablehq.com/@d3/d3-piecewise)
 
 Returns a piecewise interpolator, composing interpolators for each adjacent pair of *values*. The returned interpolator maps *t* in [0, 1 / (*n* - 1)] to *interpolate*(*values*[0], *values*[1]), *t* in [1 / (*n* - 1), 2 / (*n* - 1)] to *interpolate*(*values*[1], *values*[2]), and so on, where *n* = *values*.length. In effect, this is a lightweight [linear scale](https://github.com/d3/d3-scale/blob/master/README.md#linear-scales). For example, to blend through red, green and blue:
 
 ```js
 var interpolate = d3.piecewise(d3.interpolateRgb.gamma(2.2), ["red", "green", "blue"]);
 ```
+
+If  *interpolate* is not specified, defaults to [d3.interpolate](#interpolate).

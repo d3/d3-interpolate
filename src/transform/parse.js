@@ -1,18 +1,11 @@
 import decompose, {identity} from "./decompose.js";
 
-var cssNode,
-    cssRoot,
-    cssView,
-    svgNode;
+var svgNode;
 
+/* eslint-disable no-undef */
 export function parseCss(value) {
-  if (value === "none") return identity;
-  if (!cssNode) cssNode = document.createElement("DIV"), cssRoot = document.documentElement, cssView = document.defaultView;
-  cssNode.style.transform = value;
-  value = cssView.getComputedStyle(cssRoot.appendChild(cssNode), null).getPropertyValue("transform");
-  cssRoot.removeChild(cssNode);
-  value = value.slice(7, -1).split(",");
-  return decompose(+value[0], +value[1], +value[2], +value[3], +value[4], +value[5]);
+  const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
+  return m.isIdentity ? identity : decompose(m.a, m.b, m.c, m.d, m.e, m.f);
 }
 
 export function parseSvg(value) {
