@@ -31,7 +31,7 @@ Note that the generic value interpolator detects not only nested objects and arr
 
 ## Installing
 
-If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-interpolate.v2.min.js) or as part of [D3](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported. 
+If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-interpolate.v2.min.js) or as part of [D3](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported.
 
 In vanilla, a `d3` global is exported. (If using [color interpolation](#color-spaces), also load [d3-color](https://github.com/d3/d3-color).)
 
@@ -133,7 +133,7 @@ Returns an interpolator between the two views *a* and *b* of a two-dimensional p
 
 The returned interpolator exposes a *duration* property which encodes the recommended transition duration in milliseconds. This duration is based on the path length of the curved trajectory through *x,y* space. If you want a slower or faster transition, multiply this by an arbitrary scale factor (<i>V</i> as described in the original paper).
 
-<a name="interpolate_rho" href="#interpolate_rho">#</a> *interpolateZoom*.<b>rho</b>(<i>rho</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/zoom.js)<!-- , [Examples](https://observablehq.com/@d3/interpolatezoom-rho) -->
+<a name="interpolateZoom_rho" href="#interpolateZoom_rho">#</a> *interpolateZoom*.<b>rho</b>(<i>rho</i>) · [Source](https://github.com/d3/d3-interpolate/blob/master/src/zoom.js)<!-- , [Examples](https://observablehq.com/@d3/interpolatezoom-rho) -->
 
 Given a [zoom interpolator](#interpolateZoom), returns a new zoom interpolator using the specified curvature *rho*. When *rho* is close to 0, the interpolator is almost linear. The default curvature is sqrt(2).
 
