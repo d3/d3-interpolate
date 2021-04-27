@@ -31,17 +31,24 @@ Note that the generic value interpolator detects not only nested objects and arr
 
 ## Installing
 
-If you use NPM, `npm install d3-interpolate`. Otherwise, download the [latest release](https://github.com/d3/d3-interpolate/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-interpolate.v2.min.js) or as part of [D3](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported.
-
-In vanilla, a `d3` global is exported. (If using [color interpolation](#color-spaces), also load [d3-color](https://github.com/d3/d3-color).)
+If you use npm, `npm install d3-interpolate`. You can also download the [latest release on GitHub](https://github.com/d3/d3-interpolate/releases/latest). For vanilla HTML in modern browsers, import d3-interpolate from Skypack:
 
 ```html
-<script src="https://d3js.org/d3-color.v2.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
+<script type="module">
+import {interpolateRgb} from "https://cdn.skypack.dev/d3-interpolate@3";
+
+const interpolate = interpolateRgb("steelblue", "brown");;
+</script>
+```
+
+For legacy environments, you can load d3-interpolate’s UMD bundle from an npm-based CDN such as jsDelivr; a `d3` global is exported. (If using [color interpolation](#color-spaces), also load [d3-color](https://github.com/d3/d3-color).)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
 <script>
 
-var interpolate = d3.interpolateRgb("steelblue", "brown");
-
+const interpolate = d3.interpolateRgb("steelblue", "brown");
 </script>
 ```
 
