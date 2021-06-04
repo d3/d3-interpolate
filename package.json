@@ -1,6 +1,6 @@
 {
   "name": "d3-interpolate",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Interpolate numbers, colors, strings, arrays, objects, whatever!",
   "homepage": "https://d3js.org/d3-interpolate/",
   "repository": {
