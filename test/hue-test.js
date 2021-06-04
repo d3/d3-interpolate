@@ -1,48 +1,43 @@
-var tape = require("tape"),
-    interpolate = require("../");
+import assert from "assert";
+import {interpolateHue} from "../src/index.js";
 
-tape("interpolateHue(a, b) interpolate numbers", function(test) {
-  var i = interpolate.interpolateHue("10", "20");
-  test.strictEqual(i(0.0), 10);
-  test.strictEqual(i(0.2), 12);
-  test.strictEqual(i(0.4), 14);
-  test.strictEqual(i(0.6), 16);
-  test.strictEqual(i(0.8), 18);
-  test.strictEqual(i(1.0), 20);
-  test.end();
+it("interpolateHue(a, b) interpolate numbers", () => {
+  const i = interpolateHue("10", "20");
+  assert.strictEqual(i(0.0), 10);
+  assert.strictEqual(i(0.2), 12);
+  assert.strictEqual(i(0.4), 14);
+  assert.strictEqual(i(0.6), 16);
+  assert.strictEqual(i(0.8), 18);
+  assert.strictEqual(i(1.0), 20);
 });
 
-tape("interpolateHue(a, b) returns a if b is NaN", function(test) {
-  var i = interpolate.interpolateHue(10, NaN);
-  test.equal(i(0.0), 10);
-  test.equal(i(0.5), 10);
-  test.equal(i(1.0), 10);
-  test.end();
+it("interpolateHue(a, b) returns a if b is NaN", () => {
+  const i = interpolateHue(10, NaN);
+  assert.strictEqual(i(0.0), 10);
+  assert.strictEqual(i(0.5), 10);
+  assert.strictEqual(i(1.0), 10);
 });
 
-tape("interpolateHue(a, b) returns b if a is NaN", function(test) {
-  var i = interpolate.interpolateHue(NaN, 20);
-  test.equal(i(0.0), 20);
-  test.equal(i(0.5), 20);
-  test.equal(i(1.0), 20);
-  test.end();
+it("interpolateHue(a, b) returns b if a is NaN", () => {
+  const i = interpolateHue(NaN, 20);
+  assert.strictEqual(i(0.0), 20);
+  assert.strictEqual(i(0.5), 20);
+  assert.strictEqual(i(1.0), 20);
 });
 
-tape("interpolateHue(a, b) returns NaN if both a and b are NaN", function(test) {
-  var i = interpolate.interpolateHue(NaN, NaN);
-  test.equal(isNaN(i(0.0)), true);
-  test.equal(isNaN(i(0.5)), true);
-  test.equal(isNaN(i(1.0)), true);
-  test.end();
+it("interpolateHue(a, b) returns NaN if both a and b are NaN", () => {
+  const i = interpolateHue(NaN, NaN);
+  assert.strictEqual(isNaN(i(0.0)), true);
+  assert.strictEqual(isNaN(i(0.5)), true);
+  assert.strictEqual(isNaN(i(1.0)), true);
 });
 
-tape("interpolateHue(a, b) uses the shortest path", function(test) {
-  var i = interpolate.interpolateHue(10, 350);
-  test.equal(i(0.0), 10);
-  test.equal(i(0.2), 6);
-  test.equal(i(0.4), 2);
-  test.equal(i(0.6), 358);
-  test.equal(i(0.8), 354);
-  test.equal(i(1.0), 350);
-  test.end();
+it("interpolateHue(a, b) uses the shortest path", () => {
+  const i = interpolateHue(10, 350);
+  assert.strictEqual(i(0.0), 10);
+  assert.strictEqual(i(0.2), 6);
+  assert.strictEqual(i(0.4), 2);
+  assert.strictEqual(i(0.6), 358);
+  assert.strictEqual(i(0.8), 354);
+  assert.strictEqual(i(1.0), 350);
 });

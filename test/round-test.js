@@ -1,31 +1,28 @@
-var tape = require("tape"),
-    interpolate = require("../");
+import assert from "assert";
+import {interpolateRound} from "../src/index.js";
 
-tape("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", function(test) {
-  var i = interpolate.interpolateRound(10, 42);
-  test.equal(i(0.0), 10);
-  test.equal(i(0.1), 13);
-  test.equal(i(0.2), 16);
-  test.equal(i(0.3), 20);
-  test.equal(i(0.4), 23);
-  test.equal(i(0.5), 26);
-  test.equal(i(0.6), 29);
-  test.equal(i(0.7), 32);
-  test.equal(i(0.8), 36);
-  test.equal(i(0.9), 39);
-  test.equal(i(1.0), 42);
-  test.end();
+it("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", () => {
+  const i = interpolateRound(10, 42);
+  assert.strictEqual(i(0.0), 10);
+  assert.strictEqual(i(0.1), 13);
+  assert.strictEqual(i(0.2), 16);
+  assert.strictEqual(i(0.3), 20);
+  assert.strictEqual(i(0.4), 23);
+  assert.strictEqual(i(0.5), 26);
+  assert.strictEqual(i(0.6), 29);
+  assert.strictEqual(i(0.7), 32);
+  assert.strictEqual(i(0.8), 36);
+  assert.strictEqual(i(0.9), 39);
+  assert.strictEqual(i(1.0), 42);
 });
 
-tape("interpolateRound(a, b) does not pre-round a and b", function(test) {
-  var i = interpolate.interpolateRound(2.6, 3.6);
-  test.equal(i(0.6), 3);
-  test.end();
+it("interpolateRound(a, b) does not pre-round a and b", () => {
+  const i = interpolateRound(2.6, 3.6);
+  assert.strictEqual(i(0.6), 3);
 });
 
-tape("interpolateRound(a, b) gives exact ends for t=0 and t=1", function(test) {
-  var a = 2e+42, b = 335;
-  test.equal(interpolate.interpolateRound(a, b)(1), b);
-  test.equal(interpolate.interpolateRound(a, b)(0), a);
-  test.end();
+it("interpolateRound(a, b) gives exact ends for t=0 and t=1", () => {
+  const a = 2e+42, b = 335;
+  assert.strictEqual(interpolateRound(a, b)(1), b);
+  assert.strictEqual(interpolateRound(a, b)(0), a);
 });
