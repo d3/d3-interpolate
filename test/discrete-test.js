@@ -1,8 +1,8 @@
 import assert from "assert";
-import * as d3 from "../src/index.js";
+import {interpolateDiscrete} from "../src/index.js";
 
 it("interpolateDiscrete(values)(t) returns the expected values", () => {
-  const i = d3.interpolateDiscrete("abcde".split(""));
+  const i = interpolateDiscrete("abcde".split(""));
   assert.strictEqual(i(-1), "a");
   assert.strictEqual(i(0), "a");
   assert.strictEqual(i(0.19), "a");
@@ -11,7 +11,7 @@ it("interpolateDiscrete(values)(t) returns the expected values", () => {
 });
 
 it("interpolateDiscrete([0, 1]) is equivalent to similar to Math.round", () => {
-  const i = d3.interpolateDiscrete([0, 1]);
+  const i = interpolateDiscrete([0, 1]);
   assert.strictEqual(i(-1), 0);
   assert.strictEqual(i(0), 0);
   assert.strictEqual(i(0.49), 0);
@@ -21,6 +21,6 @@ it("interpolateDiscrete([0, 1]) is equivalent to similar to Math.round", () => {
 });
 
 it("interpolateDiscrete(…)(NaN) returned undefined", () => {
-  const i = d3.interpolateDiscrete([0, 1]);
+  const i = interpolateDiscrete([0, 1]);
   assert.strictEqual(i(NaN), undefined);
 });
