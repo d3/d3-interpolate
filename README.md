@@ -3,7 +3,7 @@
 This module provides a variety of interpolation methods for blending between two values. Values may be numbers, colors, strings, arrays, or even deeply-nested objects. For example:
 
 ```js
-var i = d3.interpolateNumber(10, 20);
+const i = d3.interpolateNumber(10, 20);
 i(0.0); // 10
 i(0.2); // 12
 i(0.5); // 15
@@ -21,7 +21,7 @@ d3.interpolateLab("steelblue", "brown")(0.5); // "rgb(142, 92, 109)"
 Here’s a more elaborate example demonstrating type inference used by [interpolate](#interpolate):
 
 ```js
-var i = d3.interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
+const i = d3.interpolate({colors: ["red", "blue"]}, {colors: ["white", "black"]});
 i(0.0); // {colors: ["rgb(255, 0, 0)", "rgb(0, 0, 255)"]}
 i(0.5); // {colors: ["rgb(255, 128, 128)", "rgb(0, 0, 128)"]}
 i(1.0); // {colors: ["rgb(255, 255, 255)", "rgb(0, 0, 0)"]}
@@ -35,9 +35,11 @@ If you use npm, `npm install d3-interpolate`. You can also download the [latest 
 
 ```html
 <script type="module">
+
 import {interpolateRgb} from "https://cdn.skypack.dev/d3-interpolate@3";
 
-const interpolate = interpolateRgb("steelblue", "brown");;
+const interpolate = interpolateRgb("steelblue", "brown");
+
 </script>
 ```
 
@@ -49,6 +51,7 @@ For legacy environments, you can load d3-interpolate’s UMD bundle from an npm-
 <script>
 
 const interpolate = d3.interpolateRgb("steelblue", "brown");
+
 </script>
 ```
 
@@ -231,7 +234,7 @@ Like [interpolateCubehelix](#interpolateCubehelix), but does not use the shortes
 Given that *interpolate* is one of [interpolateRgb](#interpolateRgb), [interpolateCubehelix](#interpolateCubehelix) or [interpolateCubehelixLong](#interpolateCubehelixLong), returns a new interpolator factory of the same type using the specified *gamma*. For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space:
 
 ```js
-var interpolator = d3.interpolateRgb.gamma(2.2)("purple", "orange");
+const interpolator = d3.interpolateRgb.gamma(2.2)("purple", "orange");
 ```
 
 See Eric Brasseur’s article, [Gamma error in picture scaling](http://www.ericbrasseur.org/gamma.html), for more on gamma correction.
@@ -259,7 +262,7 @@ Returns a uniform nonrational B-spline interpolator through the specified array 
 Returns a piecewise interpolator, composing interpolators for each adjacent pair of *values*. The returned interpolator maps *t* in [0, 1 / (*n* - 1)] to *interpolate*(*values*[0], *values*[1]), *t* in [1 / (*n* - 1), 2 / (*n* - 1)] to *interpolate*(*values*[1], *values*[2]), and so on, where *n* = *values*.length. In effect, this is a lightweight [linear scale](https://github.com/d3/d3-scale/blob/master/README.md#linear-scales). For example, to blend through red, green and blue:
 
 ```js
-var interpolate = d3.piecewise(d3.interpolateRgb.gamma(2.2), ["red", "green", "blue"]);
+const interpolate = d3.piecewise(d3.interpolateRgb.gamma(2.2), ["red", "green", "blue"]);
 ```
 
 If  *interpolate* is not specified, defaults to [d3.interpolate](#interpolate).
