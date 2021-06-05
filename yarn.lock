@@ -269,9 +269,9 @@ cross-spawn@^7.0.2:
     which "^2.0.1"
 
 "d3-color@1 - 3":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-3.0.0.tgz#34235bff4f7cef9cb26661a627df78a08da6993e"
-  integrity sha512-FzEzJGJPTstWe+YNZ7F1WU12WxIQkeYO+SiBfw4a8Ln6JP8YTWxm6ZVr+I2M9MRbtQNYJCs1dtgsAJtaRzCdCA==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-3.0.1.tgz#03316e595955d1fcd39d9f3610ad41bb90194d0a"
+  integrity sha512-6/SlHkDOBLyQSJ1j1Ghs82OIUXpKWlR0hCsw0XrLSQhuUPuCSmLQ1QPH98vpnQxMUQM2/gfAkUEWsupVpd9JGw==
 
 debug@4.3.1, debug@^4.0.1, debug@^4.1.1:
   version "4.3.1"
