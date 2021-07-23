@@ -1,4 +1,4 @@
-import value from "./value.js";
+import { value } from "./value_object.js";
 import numberArray, {isNumberArray} from "./numberArray.js";
 
 export default function(a, b) {
