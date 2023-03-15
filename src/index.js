@@ -1,5 +1,4 @@
-export {interpolate, interpolateObject} from "./value.js";
-export {default as interpolateArray} from "./array.js";
+export {interpolate, interpolateArray, interpolateObject} from "./value.js";
 export {default as interpolateBasis} from "./basis.js";
 export {default as interpolateBasisClosed} from "./basisClosed.js";
 export {default as interpolateDate} from "./date.js";

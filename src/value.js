@@ -1,6 +1,5 @@
 import {color} from "d3-color";
 import rgb from "./rgb.js";
-import {genericArray} from "./array.js";
 import date from "./date.js";
 import number from "./number.js";
 import string from "./string.js";
@@ -42,7 +41,28 @@ function interpolateObject(a, b) {
   };
 }
 
+
+function interpolateArray(a, b) {
+  return (isNumberArray(b) ? numberArray : genericArray)(a, b);
+}
+
+function genericArray(a, b) {
+  var nb = b ? b.length : 0,
+      na = a ? Math.min(nb, a.length) : 0,
+      x = new Array(na),
+      c = new Array(nb),
+      i;
+
+  for (i = 0; i < na; ++i) x[i] = interpolate(a[i], b[i]);
+  for (; i < nb; ++i) c[i] = b[i];
+
+  return function(t) {
+    for (i = 0; i < na; ++i) c[i] = x[i](t);
+    return c;
+  };
+}
+
 // although it breaks code style, interpolateObject was 
 // moved here to prevent require cycles
 export default interpolate
-export {interpolate, interpolateObject}
+export {interpolate, interpolateArray, interpolateObject}
