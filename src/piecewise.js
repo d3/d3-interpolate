@@ -1,4 +1,4 @@
-import {default as value} from "./value.js";
+import { value } from "./value_object";
 
 export default function piecewise(interpolate, values) {
   if (values === undefined) values = interpolate, interpolate = value;
