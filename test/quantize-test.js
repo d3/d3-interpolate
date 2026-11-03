@@ -1,7 +1,8 @@
+import {test} from "vitest";
 import assert from "assert";
 import {interpolateNumber, interpolateRgb, quantize} from "../src/index.js";
 
-it("quantize(interpolate, n) returns n uniformly-spaced samples from the specified interpolator", () => {
+test("quantize(interpolate, n) returns n uniformly-spaced samples from the specified interpolator", () => {
   assert.deepStrictEqual(quantize(interpolateNumber(0, 1), 5), [
     0 / 4,
     1 / 4,

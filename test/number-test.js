@@ -1,8 +1,9 @@
+import {test} from "vitest";
 import assert from "assert";
 import {interpolateNumber} from "../src/index.js";
 import {assertInDelta} from "./asserts.js";
 
-it("interpolateNumber(a, b) interpolates between two numbers a and b", () => {
+test("interpolateNumber(a, b) interpolates between two numbers a and b", () => {
   const i = interpolateNumber(10, 42);
   assertInDelta(i(0.0), 10.0);
   assertInDelta(i(0.1), 13.2);
@@ -18,7 +19,7 @@ it("interpolateNumber(a, b) interpolates between two numbers a and b", () => {
 });
 
 
-it("interpolateNumber(a, b) gives exact ends for t=0 and t=1", () => {
+test("interpolateNumber(a, b) gives exact ends for t=0 and t=1", () => {
   const a = 2e+42, b = 335;
   assert.strictEqual(interpolateNumber(a, b)(1), b);
   assert.strictEqual(interpolateNumber(a, b)(0), a);
