@@ -10,7 +10,7 @@ importers:
     dependencies:
       d3-color:
         specifier: 1 - 3
-        version: 3.1.0
+        version: 3.1.1
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -479,8 +479,8 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  d3-color@3.1.0:
-    resolution: {integrity: sha512-zg/chbXyeBtMQ1LbD/WSoW2DpC3I0mpmPdW+ynRTj/x2DAWYrIY7qeZIHidozwV24m4iavr15lNwIwLxRmOxhA==}
+  d3-color@3.1.1:
+    resolution: {integrity: sha512-lfab8x0Bj0UO7SNsY8dZSbNIA6ipbkE3X0NG9nqjCu6CfCHZseuDnOSJY7hidKrjpP++i1M2qT+FlAdPKYRilA==}
     engines: {node: '>=12'}
 
   debug@4.4.3:
@@ -1301,7 +1301,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  d3-color@3.1.0: {}
+  d3-color@3.1.1: {}
 
   debug@4.4.3:
     dependencies:
