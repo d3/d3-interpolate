@@ -8,7 +8,7 @@ import string from "./string.js";
 import constant from "./constant.js";
 import numberArray, {isNumberArray} from "./numberArray.js";
 
-export default function(a, b) {
+export function value(a, b) {
   var t = typeof b, c;
   return b == null || t === "boolean" ? constant(b)
       : (t === "number" ? number
@@ -19,4 +19,26 @@ export default function(a, b) {
       : Array.isArray(b) ? genericArray
       : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);
+}
+
+export function object(a, b) {
+  var i = {},
+      c = {},
+      k;
+
+  if (a === null || typeof a !== "object") a = {};
+  if (b === null || typeof b !== "object") b = {};
+
+  for (k in b) {
+    if (k in a) {
+      i[k] = value(a[k], b[k]);
+    } else {
+      c[k] = b[k];
+    }
+  }
+
+  return function(t) {
+    for (k in i) c[k] = i[k](t);
+    return c;
+  };
 }
