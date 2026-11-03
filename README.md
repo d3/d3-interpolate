@@ -7,6 +7,6 @@ This module provides a variety of interpolation methods for blending between two
 ## Resources
 
 - [Documentation](https://d3js.org/d3-interpolate)
-- [Examples](https://observablehq.com/collection/@d3/d3-interpolate)
+- [Examples](https://observablehq.com/@d3/-/collection/d3-interpolate)
 - [Releases](https://github.com/d3/d3-interpolate/releases)
 - [Getting help](https://d3js.org/community)

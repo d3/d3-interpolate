@@ -1,5 +1,6 @@
-import assert from "assert";
-import {interpolateArray} from "../src/index.js";
+import assert from "node:assert";
+import {it} from "vitest";
+import {interpolateArray} from "d3-interpolate";
 
 it("interpolateArray(a, b) interpolates defined elements in a and b", () => {
   assert.deepStrictEqual(interpolateArray([2, 12], [4, 24])(0.5), [3, 18]);

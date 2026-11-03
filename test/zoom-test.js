@@ -1,5 +1,6 @@
-import assert from "assert";
-import {interpolateZoom} from "../src/index.js";
+import assert from "node:assert";
+import {it} from "vitest";
+import {interpolateZoom} from "d3-interpolate";
 import {assertInDelta} from "./asserts.js";
 
 it("interpolateZoom(a, b) handles nearly-coincident points", () => {

@@ -1,5 +1,6 @@
-import assert from "assert";
-import {interpolateRgb} from "../src/index.js";
+import assert from "node:assert";
+import {it} from "vitest";
+import {interpolateRgb} from "d3-interpolate";
 import {hsl, rgb} from "d3-color";
 
 it("interpolateRgb(a, b) converts a and b to RGB colors", () => {

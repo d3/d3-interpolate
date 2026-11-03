@@ -1,5 +1,6 @@
-import assert from "assert";
-import {interpolate, piecewise} from "../src/index.js";
+import assert from "node:assert";
+import {it} from "vitest";
+import {interpolate, piecewise} from "d3-interpolate";
 
 it("piecewise(interpolate, values)(t) returns the expected values", () => {
   const i = piecewise(interpolate, [0, 2, 10]);
