@@ -1,8 +1,8 @@
-import {test} from "vitest";
+import {it} from "vitest";
 import assert from "assert";
 import {interpolate, piecewise} from "../src/index.js";
 
-test("piecewise(interpolate, values)(t) returns the expected values", () => {
+it("piecewise(interpolate, values)(t) returns the expected values", () => {
   const i = piecewise(interpolate, [0, 2, 10]);
   assert.strictEqual(i(-1), -4);
   assert.strictEqual(i(0), 0);
@@ -13,7 +13,7 @@ test("piecewise(interpolate, values)(t) returns the expected values", () => {
   assert.strictEqual(i(1), 10);
 });
 
-test("piecewise(values) uses the default interpolator", () => {
+it("piecewise(values) uses the default interpolator", () => {
   const i = piecewise([0, 2, 10]);
   assert.strictEqual(i(-1), -4);
   assert.strictEqual(i(0), 0);
@@ -24,7 +24,7 @@ test("piecewise(values) uses the default interpolator", () => {
   assert.strictEqual(i(1), 10);
 });
 
-test("piecewise(values) uses the default interpolator/2", () => {
+it("piecewise(values) uses the default interpolator/2", () => {
   const i = piecewise(["a0", "a2", "a10"]);
   assert.strictEqual(i(-1), "a-4");
   assert.strictEqual(i(0), "a0");

@@ -1,8 +1,8 @@
-import {test} from "vitest";
+import {it} from "vitest";
 import assert from "assert";
 import {interpolateDiscrete} from "../src/index.js";
 
-test("interpolateDiscrete(values)(t) returns the expected values", () => {
+it("interpolateDiscrete(values)(t) returns the expected values", () => {
   const i = interpolateDiscrete("abcde".split(""));
   assert.strictEqual(i(-1), "a");
   assert.strictEqual(i(0), "a");
@@ -11,7 +11,7 @@ test("interpolateDiscrete(values)(t) returns the expected values", () => {
   assert.strictEqual(i(1), "e");
 });
 
-test("interpolateDiscrete([0, 1]) is equivalent to similar to Math.round", () => {
+it("interpolateDiscrete([0, 1]) is equivalent to similar to Math.round", () => {
   const i = interpolateDiscrete([0, 1]);
   assert.strictEqual(i(-1), 0);
   assert.strictEqual(i(0), 0);
@@ -21,7 +21,7 @@ test("interpolateDiscrete([0, 1]) is equivalent to similar to Math.round", () =>
   assert.strictEqual(i(2), 1);
 });
 
-test("interpolateDiscrete(…)(NaN) returned undefined", () => {
+it("interpolateDiscrete(…)(NaN) returned undefined", () => {
   const i = interpolateDiscrete([0, 1]);
   assert.strictEqual(i(NaN), undefined);
 });

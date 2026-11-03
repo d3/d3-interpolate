@@ -1,8 +1,8 @@
-import {test} from "vitest";
+import {it} from "vitest";
 import assert from "assert";
 import {interpolateRound} from "../src/index.js";
 
-test("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", () => {
+it("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", () => {
   const i = interpolateRound(10, 42);
   assert.strictEqual(i(0.0), 10);
   assert.strictEqual(i(0.1), 13);
@@ -17,12 +17,12 @@ test("interpolateRound(a, b) interpolates between two numbers a and b, and then 
   assert.strictEqual(i(1.0), 42);
 });
 
-test("interpolateRound(a, b) does not pre-round a and b", () => {
+it("interpolateRound(a, b) does not pre-round a and b", () => {
   const i = interpolateRound(2.6, 3.6);
   assert.strictEqual(i(0.6), 3);
 });
 
-test("interpolateRound(a, b) gives exact ends for t=0 and t=1", () => {
+it("interpolateRound(a, b) gives exact ends for t=0 and t=1", () => {
   const a = 2e+42, b = 335;
   assert.strictEqual(interpolateRound(a, b)(1), b);
   assert.strictEqual(interpolateRound(a, b)(0), a);
