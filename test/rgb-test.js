@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateRgb} from "../src/index.js";
 import {hsl, rgb} from "d3-color";
 

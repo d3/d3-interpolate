@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateHue} from "../src/index.js";
 
 it("interpolateHue(a, b) interpolate numbers", () => {

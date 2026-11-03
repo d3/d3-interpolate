@@ -1,6 +1,6 @@
 /*
 
-import assert from "assert";
+import assert from "node:assert";
 import * as d3 from "../src/index.js";
 
 // see https://github.com/d3/d3-interpolate/pull/83

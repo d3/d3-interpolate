@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolate, piecewise} from "../src/index.js";
 
 it("piecewise(interpolate, values)(t) returns the expected values", () => {

@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateArray} from "../src/index.js";
 
 it("interpolateArray(a, b) interpolates defined elements in a and b", () => {

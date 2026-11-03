@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {cubehelix, hcl, rgb} from "d3-color";
 import {interpolateCubehelixLong} from "../src/index.js";
 

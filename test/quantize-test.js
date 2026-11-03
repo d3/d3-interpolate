@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateNumber, interpolateRgb, quantize} from "../src/index.js";
 
 it("quantize(interpolate, n) returns n uniformly-spaced samples from the specified interpolator", () => {

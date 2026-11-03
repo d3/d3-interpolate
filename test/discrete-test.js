@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateDiscrete} from "../src/index.js";
 
 it("interpolateDiscrete(values)(t) returns the expected values", () => {

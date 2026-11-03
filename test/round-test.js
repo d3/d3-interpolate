@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateRound} from "../src/index.js";
 
 it("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", () => {

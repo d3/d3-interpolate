@@ -1,5 +1,5 @@
+import assert from "node:assert";
 import {it} from "vitest";
-import assert from "assert";
 import {interpolateDate} from "../src/index.js";
 
 it("interpolateDate(a, b) interpolates between two dates a and b", () => {
