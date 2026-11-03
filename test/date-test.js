@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateDate} from "../src/index.js";
+import {interpolateDate} from "d3-interpolate";
 
 it("interpolateDate(a, b) interpolates between two dates a and b", () => {
   const i = interpolateDate(new Date(2000, 0, 1), new Date(2000, 0, 2));

@@ -1,7 +1,7 @@
 import assert from "node:assert";
 import {it} from "vitest";
 import {hcl, rgb} from "d3-color";
-import {interpolateHclLong} from "../src/index.js";
+import {interpolateHclLong} from "d3-interpolate";
 
 it("interpolateHclLong(a, b) converts a and b to HCL colors", () => {
   assert.strictEqual(interpolateHclLong("steelblue", "brown")(0), rgb("steelblue") + "");

@@ -1,7 +1,7 @@
 import assert from "node:assert";
 import {it} from "vitest";
 import {hsl, rgb} from "d3-color";
-import {interpolate} from "../src/index.js";
+import {interpolate} from "d3-interpolate";
 
 it("interpolate(a, b) interpolates strings if b is a string and not a color", () => {
   assert.strictEqual(interpolate("foo", "bar")(0.5), "bar");

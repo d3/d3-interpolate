@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateNumber} from "../src/index.js";
+import {interpolateNumber} from "d3-interpolate";
 import {assertInDelta} from "./asserts.js";
 
 it("interpolateNumber(a, b) interpolates between two numbers a and b", () => {

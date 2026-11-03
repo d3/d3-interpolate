@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateObject} from "../src/index.js";
+import {interpolateObject} from "d3-interpolate";
 
 it("interpolateObject(a, b) interpolates defined properties in a and b", () => {
   assert.deepStrictEqual(interpolateObject({a: 2, b: 12}, {a: 4, b: 24})(0.5), {a: 3, b: 18});

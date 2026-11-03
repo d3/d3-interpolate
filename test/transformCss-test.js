@@ -1,7 +1,7 @@
 /*
 
 import assert from "node:assert";
-import * as d3 from "../src/index.js";
+import * as d3 from "d3-interpolate";
 
 // see https://github.com/d3/d3-interpolate/pull/83
 // and https://github.com/Automattic/node-canvas/issues/1313

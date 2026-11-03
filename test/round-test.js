@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateRound} from "../src/index.js";
+import {interpolateRound} from "d3-interpolate";
 
 it("interpolateRound(a, b) interpolates between two numbers a and b, and then rounds", () => {
   const i = interpolateRound(10, 42);

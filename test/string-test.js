@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateString} from "../src/index.js";
+import {interpolateString} from "d3-interpolate";
 
 it("interpolateString(a, b) interpolates matching numbers in a and b", () => {
   assert.strictEqual(interpolateString(" 10/20 30", "50/10 100 ")(0.2), "18/18 44 ");

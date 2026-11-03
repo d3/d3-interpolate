@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import {it} from "vitest";
-import {interpolateDiscrete} from "../src/index.js";
+import {interpolateDiscrete} from "d3-interpolate";
 
 it("interpolateDiscrete(values)(t) returns the expected values", () => {
   const i = interpolateDiscrete("abcde".split(""));

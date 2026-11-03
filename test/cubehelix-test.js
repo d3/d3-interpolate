@@ -1,7 +1,7 @@
 import assert from "node:assert";
 import {it} from "vitest";
 import {cubehelix, hcl, rgb} from "d3-color";
-import {interpolateCubehelix} from "../src/index.js";
+import {interpolateCubehelix} from "d3-interpolate";
 
 it("interpolateCubehelix(a, b) converts a and b to Cubehelix colors", () => {
   assert.strictEqual(interpolateCubehelix("steelblue", "brown")(0), rgb("steelblue") + "");
