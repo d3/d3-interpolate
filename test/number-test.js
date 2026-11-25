@@ -24,3 +24,21 @@ it("interpolateNumber(a, b) gives exact ends for t=0 and t=1", () => {
   assert.strictEqual(interpolateNumber(a, b)(1), b);
   assert.strictEqual(interpolateNumber(a, b)(0), a);
 });
+
+it("interpolateNumber(a, b) handles infinite t", () => {
+  assert.strictEqual(interpolateNumber(0, 1)(Infinity), Infinity);
+  assert.strictEqual(interpolateNumber(0, 1)(-Infinity), -Infinity);
+  assert.strictEqual(interpolateNumber(-1, 1)(Infinity), Infinity);
+  assert.strictEqual(interpolateNumber(-1, 1)(-Infinity), -Infinity);
+});
+
+it("interpolateNumber(a, b) handles infinite endpoints", () => {
+  assert.strictEqual(interpolateNumber(Infinity, Infinity)(0.5), Infinity);
+  assert.strictEqual(interpolateNumber(-Infinity, -Infinity)(0.5), -Infinity);
+});
+
+it("interpolateNumber(a, b) extrapolates with the correct sign at infinite t", () => {
+  assert.strictEqual(interpolateNumber(1, 0)(Infinity), -Infinity);
+  assert.strictEqual(interpolateNumber(1, 0)(-Infinity), Infinity);
+  assert.strictEqual(interpolateNumber(5, 5)(Infinity), 5);
+});
